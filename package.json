@@ -5,6 +5,7 @@
   "dependencies": {
     "@tensorflow-models/speech-commands": "^0.2.3",
     "@tensorflow/tfjs": "^0.14.2",
+
     "axios": "^0.18.0",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
