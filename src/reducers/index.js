@@ -1,32 +1,23 @@
-import { FETCH_WHISKIES, FETCH_WHISKIES_FAILURE, FETCH_WHISKIES_SUCCESS } from '../constants';
-
 const initialState = {
-  whiskies: [],
-  isLoading: false,
-  error: null,
+  int: 0,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_WHISKIES:
-      return {
-        ...state,
-        isLoading: true,
-        error: null,
-      };
-    case FETCH_WHISKIES_SUCCESS:
-      return {
-        whiskies: [ ...action.payload ],
-        isLoading: false,
-        error: null,
-      };
-    case FETCH_WHISKIES_FAILURE:
-      return {
-        whiskies: [],
-        isLoading: false,
-        error: action.payload,
-      };
+    case 'GO': {
+      return applyListen(state, action);
+    }
+    case 'INCREMENT': {
+      return { ...state, int: state.int + 1 };
+    }
+
+    case 'DECREMENT': {
+      return { ...state, int: state.int - 1 };
+    }
+
     default:
       return state;
   }
 };
+
+const applyListen = (state, action) => {};
