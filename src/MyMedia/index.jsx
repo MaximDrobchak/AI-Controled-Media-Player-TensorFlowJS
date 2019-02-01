@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 
 import MediaPlayer from './MediaPlayer'
 
-import playlist from './playlist'
 import './main.scss'
 
-
-const mod = (num, max) => ((num % max) + max) % max
 
 class Playlist extends Component {
   _handleTrackClick(track) {
@@ -40,26 +37,16 @@ class Playlist extends Component {
 
 class App extends Component {
   state = {
-    currentTrack: { src: null, label: 'No media loaded' },
-
     repeatTrack: false,
     autoPlay: true,
   }
 
-  _handleTrackClick = track => {
-    this.setState({ currentTrack: track })
-  }
-
-  _navigatePlaylist = direction => {
-    const newIndex = mod(
-      playlist.indexOf(this.state.currentTrack) + direction,
-      playlist.length
-    )
-    this.setState({ currentTrack: playlist[newIndex] })
-  }
 
   render() {
-    const { currentTrack, repeatTrack, autoPlay } = this.state
+    const { repeatTrack, autoPlay } = this.state
+    const {
+      currentTrack,navigatePlaylist,handleTrackClick,playlist
+    } = this.props;
     return (
       <div>
       <div className="media-player-wrapper">
@@ -70,19 +57,19 @@ class App extends Component {
               loop={repeatTrack}
               currentTrack={currentTrack.label}
               repeatTrack={repeatTrack}
-              onPrevTrack={() => this._navigatePlaylist(-1)}
-              onNextTrack={() => this._navigatePlaylist(1)}
+              onPrevTrack={() => navigatePlaylist(-1)}
+              onNextTrack={() => navigatePlaylist(1)}
               onRepeatTrack={() => {
                 this.setState({ repeatTrack: !repeatTrack })
               }}
               onPlay={() => !autoPlay && this.setState({ autoPlay: true })}
               onPause={() => this.setState({ autoPlay: false })}
-              onEnded={() => !repeatTrack && this._navigatePlaylist(1)}
+              onEnded={() => !repeatTrack && navigatePlaylist(1)}
             />
             <Playlist
               tracks={playlist}
               currentTrack={currentTrack}
-              onTrackClick={this._handleTrackClick}
+              onTrackClick={handleTrackClick}
             />
           </div>
 
