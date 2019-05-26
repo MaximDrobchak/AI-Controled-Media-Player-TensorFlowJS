@@ -21,9 +21,19 @@ class PlayPause extends Component {
   _handlePlayPause = () => {
     this.props.media.playPause()
   }
-
+  componentDidUpdate(nextProps){
+    if(this.props.word !== nextProps.word){
+      if(nextProps.word === 'stop'){
+        this.props.media.playPause()
+      }
+      if(nextProps.word === 'go'){
+        this.props.media.playPause()
+      }
+    }
+  }
   render() {
     const { media: { isPlaying }, className } = this.props
+
     return (
       <svg
         role="button"

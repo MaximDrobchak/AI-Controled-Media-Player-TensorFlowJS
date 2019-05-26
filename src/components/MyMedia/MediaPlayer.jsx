@@ -38,7 +38,7 @@ class MediaPlayer extends Component {
   }
 
   render() {
-    const { src, currentTrack, repeatTrack, autoPlay } = this.props
+    const { src, currentTrack, repeatTrack, autoPlay, word } = this.props
     return (
       <Media>
         { mediaProps =>
@@ -74,7 +74,7 @@ class MediaPlayer extends Component {
                 </div>
                 <div className="media-control-group">
                   <PrevTrack className="media-control media-control--prev-track" onClick={this._handlePrevTrack}/>
-                  <PlayPause className="media-control media-control--play-pause"/>
+                  <PlayPause word={word} className="media-control media-control--play-pause"/>
                   <NextTrack className="media-control media-control--next-track" onClick={this._handleNextTrack}/>
                 </div>
                 <div className="media-control-group">

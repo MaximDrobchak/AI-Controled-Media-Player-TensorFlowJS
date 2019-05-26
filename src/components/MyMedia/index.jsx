@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 
 import MediaPlayer from './MediaPlayer'
 
@@ -35,18 +35,24 @@ class Playlist extends Component {
   }
 }
 
-class App extends Component {
+class App extends PureComponent {
   state = {
     repeatTrack: false,
     autoPlay: true,
   }
 
 
+
   render() {
     const { repeatTrack, autoPlay } = this.state
     const {
-      currentTrack,navigatePlaylist,handleTrackClick,playlist
+      currentTrack,
+      navigatePlaylist,
+      handleTrackClick,
+      playlist,
+      word
     } = this.props;
+
     return (
       <div>
       <div className="media-player-wrapper">
@@ -65,6 +71,7 @@ class App extends Component {
               onPlay={() => !autoPlay && this.setState({ autoPlay: true })}
               onPause={() => this.setState({ autoPlay: false })}
               onEnded={() => !repeatTrack && navigatePlaylist(1)}
+              word={word}
             />
             <Playlist
               tracks={playlist}

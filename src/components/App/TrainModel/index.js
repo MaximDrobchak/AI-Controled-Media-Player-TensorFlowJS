@@ -18,7 +18,7 @@ function predictWord (){
     { probabilityThreshold: 0.75 },
   );
 }
-const NUM_FRAMES = 6;
+const NUM_FRAMES = 43;
 let examples = [];
 
 function collect (label){
@@ -72,7 +72,7 @@ async function train (){
   toggleButtons(true);
 }
 
-function buildModel (){
+async function buildModel (){
   model = tf.sequential();
   model.add(
     tf.layers.depthwiseConv2d({
@@ -91,6 +91,7 @@ function buildModel (){
     loss: 'categoricalCrossentropy',
     metrics: [ 'accuracy' ],
   });
+  await model.save('downloads://my-model');
 }
 
 function toggleButtons (enable){
