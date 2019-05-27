@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import YouTube from 'react-youtube';
 import * as speechCommands from '@tensorflow-models/speech-commands';
-// const videoIdA = 'XxVg_s8xAms';
-// const videoIdB = '-DX3vJiqxm4';
+import {
+  onAddNextPlay,
+  onAddPrewPlay,
+  onPauseVideo,
+  onPlayVideo,
+  onReady,
+  playerReducer,
+} from './youTubeReducer';
 let recognizer;
 const mod = (num, max) => (num % max + max) % max;
 
@@ -12,59 +18,12 @@ const videoId = [
   'OwdlqquJDK4',
   'GFOtRrFH3z0',
   'oNTEsdd1U6w',
-  'XxVg_s8xAms',
-  '-DX3vJiqxm4',
 ];
 
 const initialState = {
   videoId,
   curent: 0,
   player: null,
-};
-
-const onAddNextPlay = (state, action) => {
-  if (state.curent < state.videoId.length - 1) {
-    return { ...state, curent: state.curent + 1 };
-  }
-  return { ...state, curent: 0 };
-};
-
-const onAddPrewPlay = (state, action) => {
-  if (state.curent > 0) {
-    return { ...state, curent: +state.curent - 1 };
-  }
-  return { ...state, curent: state.videoId.length - 1 };
-};
-
-const onPauseVideo = (state, action) => ({
-  ...state,
-  player: state.player.pauseVideo(),
-});
-
-const onPlayVideo = (state, action) => ({
-  ...state,
-  player: state.player.playVideo(),
-});
-const onReady = (state, action) => ({
-  ...state,
-  player: action.player,
-});
-
-const playerReducer = (state, action) => {
-  switch (action.type) {
-    case 'NEXT_PLAY':
-      return onAddNextPlay(state, action);
-    case 'PREW_PLAY':
-      return onAddPrewPlay(state, action);
-    case 'STOP':
-      return onPauseVideo(state, action);
-    case 'PLAY':
-      return onPlayVideo(state, action);
-    case 'READY':
-      return onReady(state, action);
-    default:
-      return state;
-  }
 };
 
 export default () => {
@@ -81,8 +40,9 @@ export default () => {
         scores.sort((s1, s2) => s2.score - s1.score);
         setWord(scores[0].word);
       },
-      { probabilityThreshold: 0.5 },
+      { probabilityThreshold: 0.75 },
     );
+    console.log(recognizer.wordLabels());
   };
 
   useEffect(async () => {
@@ -115,15 +75,19 @@ export default () => {
       isComandWord();
       if (triger && word === 'right') {
         dispatch({ type: 'NEXT_PLAY' });
+        setTriger(false);
       }
       else if (triger && word === 'left') {
         dispatch({ type: 'PREW_PLAY' });
+        setTriger(false);
       }
       else if (triger && word === 'stop') {
         dispatch({ type: 'STOP' });
+        setTriger(false);
       }
       else if (triger && word === 'go') {
         dispatch({ type: 'PLAY' });
+        setTriger(false);
       }
     },
     [ word ],
