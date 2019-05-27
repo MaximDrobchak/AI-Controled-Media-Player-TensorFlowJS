@@ -90,7 +90,7 @@ export default () => {
         setTriger(false);
       }
     },
-    [ word ],
+    [ word, triger ],
   );
 
   return (
