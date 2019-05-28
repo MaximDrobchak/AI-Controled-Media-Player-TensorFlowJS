@@ -1,28 +1,28 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import YouTube from 'react-youtube';
 import * as speechCommands from '@tensorflow-models/speech-commands';
-import {
-  onAddNextPlay,
-  onAddPrewPlay,
-  onPauseVideo,
-  onPlayVideo,
-  onReady,
-  playerReducer,
-} from './youTubeReducer';
+import { playerReducer } from './youTubeReducer';
 let recognizer;
 const mod = (num, max) => (num % max + max) % max;
 
 const videoId = [
+  'DyDfgMOUjCI',
+  'IVUTMGbitsE',
   'h3YVKTxTOgU',
   'mMfxI3r_LyA',
+  '8CdcCD5V-d8',
   'OwdlqquJDK4',
   'GFOtRrFH3z0',
+  'bQLi3GTJAug',
   'oNTEsdd1U6w',
+  'jZSPAp8kCl4',
+  '4qlCC1GOwFw',
   'RQ9_TKayu9s',
   'uelHwf8o7_U',
   'EHkozMIXZ8w',
   '5RDSkR8_AQ0',
   'um4-d7VzZiE',
+  '4iQZ9HS0L18',
 ];
 
 const initialState = {
