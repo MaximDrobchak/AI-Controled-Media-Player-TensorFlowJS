@@ -18,6 +18,11 @@ const videoId = [
   'OwdlqquJDK4',
   'GFOtRrFH3z0',
   'oNTEsdd1U6w',
+  'RQ9_TKayu9s',
+  'uelHwf8o7_U',
+  'EHkozMIXZ8w',
+  '5RDSkR8_AQ0',
+  'um4-d7VzZiE',
 ];
 
 const initialState = {
@@ -66,7 +71,7 @@ export default () => {
       setTriger(true);
       return setTimeout(() => {
         setTriger(false);
-      }, 5000);
+      }, 1000);
     }
   };
 
