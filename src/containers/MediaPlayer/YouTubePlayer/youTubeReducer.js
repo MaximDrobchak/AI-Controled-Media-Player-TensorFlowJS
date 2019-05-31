@@ -2,9 +2,11 @@ const videoId = [
   'DyDfgMOUjCI',
   'IVUTMGbitsE',
   'h3YVKTxTOgU',
+  'nWAGLkyxQG0',
   'mMfxI3r_LyA',
   '8CdcCD5V-d8',
   'OwdlqquJDK4',
+  'UXWFqxKU2qA',
   'GFOtRrFH3z0',
   'bQLi3GTJAug',
   'oNTEsdd1U6w',
@@ -16,6 +18,7 @@ const videoId = [
   '5RDSkR8_AQ0',
   'um4-d7VzZiE',
   '4iQZ9HS0L18',
+  'eWViUNBV-dw',
 ];
 
 export const initialState = {

@@ -18,9 +18,9 @@ export default () => {
         scores.sort((s1, s2) => s2.score - s1.score);
         setWord(scores[0].word);
       },
-      { probabilityThreshold: 0.8 },
+      { probabilityThreshold: 0.75 },
     );
-    console.log(recognizer.wordLabels());
+    // console.log(recognizer.wordLabels());
   };
 
   useEffect(async () => {
@@ -44,10 +44,15 @@ export default () => {
       setTriger(true);
       return setTimeout(() => {
         setTriger(false);
-      }, 750);
+      }, 2000);
     }
   };
-
+  useEffect(
+    () => {
+      console.log(triger);
+    },
+    [ triger ],
+  );
   useEffect(
     () => {
       isComandWord();
@@ -60,6 +65,7 @@ export default () => {
         setTriger(false);
       }
       else if (triger && word === 'stop') {
+        console.log('stop');
         dispatch({ type: 'STOP' });
         setTriger(false);
       }
@@ -68,7 +74,7 @@ export default () => {
         setTriger(false);
       }
     },
-    [ word, triger ],
+    [ word ],
   );
 
   return (
@@ -88,53 +94,3 @@ export default () => {
     </div>
   );
 };
-// export default class extends React.Component {
-//   constructor (props) {
-//     super(props);
-
-//     this.state = {
-//       player: null,
-//       curent: 0,
-//     };
-
-//     this.onReady = this.onReady.bind(this);
-//     this.onChangeVideo = this.onChangeVideo.bind(this);
-//     this.onPlayVideo = this.onPlayVideo.bind(this);
-//     this.onPauseVideo = this.onPauseVideo.bind(this);
-//   }
-
-//   onReady (event) {
-//     console.log(
-//       `YouTube Player object for videoId: "${this.state
-//         .curent}" has been saved to state.`,
-//     ); // eslint-disable-line
-//     this.setState({
-//       player: event.target,
-//     });
-//   }
-
-//   onPlayVideo () {
-//     this.state.player.playVideo();
-//   }
-
-//   onPauseVideo () {
-//     this.state.player.pauseVideo();
-//   }
-
-//   onChangeVideo () {
-//     this.setState({
-//       curent: this.state.curent + 1,
-//     });
-//   }
-
-//   render () {
-//     return (
-//       <div>
-//         <YouTube videoId={videoId[this.state.curent]} onReady={this.onReady} />
-//         <button onClick={this.onPlayVideo}>Play</button>
-//         <button onClick={this.onPauseVideo}>Pause</button>
-//         <button onClick={this.onChangeVideo}>Change Video</button>
-//       </div>
-//     );
-//   }
-// }

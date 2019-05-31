@@ -2,6 +2,7 @@ import * as tf from '@tensorflow/tfjs';
 
 import * as speechCommands from '@tensorflow-models/speech-commands';
 import React from 'react';
+// import '@tensorflow/tfjs-node';
 let recognizer;
 
 function predictWord (){
@@ -15,10 +16,10 @@ function predictWord (){
       scores.sort((s1, s2) => s2.score - s1.score);
       document.querySelector('#console').textContent = scores[0].word;
     },
-    { probabilityThreshold: 0.75 },
+    { probabilityThreshold: 0.85 },
   );
 }
-const NUM_FRAMES = 43;
+const NUM_FRAMES = 33;
 let examples = [];
 
 function collect (label){
@@ -26,7 +27,7 @@ function collect (label){
     return recognizer.stopListening();
   }
   recognizer.listen(
-    async ({ spectrogram: { frameSize = 5, data } }) => {
+    async ({ spectrogram: { frameSize, data } }) => {
       let vals = normalize(data.subarray(-frameSize * NUM_FRAMES));
       examples.push({ vals, label });
       document.querySelector(
@@ -39,6 +40,7 @@ function collect (label){
       invokeCallbackOnNoiseAndUnknown: true,
     },
   );
+  console.log(label);
 }
 
 function normalize (x){
@@ -51,6 +53,7 @@ let model;
 
 async function train (){
   toggleButtons(false);
+
   const ys = tf.oneHot(examples.map(e => e.label), 3);
   const xsShape = [ examples.length, ...INPUT_SHAPE ];
   const xs = tf.tensor(flatten(examples.map(e => e.vals)), xsShape);
@@ -85,13 +88,16 @@ async function buildModel (){
   model.add(tf.layers.maxPooling2d({ poolSize: [ 1, 2 ], strides: [ 2, 2 ] }));
   model.add(tf.layers.flatten());
   model.add(tf.layers.dense({ units: 3, activation: 'softmax' }));
+
   const optimizer = tf.train.adam(0.01);
   model.compile({
     optimizer,
     loss: 'categoricalCrossentropy',
     metrics: [ 'accuracy' ],
   });
-  await model.save('downloads://my-model');
+
+  await model.save('localstorage://model');
+  // await model.save('downloads://model');
 }
 
 function toggleButtons (enable){
@@ -102,6 +108,7 @@ function flatten (tensors){
   const size = tensors[0].length;
   const result = new Float32Array(tensors.length * size);
   tensors.forEach((arr, i) => result.set(arr, i * size));
+
   return result;
 }
 
@@ -146,6 +153,7 @@ function listen (){
       invokeCallbackOnNoiseAndUnknown: true,
     },
   );
+  console.log(recognizer.wordLabels());
 }
 async function app (){
   recognizer = speechCommands.create('BROWSER_FFT');
@@ -154,7 +162,7 @@ async function app (){
 }
 
 app();
-
+window.localStorage.clear();
 class App extends React.Component {
   render () {
     return (
@@ -172,8 +180,20 @@ class App extends React.Component {
           Right
         </button>
         <button
-          id='noise'
+          id='up'
           onMouseDown={() => collect(2)}
+          onMouseUp={() => collect(null)}>
+          Up
+        </button>
+        <button
+          id='down'
+          onMouseDown={() => collect(3)}
+          onMouseUp={() => collect(null)}>
+          Down
+        </button>
+        <button
+          id='noise'
+          onMouseDown={() => collect(4)}
           onMouseUp={() => collect(null)}>
           Noise
         </button>
