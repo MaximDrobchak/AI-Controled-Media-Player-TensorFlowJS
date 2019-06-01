@@ -1,7 +1,7 @@
-import React from 'react';
+import Avatar from './Avatar';
+import Button, { SignOutButton } from './Button';
+import Forma from './Forma';
+import Header from './Header';
+import TextField from './TextField';
 
-export default () => (
-  <div>
-    <h1>1111</h1>
-  </div>
-);
+export { Avatar, Button, TextField, Header, Forma, SignOutButton };
