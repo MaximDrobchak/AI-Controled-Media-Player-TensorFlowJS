@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import * as routes from '../../constants/routes';
+import * as routesType from '../../constants/routes';
 import { useFormInput } from '../../userHooks';
-import { Forma, TextField, Button } from '../../components';
+import { Forma, TextField, Button, Link, Error } from '../../components';
 import { withFirebase } from '../../firebase';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Typography } from '@material-ui/core';
+import { SignInLink } from '../';
+export const SignUpLink = () => (
+  <span>
+    Don't have an account? <Link to={routesType.SIGN_UP} lable='Sign Up' />
+  </span>
+);
 
 const SignUp = ({ firebase, history }) => {
   const [ error, setError ] = useState(null);
@@ -19,30 +24,35 @@ const SignUp = ({ firebase, history }) => {
     firebase
       .doCreateUserWithEmailAndPassword(email.value, passwordOne.value)
       .then(authUser => {
+        firebase.user(authUser.user.uid).set({
+          username: username.value,
+          email: email.value,
+        });
         email.value = '';
         passwordOne.value = '';
         passwordTwo.value = '';
         username.value = '';
+        history.push(routesType.HOME);
       })
       .catch(err => {
         setError(err);
       });
-    history.push(routes.HOME);
     e.preventDefault();
   };
 
   const isInvalid =
-    passwordOne !== passwordTwo ||
-    passwordOne === '' ||
-    email === '' ||
-    username === '';
+    passwordOne.value !== passwordTwo.value ||
+    passwordOne.value === '' ||
+    email.value === '' ||
+    username.value === '';
 
   return (
     <Forma
       icon={<LockOutlinedIcon />}
       header='Sign Up'
       onSubmit={onSubmit}
-      footerShow={false}>
+      link_1={<SignInLink />}>
+      <Error error={error} />
       <TextField
         {...username}
         label='Username'
@@ -67,12 +77,9 @@ const SignUp = ({ firebase, history }) => {
         autoComplete='password'
       />
 
-      <Button type='submit'>Sign Up</Button>
-      {error && (
-        <Typography color='error' component='h1' variant='h5'>
-          {error.message}
-        </Typography>
-      )}
+      <Button disabled={isInvalid} type='submit'>
+        Sign Up
+      </Button>
     </Forma>
   );
 };

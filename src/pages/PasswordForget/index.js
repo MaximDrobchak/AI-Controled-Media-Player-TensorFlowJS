@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useFormInput } from '../../userHooks';
-import { compose } from 'recompose';
-import { withRouter } from 'react-router-dom';
-import * as routes from '../../constants/routes';
-import { Forma, TextField, Button } from '../../components';
+import * as routesType from '../../constants/routes';
+import { Forma, TextField, Button, Error, Link } from '../../components';
 import { withFirebase } from '../../firebase';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Typography } from '@material-ui/core';
 
-const SignIn = ({ firebase, history }) => {
+export const PasswordForgetLink = () => (
+  <span>
+    <Link to={routesType.ACCOUNT} lable='Forgot Password?' />
+  </span>
+);
+
+const PasswordForget = ({ firebase, setPasswordChange }) => {
   const [ error, setError ] = useState(null);
   const email = useFormInput('');
 
@@ -17,20 +20,23 @@ const SignIn = ({ firebase, history }) => {
       .doPasswordReset(email.value)
       .then(authUser => {
         email.value = '';
+        setPasswordChange(true);
       })
       .catch(err => {
         setError(err);
       });
-    history.push(routes.PASSWORD_CHANGE);
+
     e.preventDefault();
   };
-  const isInvalid = email === '';
+
+  const isInvalid = email.value === '';
 
   return (
     <Forma
       icon={<LockOutlinedIcon />}
       header='Password Reset'
       onSubmit={onSubmit}>
+      <Error error={error} />
       <TextField
         {...email}
         id='email'
@@ -42,13 +48,8 @@ const SignIn = ({ firebase, history }) => {
       <Button disabled={isInvalid} type='submit'>
         Password Reset
       </Button>
-      {error && (
-        <Typography color='error' component='h1' variant='h5'>
-          {error.message}
-        </Typography>
-      )}
     </Forma>
   );
 };
 
-export default compose(withRouter, withFirebase)(SignIn);
+export default withFirebase(PasswordForget);

@@ -1,9 +1,9 @@
 import Account from './Account';
 import Home from './Home';
 import Landing from './Landing';
-import PasswordForget from './PasswordForget';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import PasswordForget, { PasswordForgetLink } from './PasswordForget';
+import SignIn, { SignInLink } from './SignIn';
+import SignUp, { SignUpLink } from './SignUp';
 import Admin from './Admin';
 import PasswordChange from './PasswordChange';
 
@@ -16,4 +16,7 @@ export {
   SignUp,
   Admin,
   PasswordChange,
+  SignUpLink,
+  SignInLink,
+  PasswordForgetLink,
 };

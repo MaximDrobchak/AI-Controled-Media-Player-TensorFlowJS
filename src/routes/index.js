@@ -1,5 +1,6 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 import * as routesType from '../constants/routes';
 
 import {
@@ -13,15 +14,15 @@ import {
   PasswordChange,
 } from '../pages';
 import { SignOutButton } from '../components/Button';
-import { withFirebase } from '../firebase';
+import { AuthUserContext, withAuthentication } from '../firebase';
 
-const Navigation = ({ authUser }) => (
-  <div>
-    {
-      authUser ? <NavigationAuth /> :
-      <NavigationNonAuth />}
-  </div>
-);
+const Navigation = () => {
+  const authUser = useContext(AuthUserContext);
+  if (authUser) {
+    return <NavigationAuth />;
+  }
+  return <NavigationNonAuth />;
+};
 
 const NavigationAuth = () => (
   <ul>
@@ -33,6 +34,9 @@ const NavigationAuth = () => (
     </li>
     <li>
       <Link to={routesType.ACCOUNT}>Account</Link>
+    </li>
+    <li>
+      <Link to={routesType.ADMIN}>Admin</Link>
     </li>
     <li>
       <SignOutButton fullWidth={false} />
@@ -51,31 +55,20 @@ const NavigationNonAuth = () => (
   </ul>
 );
 
-const App = ({ firebase }) => {
-  const [ authUser, setAuthUser ] = useState(null);
-  useEffect(() => {
-    firebase.auth.onAuthStateChanged(authUser => {
-
-        authUser ? setAuthUser(authUser) :
-        setAuthUser(authUser);
-    });
-  }, []);
-
+const App = () => {
   return (
     <Router>
       <Fragment>
-        <Navigation authUser={authUser} />
+        <Navigation />
         <hr />
         <Route exact path={routesType.LANDING} component={Landing} />
         <Route path={routesType.HOME} component={Home} />
-        <Route path={routesType.PASSWORD_FORGET} component={PasswordForget} />
         <Route path={routesType.SIGN_IN} component={SignIn} />
         <Route path={routesType.SIGN_UP} component={SignUp} />
         <Route path={routesType.ACCOUNT} component={Account} />
         <Route path={routesType.ADMIN} component={Admin} />
-        <Route path={routesType.PASSWORD_CHANGE} component={PasswordChange} />
       </Fragment>
     </Router>
   );
 };
-export default withFirebase(App);
+export default withAuthentication(App);

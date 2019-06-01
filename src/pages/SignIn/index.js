@@ -2,11 +2,18 @@ import React, { useState } from 'react';
 import { useFormInput } from '../../userHooks';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import * as routes from '../../constants/routes';
-import { Forma, TextField, Button } from '../../components';
+import * as routesType from '../../constants/routes';
+import { Forma, TextField, Button, Error, Link } from '../../components';
 import { withFirebase } from '../../firebase';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { FormControlLabel, Checkbox, Typography } from '@material-ui/core';
+import { FormControlLabel, Checkbox } from '@material-ui/core';
+import { SignUpLink, PasswordForgetLink } from '../';
+
+export const SignInLink = () => (
+  <span>
+    You have an account? <Link to={routesType.SIGN_UP} lable='Sign In' />
+  </span>
+);
 
 const SignIn = ({ firebase, history }) => {
   const [ error, setError ] = useState(null);
@@ -15,21 +22,27 @@ const SignIn = ({ firebase, history }) => {
 
   const onSubmit = e => {
     firebase
-      .doCreateUserWithEmailAndPassword(email.value, password.value)
+      .doSignInWithEmailAndPassword(email.value, password.value)
       .then(authUser => {
         email.value = '';
         password.value = '';
+        history.push(routesType.HOME);
       })
       .catch(err => {
         setError(err);
       });
-    history.push(routes.LANDING);
     e.preventDefault();
   };
-  const isInvalid = password === '' || email === '';
+  const isInvalid = password.value === '' || email.value === '';
 
   return (
-    <Forma icon={<LockOutlinedIcon />} header='Sign In' onSubmit={onSubmit}>
+    <Forma
+      icon={<LockOutlinedIcon />}
+      header='Sign In'
+      onSubmit={onSubmit}
+      link_2={<SignUpLink />}
+      link_1={<PasswordForgetLink />}>
+      <Error error={error} />
       <TextField
         {...email}
         id='email'
@@ -53,11 +66,6 @@ const SignIn = ({ firebase, history }) => {
       <Button disabled={isInvalid} type='submit'>
         Sign In
       </Button>
-      {error && (
-        <Typography color='error' component='h1' variant='h5'>
-          {error.message}
-        </Typography>
-      )}
     </Forma>
   );
 };

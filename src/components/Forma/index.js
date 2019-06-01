@@ -17,7 +17,6 @@ function MadeWithLove (){
       <Link color='primary' href='http://samikoma.zzz.com.ua'>
         Samicoma
       </Link>
-      {' team.'}
     </Typography>
   );
 }
@@ -44,8 +43,9 @@ export default function SignIn ({
   icon,
   header,
   onSubmit,
-  footerShow = true,
   children,
+  link_1,
+  link_2,
 }){
   const classes = useStyles();
 
@@ -59,7 +59,7 @@ export default function SignIn ({
         </Typography>
         <form className={classes.form} onSubmit={onSubmit} noValidate>
           {children}
-          {footerShow && <FooterForm />}
+          <FooterForm link_1={link_1} link_2={link_2} />
         </form>
       </div>
       <Box mt={5}>

@@ -1,14 +1,17 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import PasswordForget from '../PasswordForget';
 import PasswordChange from '../PasswordChange';
 
-const AccountPage = () => (
-  <div>
-    <h1>Account Page</h1>
-    <PasswordForget />
-    <PasswordChange />
-  </div>
-);
+const AccountPage = history => {
+  const [ passwordChange, setPasswordChange ] = useState(null);
+  return (
+    <div>
+      {
+        passwordChange ? <PasswordChange history={history} /> :
+        <PasswordForget setPasswordChange={setPasswordChange} />}
+    </div>
+  );
+};
 
-export default AccountPage;
+export default withRouter(AccountPage);

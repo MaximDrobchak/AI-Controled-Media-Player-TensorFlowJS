@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useFormInput } from '../../userHooks';
 
-import { Forma, TextField, Button } from '../../components';
+import * as routesType from '../../constants/routes';
+import { Forma, TextField, Button, Error } from '../../components';
 import { withFirebase } from '../../firebase';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Typography } from '@material-ui/core';
 
-const SignIn = ({ firebase }) => {
+const PasswordChange = ({ firebase, history }) => {
   const [ error, setError ] = useState(null);
 
   const passwordOne = useFormInput('');
@@ -18,6 +18,7 @@ const SignIn = ({ firebase }) => {
       .then(authUser => {
         passwordOne.value = '';
         passwordTwo.value = '';
+        history.push(routesType.SIGN_IN);
       })
       .catch(err => {
         setError(err);
@@ -26,16 +27,23 @@ const SignIn = ({ firebase }) => {
     e.preventDefault();
   };
   const isInvalid =
-    passwordOne === '' || passwordTwo === '' || passwordTwo !== passwordOne;
+    passwordOne.value === '' ||
+    passwordTwo.value === '' ||
+    passwordTwo.value !== passwordOne.value;
 
   return (
-    <Forma icon={<LockOutlinedIcon />} header='Sign In' onSubmit={onSubmit}>
+    <Forma
+      icon={<LockOutlinedIcon />}
+      header='Password Change'
+      onSubmit={onSubmit}>
+      <Error error={error} />
       <TextField
         {...passwordOne}
         id='passwordOne'
         label='password'
         name='passwordOne'
-        autoComplete={false}
+        type='password'
+        autoComplete={undefined}
         autoFocus
       />
       <TextField
@@ -44,17 +52,14 @@ const SignIn = ({ firebase }) => {
         label='Confirm Password'
         type='password'
         id='passwordTwo'
-        autoComplete={false}
+        autoComplete={undefined}
       />
 
-      <Button type='submit'>Confirmation</Button>
-      {error && (
-        <Typography color='error' component='h1' variant='h5'>
-          {error.message}
-        </Typography>
-      )}
+      <Button disabled={isInvalid} type='submit'>
+        Confirmation
+      </Button>
     </Forma>
   );
 };
 
-export default withFirebase(SignIn);
+export default withFirebase(PasswordChange);

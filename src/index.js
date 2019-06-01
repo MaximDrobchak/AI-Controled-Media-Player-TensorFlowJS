@@ -6,10 +6,12 @@ import Firebase, { FirebaseContext } from './firebase';
 // import App from './components/App/TrainModel';
 // import App from './components/App/';
 import App from './routes/';
+
 import withRootTheme from './styles/withRootTheme';
 import * as serviceWorker from './serviceWorker';
 
 const Index = withRootTheme(App);
+
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
     <BrowserRouter>
