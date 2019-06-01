@@ -1,8 +1,11 @@
-import React from 'react';
-import { Typography } from '@material-ui/core';
-export default ({ error }) =>
-  error && (
-    <Typography color='error' component='h1' variant='h5'>
-      {error.message}
-    </Typography>
-  );
+import { withSnackbar } from 'notistack';
+
+const HandleError = ({ error, enqueueSnackbar }) =>
+  error &&
+  enqueueSnackbar(error.message, {
+    persist: false,
+    variant: 'Error', // 'default' Success' 'Error' 'Warning' 'Info'
+    autoHideDuration: 1000,
+  });
+
+export default withSnackbar(HandleError);

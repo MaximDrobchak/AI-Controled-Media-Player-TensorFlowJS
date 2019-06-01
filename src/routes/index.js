@@ -1,6 +1,6 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
+import Dewider from './Dewider';
 import * as routesType from '../constants/routes';
 
 import {
@@ -58,16 +58,14 @@ const NavigationNonAuth = () => (
 const App = () => {
   return (
     <Router>
-      <Fragment>
-        <Navigation />
-        <hr />
+      <Dewider>
         <Route exact path={routesType.LANDING} component={Landing} />
         <Route path={routesType.HOME} component={Home} />
         <Route path={routesType.SIGN_IN} component={SignIn} />
         <Route path={routesType.SIGN_UP} component={SignUp} />
         <Route path={routesType.ACCOUNT} component={Account} />
         <Route path={routesType.ADMIN} component={Admin} />
-      </Fragment>
+      </Dewider>
     </Router>
   );
 };

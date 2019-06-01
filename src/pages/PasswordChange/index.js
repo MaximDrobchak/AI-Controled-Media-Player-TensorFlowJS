@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useFormInput } from '../../userHooks';
 
-import * as routesType from '../../constants/routes';
 import { Forma, TextField, Button, Error } from '../../components';
 import { withFirebase } from '../../firebase';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-const PasswordChange = ({ firebase, history }) => {
+const PasswordChange = ({ firebase }) => {
   const [ error, setError ] = useState(null);
 
   const passwordOne = useFormInput('');
@@ -18,7 +17,6 @@ const PasswordChange = ({ firebase, history }) => {
       .then(authUser => {
         passwordOne.value = '';
         passwordTwo.value = '';
-        history.push(routesType.SIGN_IN);
       })
       .catch(err => {
         setError(err);

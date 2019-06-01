@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFormInput } from '../../userHooks';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
@@ -17,6 +17,17 @@ export const SignInLink = () => (
 
 const SignIn = ({ firebase, history }) => {
   const [ error, setError ] = useState(null);
+
+  useEffect(
+    () => {
+      if (error) {
+        setTimeout(() => {
+          setError(null);
+        }, 1000);
+      }
+    },
+    [ error ],
+  );
   const email = useFormInput('');
   const password = useFormInput('');
 
