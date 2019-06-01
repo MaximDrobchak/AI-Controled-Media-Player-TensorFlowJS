@@ -21,7 +21,7 @@ const SignIn = ({ firebase, history }) => {
       .catch(err => {
         setError(err);
       });
-    history.push(routes.SIGN_IN);
+    history.push(routes.PASSWORD_CHANGE);
     e.preventDefault();
   };
   const isInvalid = email === '';

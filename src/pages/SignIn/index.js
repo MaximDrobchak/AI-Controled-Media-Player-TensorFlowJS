@@ -23,7 +23,7 @@ const SignIn = ({ firebase, history }) => {
       .catch(err => {
         setError(err);
       });
-    history.push(routes.HOME);
+    history.push(routes.LANDING);
     e.preventDefault();
   };
   const isInvalid = password === '' || email === '';

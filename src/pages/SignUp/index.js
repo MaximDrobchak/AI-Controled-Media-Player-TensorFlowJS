@@ -67,9 +67,7 @@ const SignUp = ({ firebase, history }) => {
         autoComplete='password'
       />
 
-      <Button disabled={isInvalid} type='submit'>
-        Sign Up
-      </Button>
+      <Button type='submit'>Sign Up</Button>
       {error && (
         <Typography color='error' component='h1' variant='h5'>
           {error.message}
