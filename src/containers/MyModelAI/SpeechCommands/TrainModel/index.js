@@ -1,5 +1,4 @@
 import * as tf from '@tensorflow/tfjs';
-
 import * as speechCommands from '@tensorflow-models/speech-commands';
 import React from 'react';
 // import '@tensorflow/tfjs-node';
@@ -20,7 +19,7 @@ export function predictWord (setWord){
     { probabilityThreshold: 0.85 },
   );
 }
-const NUM_FRAMES = 33;
+const NUM_FRAMES = 43;
 let examples = [];
 
 function collect (label){
@@ -41,7 +40,6 @@ function collect (label){
       invokeCallbackOnNoiseAndUnknown: true,
     },
   );
-  console.log(label);
 }
 
 function normalize (x){
@@ -59,27 +57,35 @@ async function train (){
   const xsShape = [ examples.length, ...INPUT_SHAPE ];
   const xs = tf.tensor(flatten(examples.map(e => e.vals)), xsShape);
 
-  await model.fit(xs, ys, {
-    batchSize: 16,
-    epochs: 10,
-    callbacks: {
-      onEpochEnd: (epoch, logs) => {
-        document.querySelector(
-          '#console',
-        ).textContent = `Accuracy: ${(logs.acc * 100).toFixed(
-          1,
-        )}% Epoch: ${epoch + 1}`;
+  await model.fit(
+    xs,
+    ys,
+    {
+      batchSize: 16,
+      epochs: 10,
+      callbacks: {
+        onEpochEnd: (epoch, logs) => {
+          document.querySelector(
+            '#console',
+          ).textContent = `Accuracy: ${(logs.acc * 100).toFixed(
+            1,
+          )}% Epoch: ${epoch + 1}`;
+        },
       },
     },
-  });
+    async () => {
+      await model.save('localstorage://my-model');
+      model = await tf.loadLayersModel('localstorage://my-model');
+    },
+  );
+
   tf.dispose([ xs, ys ]);
   toggleButtons(true);
-
-  await model.save('localstorage://model');
 }
 
 async function buildModel (){
   model = tf.sequential();
+
   model.add(
     tf.layers.depthwiseConv2d({
       depthMultiplier: 8,
@@ -93,13 +99,12 @@ async function buildModel (){
   model.add(tf.layers.dense({ units: 3, activation: 'softmax' }));
 
   const optimizer = tf.train.adam(0.01);
+
   model.compile({
     optimizer,
     loss: 'categoricalCrossentropy',
     metrics: [ 'accuracy' ],
   });
-
-  // await model.save('downloads://model');
 }
 
 function toggleButtons (enable){
@@ -155,11 +160,11 @@ function listen (){
       invokeCallbackOnNoiseAndUnknown: true,
     },
   );
-  console.log(recognizer.wordLabels());
 }
 async function app (){
   recognizer = speechCommands.create('BROWSER_FFT');
   await recognizer.ensureModelLoaded();
+
   buildModel();
 }
 
@@ -170,21 +175,21 @@ class App extends React.Component {
     return (
       <div>
         <button
-          id='left'
+          id='stop'
           onMouseDown={() => collect(0)}
           onMouseUp={() => collect(null)}>
-          Left
+          Stop
         </button>
         <button
-          id='right'
+          id='start'
           onMouseDown={() => collect(1)}
           onMouseUp={() => collect(null)}>
-          Right
+          Start
         </button>
 
         <button
           id='noise'
-          onMouseDown={() => collect(4)}
+          onMouseDown={() => collect(2)}
           onMouseUp={() => collect(null)}>
           Noise
         </button>
