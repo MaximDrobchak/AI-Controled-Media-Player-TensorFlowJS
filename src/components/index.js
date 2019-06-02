@@ -5,5 +5,20 @@ import Header from './Header';
 import TextField from './TextField';
 import Link from './Link';
 import Error from './Error';
+import RouteItem from './RouteItem';
+import Dewider from './Dewider';
+import MenuList from './MenuList';
 
-export { Avatar, Button, TextField, Header, Forma, SignOutButton, Link, Error };
+export {
+  Avatar,
+  Button,
+  TextField,
+  Header,
+  Forma,
+  SignOutButton,
+  Link,
+  Error,
+  RouteItem,
+  Dewider,
+  MenuList,
+};

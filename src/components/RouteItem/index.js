@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
-export default ({ text, icon, to }) => (
+export default ({ text, icon, to, button }) => (
   <ListItem button key={text}>
     <Link to={to}>
-      <ListItemIcon>{icon}</ListItemIcon>
+      {
+        button ? button :
+        <ListItemIcon>{icon}</ListItemIcon>}
     </Link>
     <ListItemText primary={text} />
   </ListItem>

@@ -5,7 +5,7 @@ import React from 'react';
 // import '@tensorflow/tfjs-node';
 let recognizer;
 
-function predictWord (){
+export function predictWord (setWord){
   // Array of words that the recognizer is trained to recognize.
   const words = recognizer.wordLabels();
   recognizer.listen(
@@ -14,7 +14,8 @@ function predictWord (){
       scores = Array.from(scores).map((s, i) => ({ score: s, word: words[i] }));
       // Find the most probable word.
       scores.sort((s1, s2) => s2.score - s1.score);
-      document.querySelector('#console').textContent = scores[0].word;
+      // document.querySelector('#console').textContent = scores[0].word;
+      setWord(scores[0].word);
     },
     { probabilityThreshold: 0.85 },
   );
@@ -73,6 +74,8 @@ async function train (){
   });
   tf.dispose([ xs, ys ]);
   toggleButtons(true);
+
+  await model.save('localstorage://model');
 }
 
 async function buildModel (){
@@ -96,7 +99,6 @@ async function buildModel (){
     metrics: [ 'accuracy' ],
   });
 
-  await model.save('localstorage://model');
   // await model.save('downloads://model');
 }
 
@@ -179,18 +181,7 @@ class App extends React.Component {
           onMouseUp={() => collect(null)}>
           Right
         </button>
-        <button
-          id='up'
-          onMouseDown={() => collect(2)}
-          onMouseUp={() => collect(null)}>
-          Up
-        </button>
-        <button
-          id='down'
-          onMouseDown={() => collect(3)}
-          onMouseUp={() => collect(null)}>
-          Down
-        </button>
+
         <button
           id='noise'
           onMouseDown={() => collect(4)}

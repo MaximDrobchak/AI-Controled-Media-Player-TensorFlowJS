@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import Firebase, { FirebaseContext } from './firebase';
-// import App from './components/App/TrainModel';
+// import App from './containers/MyModelAI/SpeechCommands/TrainModel/';
 // import App from './components/App/';
 import App from './routes/';
 

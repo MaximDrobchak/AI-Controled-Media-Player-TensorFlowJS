@@ -2,31 +2,32 @@ import React, { useState, useEffect, useReducer } from 'react';
 import YouTube from 'react-youtube';
 import * as speechCommands from '@tensorflow-models/speech-commands';
 import { playerReducer, initialState } from './youTubeReducer';
+import { predictWord } from '../../MyModelAI/SpeechCommands/TrainModel/';
 let recognizer;
 
 export default () => {
   const [ word, setWord ] = useState('');
 
-  const predictWord = () => {
-    const words = recognizer.wordLabels();
-    recognizer.listen(
-      ({ scores }) => {
-        scores = Array.from(scores).map((s, i) => ({
-          score: s,
-          word: words[i],
-        }));
-        scores.sort((s1, s2) => s2.score - s1.score);
-        setWord(scores[0].word);
-      },
-      { probabilityThreshold: 0.75 },
-    );
-    // console.log(recognizer.wordLabels());
-  };
+  // const predictWord = () => {
+  //   const words = recognizer.wordLabels();
+  //   recognizer.listen(
+  //     ({ scores }) => {
+  //       scores = Array.from(scores).map((s, i) => ({
+  //         score: s,
+  //         word: words[i],
+  //       }));
+  //       scores.sort((s1, s2) => s2.score - s1.score);
+  //       setWord(scores[0].word);
+  //     },
+  //     { probabilityThreshold: 0.75 },
+  //   );
+  //   // console.log(recognizer.wordLabels());
+  // };
 
   useEffect(async () => {
     recognizer = speechCommands.create('BROWSER_FFT');
     await recognizer.ensureModelLoaded();
-    predictWord();
+    predictWord(setWord);
   }, []);
 
   const [ state, dispatch ] = useReducer(playerReducer, initialState);

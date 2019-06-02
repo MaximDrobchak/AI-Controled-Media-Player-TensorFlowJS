@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-
 import { useTheme } from '@material-ui/core/styles';
 import {
   Drawer,
@@ -11,22 +10,28 @@ import {
   Divider,
   IconButton,
 } from '@material-ui/core';
-import RouteItem from './RouteItem';
+import RouteItem from '../RouteItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import DashboardIcon from '@material-ui/icons/Dashboard';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import HomeIcon from '@material-ui/icons/Home';
-import MenuAccount from './MenuAccount';
+import MenuAccount from '../MenuList';
 import { useStyles } from './styles';
 
-function MiniDrawer ({ children }){
+export default ({ routeList, accountMenuList, children }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [ open, setOpen ] = useState(false);
   const [ trigerMenu, setTrigerMenu ] = useState(false);
 
+  useEffect(
+    () => {
+      if (trigerMenu) {
+        document.getElementById('root').onclick = () => setTrigerMenu(false);
+      }
+    },
+    [ trigerMenu ],
+  );
   function handleDrawerOpen (){
     setOpen(true);
   }
@@ -61,11 +66,12 @@ function MiniDrawer ({ children }){
               className={classes.accountButton}>
               <AccountCircleIcon />
             </IconButton>
-            {trigerMenu && <MenuAccount className={classes.menuAccount} />}
+            {
+              trigerMenu ? <MenuAccount accountMenuList={accountMenuList} /> :
+              null}
           </div>
         </Toolbar>
       </AppBar>
-
       <Drawer
         variant='permanent'
         className={clsx(classes.drawer, {
@@ -88,19 +94,19 @@ function MiniDrawer ({ children }){
         </div>
         <Divider />
         <List>
-          <RouteItem to={'/'} text='Landing' icon={<DashboardIcon />} />
-          <Divider />
-          <RouteItem to={'/home'} text='Home' icon={<HomeIcon />} />
+          {routeList.map(item => (
+            <span key={item.text}>
+              <RouteItem to={item.to} text={item.text} icon={item.icon} />
+              <Divider />
+            </span>
+          ))}
         </List>
         <Divider />
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-
         {children}
       </main>
     </div>
   );
-}
-
-export default MiniDrawer;
+};
