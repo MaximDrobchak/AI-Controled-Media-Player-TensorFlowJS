@@ -27,6 +27,10 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: theme.palette.common.white,
     },
   },
+  root: {
+    position: 'relative',
+    top: -50,
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -50,7 +54,7 @@ export default function SignIn ({
   const classes = useStyles();
 
   return (
-    <Container component='main' maxWidth='xs'>
+    <Container component='main' maxWidth='xs' className={classes.root}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar icon={icon} />

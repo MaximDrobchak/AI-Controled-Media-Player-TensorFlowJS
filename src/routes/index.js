@@ -19,7 +19,7 @@ const App = () => {
     () => {
       setLocation(window.location.href);
     },
-    [ location.length ],
+    [ location.length, authUser ],
   );
 
   const routeList =

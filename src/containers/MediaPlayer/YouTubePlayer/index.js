@@ -24,10 +24,13 @@ export default () => {
   //   // console.log(recognizer.wordLabels());
   // };
 
-  useEffect(async () => {
-    recognizer = speechCommands.create('BROWSER_FFT');
-    await recognizer.ensureModelLoaded();
-    predictWord(setWord);
+  useEffect(() => {
+    const loadModel = async () => {
+      recognizer = speechCommands.create('BROWSER_FFT');
+      await recognizer.ensureModelLoaded();
+      predictWord(setWord);
+    };
+    loadModel();
   }, []);
 
   const [ state, dispatch ] = useReducer(playerReducer, initialState);
