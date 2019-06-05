@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { withAuthorization } from '../../firebase';
+import { withFirebase } from '../../firebase';
 import YouTubePlayer from '../../containers/MediaPlayer/YouTubePlayer';
 
-const HomePage = () => (
+const HomePage = ({ authUser }) => (
   <div>
     <YouTubePlayer />
   </div>
@@ -11,4 +11,4 @@ const HomePage = () => (
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(HomePage);
+export default withFirebase(HomePage);

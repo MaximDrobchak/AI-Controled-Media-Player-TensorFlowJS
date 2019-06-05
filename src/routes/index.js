@@ -4,24 +4,32 @@ import { Dewider, SignOutButton } from '../components';
 import * as routesType from '../constants/routes';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeIcon from '@material-ui/icons/Home';
+import SinOutIcon from '@material-ui/icons/Send';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SinInIcon from '@material-ui/icons/PowerSettingsNewSharp';
 import AdminIcon from '@material-ui/icons/Star';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
-import { Landing, Account, Home, SignIn, SignUp, Admin } from '../pages';
-import { AuthUserContext, withAuthentication } from '../firebase';
+import {
+  Landing,
+  Account,
+  Home,
+  SignIn,
+  SignUp,
+  Admin,
+  PasswordChange,
+  PasswordForget,
+} from '../pages';
+import { withFirebase } from '../firebase';
 
-const App = () => {
-  const authUser = useContext(AuthUserContext);
-
-  const [ location, setLocation ] = useState(window.location.href);
-  useEffect(
-    () => {
-      setLocation(window.location.href);
-    },
-    [ location.length, authUser ],
-  );
-
+const App = ({ authUser }) => {
+  // const [ location, setLocation ] = useState(window.location.href);
+  // useEffect(
+  //   () => {
+  //     setLocation(window.location.href);
+  //   },
+  //   [ location.length ],
+  // );
+  console.log(authUser);
   const routeList =
     authUser ? [
       { text: 'Landing', to: routesType.LANDING, icon: <DashboardIcon /> },
@@ -35,7 +43,9 @@ const App = () => {
     authUser ? [
       {
         to: routesType.LANDING,
-        button: <SignOutButton />,
+        text: 'Sign Out',
+        button: true,
+        icon: <SinOutIcon />,
       },
     ] :
     [
@@ -46,13 +56,16 @@ const App = () => {
     <Router>
       <Dewider routeList={routeList} accountMenuList={accountMenuList}>
         <Route exact path={routesType.LANDING} component={Landing} />
-        <Route exact path={routesType.HOME} component={Home} />
-        <Route exact path={routesType.SIGN_IN} component={SignIn} />
-        <Route exact path={routesType.SIGN_UP} component={SignUp} />
-        <Route exact path={routesType.ACCOUNT} component={Account} />
-        <Route exact path={routesType.ADMIN} component={Admin} />
+        <Route path={routesType.HOME} component={Home} />
+        <Route path={routesType.SIGN_IN} component={SignIn} />
+        <Route path={routesType.SIGN_UP} component={SignUp} />
+        <Route path={routesType.ACCOUNT} component={Account} />
+        <Route path={routesType.ADMIN} component={Admin} />
+        <Route path={routesType.PASSWORD_CHANGE} component={PasswordChange} />
+        <Route path={routesType.PASSWORD_FORGET} component={PasswordForget} />
       </Dewider>
     </Router>
   );
 };
-export default withAuthentication(App);
+
+export default withFirebase(App);

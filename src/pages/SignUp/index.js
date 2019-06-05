@@ -43,7 +43,7 @@ const SignUp = ({ firebase, history }) => {
         passwordOne.value = '';
         passwordTwo.value = '';
         username.value = '';
-        history.push(routesType.HOME);
+        return history.push(routesType.HOME);
       })
       .catch(err => {
         setError(err);

@@ -8,6 +8,7 @@ import Error from './Error';
 import RouteItem from './RouteItem';
 import Dewider from './Dewider';
 import MenuList from './MenuList';
+import Loading from './Loading';
 
 export {
   Avatar,
@@ -21,4 +22,5 @@ export {
   RouteItem,
   Dewider,
   MenuList,
+  Loading,
 };

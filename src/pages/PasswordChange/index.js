@@ -3,9 +3,12 @@ import { useFormInput } from '../../userHooks';
 
 import { Forma, TextField, Button, Error } from '../../components';
 import { withFirebase } from '../../firebase';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
+import * as routesType from '../../constants/routes';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-const PasswordChange = ({ firebase }) => {
+const PasswordChange = ({ history, firebase }) => {
   const [ error, setError ] = useState(null);
 
   const passwordOne = useFormInput('');
@@ -17,6 +20,7 @@ const PasswordChange = ({ firebase }) => {
       .then(authUser => {
         passwordOne.value = '';
         passwordTwo.value = '';
+        return history.push(routesType.SIGN_IN);
       })
       .catch(err => {
         setError(err);
@@ -60,4 +64,4 @@ const PasswordChange = ({ firebase }) => {
   );
 };
 
-export default withFirebase(PasswordChange);
+export default compose(withRouter, withFirebase)(PasswordChange);

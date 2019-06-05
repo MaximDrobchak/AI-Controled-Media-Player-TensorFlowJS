@@ -1,7 +1,18 @@
 import { Account, Home, PasswordForget, SignIn, SignUp, Admin } from '../pages';
+import { Loading } from '../components';
 import * as routesType from '../constants/routes';
-
+import Loadable from 'react-loadable';
+const LandingComponent = Loadable({
+  loader: () => import('../pages/Landing'),
+  loading: Loading,
+});
+LandingComponent;
 export default [
+  {
+    id: routesType.LANDING,
+    name: 'landing',
+    Component: Home,
+  },
   {
     id: routesType.HOME,
     name: routesType.HOME,

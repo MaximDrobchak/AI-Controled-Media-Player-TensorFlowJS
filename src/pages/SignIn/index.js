@@ -11,7 +11,7 @@ import { SignUpLink, PasswordForgetLink } from '../';
 
 export const SignInLink = () => (
   <span>
-    You have an account? <Link to={routesType.SIGN_UP} lable='Sign In' />
+    You have an account? <Link to={routesType.SIGN_IN} lable='Sign In' />
   </span>
 );
 
@@ -37,7 +37,7 @@ const SignIn = ({ firebase, history }) => {
       .then(authUser => {
         email.value = '';
         password.value = '';
-        history.push(routesType.HOME);
+        return history.push(routesType.HOME);
       })
       .catch(err => {
         setError(err);

@@ -3,7 +3,7 @@ import { MenuList, Divider, Paper } from '@material-ui/core/';
 import RouteItem from '../RouteItem';
 import { useStyles } from './styles';
 
-export default ({ firebase, accountMenuList, ...others }) => {
+export default ({ accountMenuList, ...others }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.menuAccount}>
