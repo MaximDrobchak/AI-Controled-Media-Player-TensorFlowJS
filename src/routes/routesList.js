@@ -6,7 +6,7 @@ export const LandingComponent = Loadable({
   loading: Loading,
 });
 export const HomeComponent = Loadable({
-  loader: () => import('../pages/Home'),
+  loader: () => import('../containers/MediaPlayer/YouTubePlayer/'),
   loading: Loading,
 });
 
