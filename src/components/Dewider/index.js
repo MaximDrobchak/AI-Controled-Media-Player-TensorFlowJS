@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
+
 import { useTheme } from '@material-ui/core/styles';
 import {
   Drawer,
@@ -18,20 +19,14 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import MenuAccount from '../MenuList';
 import { useStyles } from './styles';
 
+import Modal from '@material-ui/core/Modal';
+
 export default ({ routeList, accountMenuList, children }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [ open, setOpen ] = useState(false);
   const [ trigerMenu, setTrigerMenu ] = useState(false);
 
-  useEffect(
-    () => {
-      if (trigerMenu) {
-        document.getElementById('root').onclick = () => setTrigerMenu(false);
-      }
-    },
-    [ trigerMenu ],
-  );
   function handleDrawerOpen (){
     setOpen(true);
   }
@@ -39,7 +34,13 @@ export default ({ routeList, accountMenuList, children }) => {
   function handleDrawerClose (){
     setOpen(false);
   }
+  function handleModelOpen (){
+    setTrigerMenu(true);
+  }
 
+  function handleModelClose (){
+    setTrigerMenu(false);
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -62,13 +63,17 @@ export default ({ routeList, accountMenuList, children }) => {
           <div>
             <IconButton
               color='inherit'
-              onClick={() => setTrigerMenu(!trigerMenu)}
+              onClick={handleModelOpen}
               className={classes.accountButton}>
               <AccountCircleIcon />
             </IconButton>
-            {
-              trigerMenu ? <MenuAccount accountMenuList={accountMenuList} /> :
-              null}
+
+            <Modal open={trigerMenu} onClose={handleModelClose}>
+              <MenuAccount
+                accountMenuList={accountMenuList}
+                handleModelClose={handleModelClose}
+              />
+            </Modal>
           </div>
         </Toolbar>
       </AppBar>
@@ -101,7 +106,6 @@ export default ({ routeList, accountMenuList, children }) => {
             </span>
           ))}
         </List>
-        <Divider />
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />

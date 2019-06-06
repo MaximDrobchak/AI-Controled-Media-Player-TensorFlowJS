@@ -1,46 +1,40 @@
-import { Account, Home, PasswordForget, SignIn, SignUp, Admin } from '../pages';
 import { Loading } from '../components';
-import * as routesType from '../constants/routes';
 import Loadable from 'react-loadable';
-const LandingComponent = Loadable({
+
+export const LandingComponent = Loadable({
   loader: () => import('../pages/Landing'),
   loading: Loading,
 });
-LandingComponent;
-export default [
-  {
-    id: routesType.LANDING,
-    name: 'landing',
-    Component: Home,
-  },
-  {
-    id: routesType.HOME,
-    name: routesType.HOME,
-    Component: Home,
-  },
-  {
-    id: routesType.SIGN_IN,
-    name: routesType.SIGN_IN,
-    Component: SignIn,
-  },
-  {
-    id: routesType.SIGN_UP,
-    name: routesType.SIGN_UP,
-    Component: SignUp,
-  },
-  {
-    id: routesType.PASSWORD_FORGET,
-    name: routesType.PASSWORD_FORGET,
-    Component: PasswordForget,
-  },
-  {
-    id: routesType.ACCOUNT,
-    name: routesType.ACCOUNT,
-    Component: Account,
-  },
-  {
-    id: routesType.ADMIN,
-    name: routesType.ADMIN,
-    Component: Admin,
-  },
-];
+export const HomeComponent = Loadable({
+  loader: () => import('../pages/Home'),
+  loading: Loading,
+});
+
+export const AccountComponent = Loadable({
+  loader: () => import('../pages/Account'),
+  loading: Loading,
+});
+
+export const AdminComponent = Loadable({
+  loader: () => import('../pages/Admin'),
+  loading: Loading,
+});
+
+export const SignInComponent = Loadable({
+  loader: () => import('../pages/SignIn'),
+  loading: Loading,
+});
+
+export const SignUpComponent = Loadable({
+  loader: () => import('../pages/SignUp'),
+  loading: Loading,
+});
+
+export const PasswordForgetComponent = Loadable({
+  loader: () => import('../pages/PasswordForget'),
+  loading: Loading,
+});
+export const PasswordChangeComponent = Loadable({
+  loader: () => import('../pages/PasswordChange'),
+  loading: Loading,
+});

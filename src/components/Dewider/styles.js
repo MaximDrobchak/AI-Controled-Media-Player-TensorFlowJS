@@ -75,4 +75,12 @@ export const useStyles = makeStyles(theme => ({
     right: 10,
     top: 50,
   },
+  model: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(4),
+    outline: 'none',
+  },
 }));
