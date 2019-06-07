@@ -1,62 +1,9 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import YouTube from 'react-youtube';
-import * as speechCommands from '@tensorflow-models/speech-commands';
 import { playerReducer, initialState } from './youTubeReducer';
-let recognizer;
+
+import Listener from './listener';
 export default () => {
-  const [ word, setWord ] = useState('');
-  useEffect(
-    () => {
-      isComandWord();
-      if (triger && word === 'right') {
-        dispatch({ type: 'NEXT_PLAY' });
-        setTriger(false);
-      }
-      else if (triger && word === 'left') {
-        dispatch({ type: 'PREW_PLAY' });
-        setTriger(false);
-      }
-      else if (triger && word === 'stop') {
-        console.log('stop');
-        dispatch({ type: 'STOP' });
-        setTriger(false);
-      }
-      else if (triger && word === 'go') {
-        dispatch({ type: 'PLAY' });
-        setTriger(false);
-      }
-    },
-    [ word ],
-  );
-
-  const predictWord = () => {
-    const words = recognizer.wordLabels();
-    recognizer.listen(
-      ({ scores }) => {
-        scores = Array.from(scores).map((s, i) => ({
-          score: s,
-          word: words[i],
-        }));
-        scores.sort((s1, s2) => s2.score - s1.score);
-        setWord(scores[0].word);
-      },
-      { probabilityThreshold: 0.75 },
-    );
-    // console.log(recognizer.wordLabels());
-  };
-
-  useEffect(() => {
-    const loadModel = async () => {
-      recognizer = speechCommands.create('BROWSER_FFT');
-      await recognizer.ensureModelLoaded();
-      predictWord();
-    };
-    loadModel();
-    return () => {
-      loadModel();
-    };
-  }, []);
-
   const [ state, dispatch ] = useReducer(playerReducer, initialState);
   const onReady = e => {
     dispatch({
@@ -65,23 +12,6 @@ export default () => {
     });
   };
 
-  const [ triger, setTriger ] = useState(false);
-
-  const isComandWord = () => {
-    if (word === 'up') {
-      setTriger(true);
-      return setTimeout(() => {
-        setTriger(false);
-      }, 2000);
-    }
-  };
-  useEffect(
-    () => {
-      console.log(triger);
-    },
-    [ triger ],
-  );
-
   return (
     <div>
       <YouTube
@@ -89,6 +19,7 @@ export default () => {
         videoId={state.videoId[state.curent]}
         onReady={onReady}
       />
+      <Listener dispatch={dispatch} />
       <button onClick={() => dispatch({ type: 'PLAY' })}>Play</button>
       <button onClick={() => dispatch({ type: 'STOP' })}>Pause</button>
       <button onClick={() => dispatch({ type: 'NEXT_PLAY' })}>Next</button>
