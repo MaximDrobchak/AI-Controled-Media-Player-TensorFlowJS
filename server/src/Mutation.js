@@ -1,5 +1,5 @@
 const { User, Account } = require('./data/store');
-const uuidv4 = require('uuid/v4');
+// const uuidv4 = require('uuid/v4');
 const Mutation = {
   createUser: async (_, { email, first_name, last_name }) => {
     return User.create({

@@ -1,6 +1,6 @@
 {
-  "name": "appengine-hello-world",
-  "description": "Simple Hello World Node.js sample for Google App Engine Flexible Environment.",
+  "name": "ai-laboratory",
+  "description": "ai-laboratory",
   "version": "0.0.1",
   "private": true,
   "license": "Apache-2.0",
@@ -15,6 +15,7 @@
   "scripts": {
     "deploy": "gcloud app deploy",
     "start": "node app.js micStreamRecognize",
+    "serve": "nodemon src/index.js",
     "system-test": "repo-tools test app",
     "test": "npm run system-test",
     "e2e-test": "repo-tools test deploy"
@@ -24,11 +25,17 @@
     "@google-cloud/common": "^2.0.0",
     "@google-cloud/speech": "^3.2.0",
     "@google-cloud/storage": "^2.5.0",
+    "apollo-server": "^2.6.2",
+    "apollo-server-cache-memcached": "^0.5.0",
     "express": "^4.16.3",
     "google-gax": "^1.0.0",
+    "gql": "^1.1.2",
+    "graphql": "^14.3.1",
     "node-record-lpcm16": "^0.3.1",
     "protobufjs": "^6.8.6",
     "pumpify": "^1.5.1",
+    "sequelize": "^5.8.7",
+    "sqlite3": "^4.0.8",
     "stream-events": "^1.0.4",
     "through2": "^3.0.0"
   },

@@ -73,9 +73,4 @@ require(`yargs`)
       type: 'string',
     },
   })
-  .example(`node $0 micStreamRecognize`)
-  .wrap(120)
-  .recommendCommands()
-  .epilogue(`For more information, see https://cloud.google.com/speech/docs`)
-  .help()
   .strict().argv;

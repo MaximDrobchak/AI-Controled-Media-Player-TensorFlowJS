@@ -4,8 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import Firebase, { FirebaseContext } from './firebase';
 // import App from './containers/MyModelAI/SpeechCommands/TrainModel/';
+import App from './containers/MyModelAI/SpeechCommands/TestingModel';
 // import App from './components/App/';
-import App from './routes/';
+// import App from './routes/';
 
 import withRootTheme from './styles/withRootTheme';
 import * as serviceWorker from './serviceWorker';

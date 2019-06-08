@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfj';
 import * as speechCommands from '@tensorflow-models/speech-commands';
 import React from 'react';
 // import '@tensorflow/tfjs-node';
@@ -73,12 +73,10 @@ async function train (){
         },
       },
     },
-    async () => {
-      await model.save('localstorage://my-model');
-      model = await tf.loadLayersModel('localstorage://my-model');
-    },
+    async () => {},
   );
-
+  await model.save('downloads://my-model');
+  model = await tf.loadLayersModel('../my-models/my-model.json');
   tf.dispose([ xs, ys ]);
   toggleButtons(true);
 }
@@ -167,9 +165,8 @@ async function app (){
 
   buildModel();
 }
-
 app();
-window.localStorage.clear();
+
 class App extends React.Component {
   render () {
     return (
@@ -181,15 +178,56 @@ class App extends React.Component {
           Stop
         </button>
         <button
-          id='start'
+          id='ok'
           onMouseDown={() => collect(1)}
           onMouseUp={() => collect(null)}>
-          Start
+          Ok
         </button>
-
+        <button
+          id='baby'
+          onMouseDown={() => collect(2)}
+          onMouseUp={() => collect(null)}>
+          Baby
+        </button>
+        <button
+          id='list'
+          onMouseDown={() => collect(3)}
+          onMouseUp={() => collect(null)}>
+          List
+        </button>
+        <button
+          id='play'
+          onMouseDown={() => collect(4)}
+          onMouseUp={() => collect(null)}>
+          Play
+        </button>
+        <button
+          id='fullscrin'
+          onMouseDown={() => collect(5)}
+          onMouseUp={() => collect(null)}>
+          Fullscrin
+        </button>
+        <button
+          id='next'
+          onMouseDown={() => collect(6)}
+          onMouseUp={() => collect(null)}>
+          Next
+        </button>
+        <button
+          id='back'
+          onMouseDown={() => collect(7)}
+          onMouseUp={() => collect(null)}>
+          Back
+        </button>
+        <button
+          id='move'
+          onMouseDown={() => collect(8)}
+          onMouseUp={() => collect(null)}>
+          Move
+        </button>
         <button
           id='noise'
-          onMouseDown={() => collect(2)}
+          onMouseDown={() => collect(9)}
           onMouseUp={() => collect(null)}>
           Noise
         </button>

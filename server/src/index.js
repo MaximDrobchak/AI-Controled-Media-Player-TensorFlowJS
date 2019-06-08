@@ -1,24 +1,34 @@
-const express = require("express");
+const { ApolloServer } = require('apollo-server');
+const { MemcachedCache } = require('apollo-server-cache-memcached');
+const { Query } = require('./Query');
+const { Mutation } = require('./Mutation');
+const { typeDefs } = require('./schema');
 
-const app = express();
-// создаем парсер для данных в формате json
-const jsonParser = express.json();
+const resolvers = { Query, Mutation };
 
-app.post("/user", jsonParser, function (request, response) {
-    console.log(request.body);
-    if(!request.body) return response.sendStatus(400);
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: async ({ req, connection }) => {
+    if (connection) {
+      // check connection for metadata
+      return connection.context;
+    }
+    else {
+      // check from req
+      const token = req.headers.authorization || '';
 
-    response.json(request.body); // отправляем пришедший ответ обратно
+      return { token };
+    }
+  },
+  persistedQueries: {
+    cache: new MemcachedCache(
+      [ 'memcached-server-1', 'memcached-server-2', 'memcached-server-3' ],
+      { retries: 10, retry: 10000 },
+    ),
+  },
 });
 
-app.get("/", function(request, response){
-    response.setHeader("Access-Control-Allow-Origin", 'http://localhost:3000')
-    response.sendFile(__dirname + "/my-model.json");
-    // response.sendFile(__dirname + "/my-model.weights.bin");
+server.listen(4000).then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
 });
-app.get("/my-model.weights.bin", function(request, response){
-  response.setHeader("Access-Control-Allow-Origin", 'http://localhost:3000')
-  response.sendFile(__dirname + "/my-model.weights.bin");
-  // response.sendFile(__dirname + "/my-model.weights.bin");
-});
-app.listen(3001)

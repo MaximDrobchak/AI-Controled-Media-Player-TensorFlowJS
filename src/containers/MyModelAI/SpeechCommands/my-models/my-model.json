@@ -113,7 +113,7 @@
   "weightsManifest": [
     {
       "paths": [
-        "my-model.weights.bin"
+        "./my-model.weights.bin"
       ],
       "weights": [
         {
