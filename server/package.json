@@ -1,35 +1,62 @@
 {
-  "name": "api",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "name": "appengine-hello-world",
+  "description": "Simple Hello World Node.js sample for Google App Engine Flexible Environment.",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Google Inc.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "scripts": {
-    "start": "node  src/index.js",
-    "start:f": "forever start src/index.js"
+    "deploy": "gcloud app deploy",
+    "start": "node app.js micStreamRecognize",
+    "system-test": "repo-tools test app",
+    "test": "npm run system-test",
+    "e2e-test": "repo-tools test deploy"
   },
   "dependencies": {
-    "apollo-client": "^2.5.1",
-    "apollo-server": "^2.4.6",
-    "apollo-server-express": "^2.4.6",
-    "apollo-server-koa": "^2.4.8",
-    "casual": "^1.6.0",
-    "dotenv": "^6.2.0",
-    "esm": "^3.2.6",
-    "express": "^4.16.4",
-    "graphql": "^14.1.1",
-    "jsonwebtoken": "^8.5.0",
-    "jwks-rsa": "^1.4.0",
-    "koa": "^2.7.0",
-    "lodash": "^4.17.11",
-    "lowdb": "^1.0.0",
-    "mkdirp": "^0.5.1",
-    "promises-all": "^1.0.0",
-    "sequelize": "^4.42.0",
-    "shortid": "^2.2.14",
-    "sqlite": "^3.0.2",
-    "uuid": "^3.3.2"
+    "@google-cloud/automl": "^1.1.1",
+    "@google-cloud/common": "^2.0.0",
+    "@google-cloud/speech": "^3.2.0",
+    "@google-cloud/storage": "^2.5.0",
+    "express": "^4.16.3",
+    "google-gax": "^1.0.0",
+    "node-record-lpcm16": "^0.3.1",
+    "protobufjs": "^6.8.6",
+    "pumpify": "^1.5.1",
+    "stream-events": "^1.0.4",
+    "through2": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "@google-cloud/nodejs-repo-tools": "^3.3.0",
+    "codecov": "^3.0.2",
+    "eslint": "^5.0.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-node": "^9.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "intelli-espower-loader": "^1.0.1",
+    "jsdoc": "^3.5.5",
+    "jsdoc-baseline": "^0.1.0",
+    "linkinator": "^1.1.2",
+    "mocha": "^6.0.0",
+    "nyc": "^14.0.0",
+    "power-assert": "^1.6.0",
+    "prettier": "^1.13.5",
+    "proxyquire": "^2.1.0",
+    "sinon": "^7.0.0"
+  },
+  "cloud-repo-tools": {
+    "test": {
+      "app": {
+        "msg": "Hello, world!"
+      }
+    },
+    "requiresKeyFile": true,
+    "requiresProjectId": true
   }
 }
