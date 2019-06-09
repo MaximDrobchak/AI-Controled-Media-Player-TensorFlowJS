@@ -22,7 +22,7 @@ export default () => {
   const inputEl = useRef(null);
 
   const goFull = () => {
-    setFullscrin(true);
+    setFullscrin(!fullscrin);
   };
   return (
     <Fullscreen

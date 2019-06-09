@@ -1,4 +1,5 @@
 const videoId = [
+  'ZzHUzctT4bo',
   'OwdlqquJDK4',
   'nWAGLkyxQG0',
   '8CdcCD5V-d8',
@@ -87,7 +88,7 @@ export const onReady = (state, action) => ({
 
 export const onFullScrin = (state, action) => {
   if (!state.opts.width) {
-    const width = window.innerWidth - 100;
+    const width = window.innerWidth;
     const height = window.innerHeight;
     return { ...state, opts: { height, width } };
   }
