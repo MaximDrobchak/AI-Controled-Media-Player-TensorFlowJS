@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import * as speechCommands from '@tensorflow-models/speech-commands';
 import playlist from './playlist';
-import MyMedia from '../MyMedia';
+import MyMedia from './MyMedia';
 let recognizer;
 const mod = (num, max) => (num % max + max) % max;
 

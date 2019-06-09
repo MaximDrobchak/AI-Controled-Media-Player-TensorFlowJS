@@ -1,11 +1,11 @@
 const videoId = [
+  'nWAGLkyxQG0',
   'DyDfgMOUjCI',
   'tIXIajutwio',
   'yyDUC1LUXSU',
   'IVUTMGbitsE',
   'TOrnUquxtwA',
   'h3YVKTxTOgU',
-  'nWAGLkyxQG0',
   'mMfxI3r_LyA',
   '8CdcCD5V-d8',
   'OwdlqquJDK4',
@@ -28,6 +28,8 @@ export const initialState = {
   videoId,
   curent: 0,
   player: null,
+  triger: null,
+  opts: {},
 };
 
 export const playerReducer = (state, action) => {
@@ -42,6 +44,11 @@ export const playerReducer = (state, action) => {
       return onPlayVideo(state, action);
     case 'READY':
       return onReady(state, action);
+    case 'FULLSCRIN':
+      return onFullScrin(state, action);
+    case 'TRIGER':
+      return onTriger(state, action);
+
     default:
       return state;
   }
@@ -66,11 +73,27 @@ export const onPauseVideo = (state, action) => ({
   player: state.player.pauseVideo(),
 });
 
-export const onPlayVideo = (state, action) => ({
-  ...state,
-  player: state.player.playVideo(),
-});
+export const onPlayVideo = (state, action) => {
+  return {
+    ...state,
+    player: state.player.playVideo(),
+  };
+};
+
 export const onReady = (state, action) => ({
   ...state,
   player: action.player,
 });
+
+export const onFullScrin = (state, action) => {
+  if (!state.opts.width) {
+    const width = window.innerWidth - 100;
+    const height = window.innerHeight;
+    return { ...state, opts: { height, width } };
+  }
+  return { ...state, opts: {} };
+};
+
+export const onTriger = (state, action) => {
+  return { ...state, triger: action.triger };
+};

@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link } from '../';
-
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { withFirebase } from '../../firebase';
-const Root = ({ firebase, text, icon, to, button }) => {
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
+const Root = ({ history, firebase, text, icon, to, button }) => {
+  const onOut = () => {
+    history.push('/');
+    window.location.reload();
+    return firebase.doSignOut();
+  };
   if (button) {
     return (
-      <ListItem button key={text} onClick={firebase.doSignOut}>
+      <ListItem button key={text} onClick={onOut}>
         <Link
           to={to}
           lable={
@@ -35,4 +41,4 @@ const Root = ({ firebase, text, icon, to, button }) => {
     );
   }
 };
-export default withFirebase(Root);
+export default compose(withFirebase, withRouter)(Root);

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Dewider } from '../components';
 import * as routesType from '../constants/routes';
 import DashboardIcon from '@material-ui/icons/Dashboard';
@@ -19,7 +19,7 @@ import {
   HomeComponent,
   LandingComponent,
 } from './routesList';
-import { AuthUserContext, withFirebase } from '../firebase';
+import { withFirebase } from '../firebase';
 
 const App = ({ firebase }) => {
   const [ authUser, setAuthUser ] = useState(null);
@@ -68,7 +68,7 @@ const App = ({ firebase }) => {
       { text: 'Sign In', to: routesType.SIGN_IN, icon: <SinInIcon /> },
       { text: 'Sign Up', to: routesType.SIGN_UP, icon: <HowToRegIcon /> },
     ];
-  console.log(authUser);
+
   return (
     <Router>
       <Dewider routeList={routeList} accountMenuList={accountMenuList}>

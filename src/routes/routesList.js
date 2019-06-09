@@ -6,7 +6,7 @@ export const LandingComponent = Loadable({
   loading: Loading,
 });
 export const HomeComponent = Loadable({
-  loader: () => import('../containers/MediaPlayer/YouTubePlayer/'),
+  loader: () => import('../pages/Home'),
   loading: Loading,
 });
 
@@ -21,20 +21,20 @@ export const AdminComponent = Loadable({
 });
 
 export const SignInComponent = Loadable({
-  loader: () => import('../pages/SignIn'),
+  loader: () => import('../pages/AuthorizationForm/SignIn'),
   loading: Loading,
 });
 
 export const SignUpComponent = Loadable({
-  loader: () => import('../pages/SignUp'),
+  loader: () => import('../pages/AuthorizationForm/SignUp'),
   loading: Loading,
 });
 
 export const PasswordForgetComponent = Loadable({
-  loader: () => import('../pages/PasswordForget'),
+  loader: () => import('../pages/AuthorizationForm/PasswordForget'),
   loading: Loading,
 });
 export const PasswordChangeComponent = Loadable({
-  loader: () => import('../pages/PasswordChange'),
+  loader: () => import('../pages/AuthorizationForm/PasswordChange'),
   loading: Loading,
 });

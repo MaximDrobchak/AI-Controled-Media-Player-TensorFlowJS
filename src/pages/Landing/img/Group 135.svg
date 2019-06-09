@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+    <defs>
+        <style>
+            .cls-1{fill:#dfdfdf}
+        </style>
+    </defs>
+    <g id="Group_135" data-name="Group 135" transform="translate(-641 -211)">
+        <g id="Agilenix_favicon_darkblue-blue" transform="translate(641 211)">
+            <path id="Path_31" d="M.417 0H21.93v5.115H5.2v45.808h17V56H0V0z" class="cls-1" data-name="Path 31"/>
+            <path id="Path_34" d="M110.878 0H89.366v5.115H106.1v45.808h-17V56h22.2V0z" class="cls-1" data-name="Path 34" transform="translate(-55.295)"/>
+        </g>
+        <g id="coffe" transform="translate(645.2 213)">
+            <path id="Path_315" d="M36.217 34.867h-2.15V32H14v17.917a3.549 3.549 0 0 0 3.583 3.583h12.9a3.549 3.549 0 0 0 3.583-3.583v-2.15h2.15a3.549 3.549 0 0 0 3.584-3.584V38.45a3.549 3.549 0 0 0-3.583-3.583zM21.095 48.125l-1.218.717-3.153-5.375 3.076-5.375 1.218.717-2.58 4.658zm2.222.573l-1.433-.43 2.866-10.033 1.362.358zm4.945.143l-1.218-.717 2.652-4.658-2.652-4.658 1.218-.717 3.082 5.375zm10.1-4.658a2.112 2.112 0 0 1-2.15 2.15h-2.15V36.3h2.15a2.112 2.112 0 0 1 2.15 2.15z" class="cls-1" data-name="Path 315" transform="translate(0 -8.5)"/>
+            <g id="Group_133" data-name="Group 133" transform="translate(15.433 2)">
+                <path id="Path_316" d="M31.767 22.067h-1.434v-1.434A1.438 1.438 0 0 0 28.9 19.2H18.867a2.867 2.867 0 0 1 0-5.733H28.9a1.433 1.433 0 1 0 0-2.867H18.867a2.867 2.867 0 1 1 0-5.733H28.9a1.438 1.438 0 0 0 1.433-1.433V2h1.433v1.433A2.875 2.875 0 0 1 28.9 6.3H18.867a1.433 1.433 0 1 0 0 2.867H28.9a2.867 2.867 0 0 1 0 5.733H18.867a1.433 1.433 0 1 0 0 2.867H28.9a2.875 2.875 0 0 1 2.867 2.867z" class="cls-1" data-name="Path 316" transform="translate(-16 -2)"/>
+            </g>
+        </g>
+    </g>
+</svg>

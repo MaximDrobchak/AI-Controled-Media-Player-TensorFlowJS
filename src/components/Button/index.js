@@ -1,15 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import { withFirebase } from '../../firebase';
-import SinOutIcon from '@material-ui/icons/Send';
-const useStyles = makeStyles(theme => ({
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-
-const MuiButton = ({
+import RedButtonStyle, { useStyles } from './styles';
+export default ({
   type = 'button',
   fullWidth = true,
   variant = 'contained',
@@ -33,15 +25,9 @@ const MuiButton = ({
     </Button>
   );
 };
-const MuiSignOutButton = ({ firebase }) => (
-  <MuiButton
-    key='signoutbutton'
-    type='button'
-    color='inherit'
-    onClick={firebase.doSignOut}>
-    <SinOutIcon /> Sign Out
-  </MuiButton>
+
+export const RedButton = ({ props, text = '', type = 'button' }) => (
+  <RedButtonStyle type={type} {...props}>
+    {text}
+  </RedButtonStyle>
 );
-const SignOutButton = withFirebase(MuiSignOutButton);
-export default MuiButton;
-export { SignOutButton };

@@ -1,0 +1,39 @@
+.typed-cursor {
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
+  -webkit-animation: typedjsBlink 0.7s infinite;
+  animation: typedjsBlink 0.7s infinite;
+}
+@keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes typedjsBlink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.typed-fade-out {
+  opacity: 0;
+  transition: opacity 0.15s;
+  -webkit-animation: 0;
+  animation: 0;
+}
+.wrap {
+  margin-left: 10%;
+  margin-top: 5%;
+  position: absolute;
+  display: block;
+  z-index: 150;
+  opacity: 0.35;
+  color: rgba(237, 241, 197, 0.986);
+  font-weight: 600;
+  font-size: 1em;
+}

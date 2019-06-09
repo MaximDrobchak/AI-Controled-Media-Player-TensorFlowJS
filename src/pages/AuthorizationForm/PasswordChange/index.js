@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useFormInput } from '../../userHooks';
+import { useFormInput } from '../../../userHooks';
 
-import { Forma, TextField, Button, Error } from '../../components';
-import { withFirebase } from '../../firebase';
+import { Forma, TextField, Button, Error } from '../../../components';
+import { withFirebase } from '../../../firebase';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import * as routesType from '../../constants/routes';
+import * as routesType from '../../../constants/routes';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const PasswordChange = ({ history, firebase }) => {

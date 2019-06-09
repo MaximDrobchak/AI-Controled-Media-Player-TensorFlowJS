@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import * as routesType from '../../constants/routes';
-import { useFormInput } from '../../userHooks';
-import { Forma, TextField, Button, Link, Error } from '../../components';
-import { withFirebase } from '../../firebase';
+import * as routesType from '../../../constants/routes';
+import { useFormInput } from '../../../userHooks';
+import { Forma, TextField, Button, Link, Error } from '../../../components';
+import { withFirebase } from '../../../firebase';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { SignInLink } from '../';
+import { SignInLink } from '../../';
 export const SignUpLink = () => (
   <span>
     Don't have an account? <Link to={routesType.SIGN_UP} lable='Sign Up' />

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+    <defs>
+        <style>
+            .cls-1{fill:#dfdfdf}
+        </style>
+    </defs>
+    <g id="Group_143" data-name="Group 143" transform="translate(-207 -354)">
+        <g id="Agilenix_favicon_darkblue-blue" transform="translate(207 354)">
+            <path id="Path_31" d="M.417 0H21.93v5.115H5.2v45.808h17V56H0V0z" class="cls-1" data-name="Path 31"/>
+            <path id="Path_34" d="M110.878 0H89.366v5.115H106.1v45.808h-17V56h22.2V0z" class="cls-1" data-name="Path 34" transform="translate(-55.295)"/>
+        </g>
+        <g id="development3" transform="translate(213 362)">
+            <path id="Path_317" d="M37.45 1H5.85A1.817 1.817 0 0 0 4 2.85v35.3A1.817 1.817 0 0 0 5.85 40h31.6a1.817 1.817 0 0 0 1.85-1.85V2.85A1.817 1.817 0 0 0 37.45 1zm-.383 2.85V5.7h-3.7V3.233h3.083a.583.583 0 0 1 .617.617zM6.233 29.367V7.933h7.4v21.434zm9.634-21.434h21.2v21.434h-21.2zm-9.017-4.7h24.283V5.7h-24.9V3.85a.583.583 0 0 1 .617-.617zm29.6 34.533H6.85a.583.583 0 0 1-.617-.617V31.6h30.834v5.55a.583.583 0 0 1-.617.617z" class="cls-1" data-name="Path 317"/>
+            <path id="Path_318" d="M24.233 13.233v.74a.56.56 0 0 1-.185.432l-.062.062H23V15.7h.987l.062.062a.56.56 0 0 1 .185.432v.74a1.237 1.237 0 0 0 1.233 1.233H26.7v-1.234h-1.233v-.74a1.722 1.722 0 0 0-.37-1.11 1.847 1.847 0 0 0 .37-1.11v-.74H26.7V12h-1.233a1.237 1.237 0 0 0-1.234 1.233z" class="cls-1" data-name="Path 318" transform="translate(-4.9 -2.833)"/>
+            <path id="Path_319" d="M25.652 38.405a.56.56 0 0 1-.185-.432v-.74A1.237 1.237 0 0 0 24.233 36H23v1.233h1.233v.74a1.847 1.847 0 0 0 .37 1.11 1.722 1.722 0 0 0-.37 1.11v.74H23v1.233h1.233a1.237 1.237 0 0 0 1.233-1.233v-.74a.56.56 0 0 1 .185-.432l.062-.062h.987v-1.232h-.987z" class="cls-1" data-name="Path 319" transform="translate(-4.9 -14.033)"/>
+            <path id="Rectangle_152" d="M0 0h14.8v1.233H0z" class="cls-1" data-name="Rectangle 152" transform="translate(21.033 16.567)"/>
+            <path id="Rectangle_153" d="M0 0h14.8v1.233H0z" class="cls-1" data-name="Rectangle 153" transform="translate(21.033 19.033)"/>
+            <path id="Rectangle_154" d="M0 0h11.1v1.233H0z" class="cls-1" data-name="Rectangle 154" transform="translate(21.033 21.5)"/>
+            <path id="Path_320" d="M10.2 52.14l.987 1.48-.987 1.48.987.74 1.48-2.22-1.48-2.22z" class="cls-1" data-name="Path 320" transform="translate(-1.993 -18.937)"/>
+            <path id="Rectangle_155" d="M0 0h2.467v1.233H0z" class="cls-1" data-name="Rectangle 155" transform="translate(11.167 35.3)"/>
+            <path id="Rectangle_156" d="M0 0h4.933v1.233H0z" class="cls-1" data-name="Rectangle 156" transform="translate(7.467 10.167)"/>
+            <path id="Rectangle_157" d="M0 0h4.933v1.233H0z" class="cls-1" data-name="Rectangle 157" transform="translate(7.467 12.633)"/>
+            <path id="Rectangle_158" d="M0 0h4.933v1.233H0z" class="cls-1" data-name="Rectangle 158" transform="translate(7.467 15.1)"/>
+        </g>
+    </g>
+</svg>

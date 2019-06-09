@@ -1,34 +1,38 @@
 import { useState, useEffect } from 'react';
 import * as speechCommands from '@tensorflow-models/speech-commands';
-import { predictWord } from '../../MyModelAI/SpeechCommands/TestingModel';
-let recognizer;
+
 export default ({ dispatch }) => {
+  const [ recognizer, setListen ] = useState(
+    speechCommands.create('BROWSER_FFT'),
+  );
   const [ word, setWord ] = useState('');
 
-  // const predictWord = () => {
-  //   const words = recognizer.wordLabels();
-  //   recognizer.listen(
-  //     ({ scores }) => {
-  //       scores = Array.from(scores).map((s, i) => ({
-  //         score: s,
-  //         word: words[i],
-  //       }));
-  //       scores.sort((s1, s2) => s2.score - s1.score);
-  //       setWord(scores[0].word);
-  //     },
-  //     { probabilityThreshold: 0.75 },
-  //   );
-  //   // console.log(recognizer.wordLabels());
-  // };
-
+  const predictWord = () => {
+    const words = recognizer.wordLabels();
+    if (!recognizer.isListening()) {
+      recognizer.listen(
+        ({ scores }) => {
+          scores = Array.from(scores).map((s, i) => ({
+            score: s,
+            word: words[i],
+          }));
+          scores.sort((s1, s2) => s2.score - s1.score);
+          setWord(scores[0].word);
+        },
+        { probabilityThreshold: 0.75 },
+      );
+    }
+    else recognizer.stopListening();
+  };
   useEffect(() => {
     const loadModel = async () => {
-      recognizer = speechCommands.create('BROWSER_FFT');
       await recognizer.ensureModelLoaded();
       predictWord(setWord);
     };
+
     loadModel();
     return () => {
+      setListen(null);
       loadModel();
     };
   }, []);
@@ -45,7 +49,7 @@ export default ({ dispatch }) => {
   };
   useEffect(
     () => {
-      console.log(triger);
+      dispatch({ type: 'TRIGER', triger: triger });
     },
     [ triger ],
   );
@@ -69,7 +73,10 @@ export default ({ dispatch }) => {
         dispatch({ type: 'PLAY' });
         setTriger(false);
       }
-      console.log(word);
+      else if (triger && word === 'zero') {
+        dispatch({ type: 'FULLSCRIN' });
+        setTriger(false);
+      }
     },
     [ word ],
   );

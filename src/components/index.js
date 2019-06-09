@@ -1,5 +1,5 @@
 import Avatar from './Avatar';
-import Button, { SignOutButton } from './Button';
+import Button, { RedButton } from './Button';
 import Forma from './Forma';
 import Header from './Header';
 import TextField from './TextField';
@@ -9,18 +9,19 @@ import RouteItem from './RouteItem';
 import Dewider from './Dewider';
 import MenuList from './MenuList';
 import Loading from './Loading';
-
+import TrigerIcon from './TrigerIcon';
 export {
   Avatar,
   Button,
   TextField,
   Header,
   Forma,
-  SignOutButton,
+  RedButton,
   Link,
   Error,
   RouteItem,
   Dewider,
   MenuList,
   Loading,
+  TrigerIcon,
 };

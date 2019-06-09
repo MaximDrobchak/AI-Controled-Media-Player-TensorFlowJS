@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.967 261.588">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:#189af1}.cls-2,.cls-3{font-family:Roboto-Light,Roboto;font-weight:300;letter-spacing:.02em}.cls-2{fill:#b4bac0;font-size:12px}.cls-3{font-size:18px}
+        </style>
+    </defs>
+    <g id="Group_191" data-name="Group 191" transform="translate(15690 -5488.412)">
+        <g id="Group_184" data-name="Group 184" transform="translate(-15747 3816)">
+            <path id="Path_3" d="M.193 0h10.59v2.515h-8.22V25.1h8.366v2.49H0V0z" class="cls-1" data-name="Path 3" transform="translate(57 1672.412)"/>
+            <path id="Path_4" d="M482.611 0h-10.59v2.515h8.221V25.1H471.9v2.49h10.9V0z" class="cls-1" data-name="Path 4" transform="translate(-395.838 1672.412)"/>
+        </g>
+        <text id="_02_03_04_05_06_07" class="cls-2" data-name="02 03 04 05 06 07" transform="translate(-15682 5507)">
+            <tspan x="0" y="40">02</tspan><tspan x="0" y="80">03</tspan><tspan x="0" y="120">04</tspan><tspan x="0" y="160">05</tspan><tspan x="0" y="200">06</tspan><tspan x="0" y="240">07</tspan>
+        </text>
+        <text id="_01" class="cls-3" data-name="1" transform="translate(-15685 5509)">
+            <tspan x="0" y="0">01</tspan>
+        </text>
+    </g>
+</svg>

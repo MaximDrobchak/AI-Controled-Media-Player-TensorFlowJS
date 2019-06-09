@@ -2,7 +2,6 @@
   "name": "ai-laboratory",
   "version": "0.1.0",
   "private": true,
-
   "dependencies": {
     "@material-ui/core": "^4.0.1",
     "@material-ui/icons": "^4.0.1",
@@ -25,7 +24,9 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "react-youtube": "^7.9.0",
-    "recompose": "^0.30.0"
+    "recompose": "^0.30.0",
+    "styled-components": "^4.3.1",
+    "typed.js": "^2.0.10"
   },
   "scripts": {
     "start": "react-scripts start",

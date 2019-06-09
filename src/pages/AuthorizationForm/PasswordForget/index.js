@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useFormInput } from '../../userHooks';
-import * as routesType from '../../constants/routes';
-import { Forma, TextField, Button, Error, Link } from '../../components';
-import { withFirebase } from '../../firebase';
+import { useFormInput } from '../../../userHooks';
+import * as routesType from '../../../constants/routes';
+import { Forma, TextField, Button, Error, Link } from '../../../components';
+import { withFirebase } from '../../../firebase';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 

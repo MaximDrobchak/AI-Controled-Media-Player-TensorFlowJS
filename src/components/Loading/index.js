@@ -4,18 +4,20 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1,
-    position: 'fixed',
-    top: 0,
+    top: 60,
+    height: 10,
+    minWidth: '100vw !important',
+    position: 'absolute',
+    left: 0,
+    zIndex: 99999,
   },
 });
 
 export default function LinearQuery (){
   const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      <LinearProgress variant='query' />
+    <div>
+      <LinearProgress className={classes.root} color='secondary' />
     </div>
   );
 }
