@@ -1,8 +1,9 @@
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useReducer, useState, useEffect, useRef } from 'react';
 import YouTube from 'react-youtube';
 import { playerReducer, initialState } from './youTubeReducer';
 import { TrigerIcon } from '../../../components';
 
+import Fullscreen from 'react-full-screen';
 import Listener from './listener';
 
 export default () => {
@@ -14,14 +15,22 @@ export default () => {
     });
   };
 
+  const [ fullscrin, setFullscrin ] = useState(false);
+  const inputEl = useRef(null);
+
+  const goFull = () => {
+    setFullscrin(true);
+  };
   return (
-    <div
-      style={{
-        position: 'relative',
-        width:
-          state.opts.width ? state.opts.width :
-          600,
-      }}>
+    // <div
+    //   style={{
+    //     position: 'relative',
+    //     width:
+    //       state.opts.width ? state.opts.width :
+    //       600,
+    //   }}
+    //   ref={inputEl}>
+    <Fullscreen enabled={fullscrin} onChange={isFull => setFullscrin(isFull)}>
       <TrigerIcon triger={state.triger} />
       <YouTube
         autoplay={1}
@@ -30,11 +39,11 @@ export default () => {
         opts={state.opts}
       />
       <Listener dispatch={dispatch} />
-      <button onClick={() => dispatch({ type: 'FULLSCRIN' })}>Fullscrin</button>
+      <button onClick={goFull}>Fullscrin</button>
       <button onClick={() => dispatch({ type: 'PLAY' })}>Play</button>
       <button onClick={() => dispatch({ type: 'STOP' })}>Pause</button>
       <button onClick={() => dispatch({ type: 'NEXT_PLAY' })}>Next</button>
       <button onClick={() => dispatch({ type: 'PREW_PLAY' })}>Prew</button>
-    </div>
+    </Fullscreen>
   );
 };
