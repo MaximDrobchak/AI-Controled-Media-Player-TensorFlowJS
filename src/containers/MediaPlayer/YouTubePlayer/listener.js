@@ -19,7 +19,7 @@ export default ({ dispatch }) => {
           scores.sort((s1, s2) => s2.score - s1.score);
           setWord(scores[0].word);
         },
-        { probabilityThreshold: 0.75 },
+        { probabilityThreshold: 0.85 },
       );
     }
     else recognizer.stopListening();
