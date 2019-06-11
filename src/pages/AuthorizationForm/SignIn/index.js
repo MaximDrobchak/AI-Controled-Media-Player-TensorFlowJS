@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useFormInput } from '../../../userHooks';
+import React, { Fragment } from 'react';
+import { useFormInput, useLoadingOrError } from '../../../userHooks';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import * as routesType from '../../../constants/routes';
-import { Forma, TextField, Button, Error, Link } from '../../../components';
+import {
+  Forma,
+  TextField,
+  Button,
+  Error,
+  Link,
+  Loading,
+} from '../../../components';
 import { withFirebase } from '../../../firebase';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { FormControlLabel, Checkbox } from '@material-ui/core';
@@ -16,68 +23,67 @@ export const SignInLink = () => (
 );
 
 const SignIn = ({ firebase, history }) => {
-  const [ error, setError ] = useState(null);
+  const { error, getError, getLoading, isLoading } = useLoadingOrError();
 
-  useEffect(
-    () => {
-      if (error) {
-        setTimeout(() => {
-          setError(null);
-        }, 1000);
-      }
-    },
-    [ error ],
-  );
   const email = useFormInput('');
   const password = useFormInput('');
 
   const onSubmit = e => {
+    getLoading(true);
     firebase
       .doSignInWithEmailAndPassword(email.value, password.value)
       .then(authUser => {
         email.value = '';
         password.value = '';
-        return history.push(routesType.HOME);
+
+        return setTimeout(() => {
+          getLoading(false);
+          history.push(routesType.HOME);
+        }, 500);
       })
       .catch(err => {
-        setError(err);
+        getLoading(false);
+        getError(err);
       });
     e.preventDefault();
   };
   const isInvalid = password.value === '' || email.value === '';
 
   return (
-    <Forma
-      icon={<LockOutlinedIcon />}
-      header='Sign In'
-      onSubmit={onSubmit}
-      link_2={<SignUpLink />}
-      link_1={<PasswordForgetLink />}>
-      <Error error={error} />
-      <TextField
-        {...email}
-        id='email'
-        label='Email Address'
-        name='email'
-        autoComplete='email'
-        autoFocus
-      />
-      <TextField
-        {...password}
-        name='password'
-        label='Password'
-        type='password'
-        id='password'
-        autoComplete='password'
-      />
-      <FormControlLabel
-        control={<Checkbox value='remember' color='primary' />}
-        label='Remember me'
-      />
-      <Button disabled={isInvalid} type='submit'>
-        Sign In
-      </Button>
-    </Forma>
+    <Fragment>
+      {isLoading && <Loading />}
+      <Forma
+        icon={<LockOutlinedIcon />}
+        header='Sign In'
+        onSubmit={onSubmit}
+        link_2={<SignUpLink />}
+        link_1={<PasswordForgetLink />}>
+        <Error error={error} />
+        <TextField
+          {...email}
+          id='email'
+          label='Email Address'
+          name='email'
+          autoComplete='email'
+          autoFocus
+        />
+        <TextField
+          {...password}
+          name='password'
+          label='Password'
+          type='password'
+          id='password'
+          autoComplete='password'
+        />
+        <FormControlLabel
+          control={<Checkbox value='remember' color='primary' />}
+          label='Remember me'
+        />
+        <Button disabled={isInvalid} type='submit'>
+          Sign In
+        </Button>
+      </Forma>
+    </Fragment>
   );
 };
 

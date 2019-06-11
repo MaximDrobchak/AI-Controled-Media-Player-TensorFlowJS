@@ -25,6 +25,7 @@ const MenuLink = ({ path, title, target, getTarget, linkID }) => (
     />
   </a>
 );
+
 const NavBar = ({ target, getTarget }) => (
   <Navigation>
     {links.map(link => (

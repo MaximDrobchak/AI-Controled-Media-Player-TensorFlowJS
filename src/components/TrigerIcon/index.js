@@ -1,5 +1,5 @@
 import React from 'react';
-import CameraIcon from '@material-ui/icons/Camera';
+import { CameraIcon } from '../../Icons/';
 export default ({ triger }) => (
   <CameraIcon
     style={{

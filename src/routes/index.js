@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Dewider } from '../components';
 import * as routesType from '../constants/routes';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import HomeIcon from '@material-ui/icons/Home';
-import SinOutIcon from '@material-ui/icons/Send';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import SinInIcon from '@material-ui/icons/PowerSettingsNewSharp';
-import AdminIcon from '@material-ui/icons/Star';
-import HowToRegIcon from '@material-ui/icons/HowToReg';
+import {
+  DashboardIcon,
+  HomeIcon,
+  SinOutIcon,
+  AccountBoxIcon,
+  SinInIcon,
+  AdminIcon,
+  HowToRegIcon,
+} from '../Icons';
+
 import {
   PasswordChangeComponent,
   PasswordForgetComponent,

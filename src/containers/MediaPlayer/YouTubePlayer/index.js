@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect, useRef } from 'react';
+import React, { useReducer, useState, useRef } from 'react';
 import YouTube from 'react-youtube';
 import { playerReducer, initialState } from './youTubeReducer';
 import { TrigerIcon } from '../../../components';

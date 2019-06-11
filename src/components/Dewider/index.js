@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 
 import { useTheme } from '@material-ui/core/styles';
@@ -12,10 +12,12 @@ import {
   IconButton,
 } from '@material-ui/core';
 import RouteItem from '../RouteItem';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import {
+  MenuIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  AccountCircleIcon,
+} from '../../Icons';
 import MenuAccount from '../MenuList';
 import { useStyles } from './styles';
 

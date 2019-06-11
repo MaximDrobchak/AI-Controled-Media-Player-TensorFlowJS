@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
-import { useFormInput } from '../../../userHooks';
+import React, { Fragment } from 'react';
+import { useFormInput, useLoadingOrError } from '../../../userHooks';
 import * as routesType from '../../../constants/routes';
-import { Forma, TextField, Button, Error, Link } from '../../../components';
+import {
+  Forma,
+  TextField,
+  Button,
+  Error,
+  Link,
+  Loading,
+} from '../../../components';
 import { withFirebase } from '../../../firebase';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -15,18 +22,25 @@ export const PasswordForgetLink = () => (
 );
 
 const PasswordForget = ({ history, firebase }) => {
-  const [ error, setError ] = useState(null);
+  const { error, getError, getLoading, isLoading } = useLoadingOrError();
+
   const email = useFormInput('');
 
   const onSubmit = e => {
+    getLoading(true);
     firebase
       .doPasswordReset(email.value)
       .then(authUser => {
         email.value = '';
-        return history.push(routesType.PASSWORD_CHANGE);
+
+        return setTimeout(() => {
+          getLoading(false);
+          history.push(routesType.PASSWORD_CHANGE);
+        }, 500);
       })
       .catch(err => {
-        setError(err);
+        getLoading(false);
+        getError(err);
       });
 
     e.preventDefault();
@@ -35,23 +49,26 @@ const PasswordForget = ({ history, firebase }) => {
   const isInvalid = email.value === '';
 
   return (
-    <Forma
-      icon={<LockOutlinedIcon />}
-      header='Password Reset'
-      onSubmit={onSubmit}>
-      <Error error={error} />
-      <TextField
-        {...email}
-        id='email'
-        label='Email Address'
-        name='email'
-        autoComplete='email'
-        autoFocus
-      />
-      <Button disabled={isInvalid} type='submit'>
-        Password Reset
-      </Button>
-    </Forma>
+    <Fragment>
+      {isLoading && <Loading />}
+      <Forma
+        icon={<LockOutlinedIcon />}
+        header='Password Reset'
+        onSubmit={onSubmit}>
+        <Error error={error} />
+        <TextField
+          {...email}
+          id='email'
+          label='Email Address'
+          name='email'
+          autoComplete='email'
+          autoFocus
+        />
+        <Button disabled={isInvalid} type='submit'>
+          Password Reset
+        </Button>
+      </Forma>
+    </Fragment>
   );
 };
 
