@@ -7,6 +7,6 @@ export default () => (
     <MarginSpan>Mobile application and website</MarginSpan>
     <MarginSpan>DEVELOPMENT</MarginSpan>
     <MarginSpan>With AI elements</MarginSpan>
-    <RedButton text='Learn more now' />
+    <RedButton text='Learn more now' onClick={() => alert('Кукла')} />
   </StyleTextBlock>
 );
