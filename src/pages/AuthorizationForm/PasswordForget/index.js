@@ -13,7 +13,7 @@ import { withFirebase } from '../../../firebase';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { LockOutlinedIcon } from '../../../Icons';
 
 export const PasswordForgetLink = () => (
   <span>

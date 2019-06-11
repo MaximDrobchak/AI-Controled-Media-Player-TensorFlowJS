@@ -12,7 +12,7 @@ import {
   Loading,
 } from '../../../components';
 import { withFirebase } from '../../../firebase';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { LockOutlinedIcon } from '../../../Icons';
 import { SignInLink } from '../../';
 
 export const SignUpLink = () => (

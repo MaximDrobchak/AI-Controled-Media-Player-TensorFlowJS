@@ -6,7 +6,7 @@ import { withFirebase } from '../../../firebase';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import * as routesType from '../../../constants/routes';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { LockOutlinedIcon } from '../../../Icons';
 
 const PasswordChange = ({ history, firebase }) => {
   const { error, getError, getLoading, isLoading } = useLoadingOrError();

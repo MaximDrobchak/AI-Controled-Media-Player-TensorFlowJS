@@ -11,6 +11,7 @@ import {
   ChevronRightIcon,
   CameraIcon,
   AccountCircleIcon,
+  LockOutlinedIcon,
 } from './MaterialIcons';
 
 export {
@@ -26,4 +27,5 @@ export {
   ChevronRightIcon,
   AccountCircleIcon,
   CameraIcon,
+  LockOutlinedIcon,
 };

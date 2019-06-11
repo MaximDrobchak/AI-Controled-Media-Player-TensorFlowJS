@@ -10,6 +10,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import CameraIcon from '@material-ui/icons/Camera';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 export {
   DashboardIcon,
   HomeIcon,
@@ -23,4 +24,5 @@ export {
   ChevronRightIcon,
   AccountCircleIcon,
   CameraIcon,
+  LockOutlinedIcon,
 };
