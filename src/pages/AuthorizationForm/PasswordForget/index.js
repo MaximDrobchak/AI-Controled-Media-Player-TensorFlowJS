@@ -8,6 +8,7 @@ import {
   Error,
   Link,
   Loading,
+  Layout,
 } from '../../../components';
 import { withFirebase } from '../../../firebase';
 import { withRouter } from 'react-router-dom';
@@ -49,7 +50,7 @@ const PasswordForget = ({ history, firebase }) => {
   const isInvalid = email.value === '';
 
   return (
-    <Fragment>
+    <Layout>
       {isLoading && <Loading />}
       <Forma
         icon={<LockOutlinedIcon />}
@@ -68,7 +69,7 @@ const PasswordForget = ({ history, firebase }) => {
           Password Reset
         </Button>
       </Forma>
-    </Fragment>
+    </Layout>
   );
 };
 

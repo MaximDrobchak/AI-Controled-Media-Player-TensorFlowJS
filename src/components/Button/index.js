@@ -26,8 +26,14 @@ export default ({
   );
 };
 
-export const RedButton = ({ props, text = '', type = 'button' }) => (
-  <RedButtonStyle type={type} {...props}>
+export const RedButton = ({
+  props,
+  text = '',
+  type = 'button',
+  onClick,
+  ...others
+}) => (
+  <RedButtonStyle type={type} {...props} onClick={onClick} {...others}>
     {text}
   </RedButtonStyle>
 );

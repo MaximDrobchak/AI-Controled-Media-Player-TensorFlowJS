@@ -1,7 +1,14 @@
 import React, { Fragment } from 'react';
 import { useFormInput, useLoadingOrError } from '../../../userHooks';
 
-import { Forma, TextField, Button, Error, Loading } from '../../../components';
+import {
+  Forma,
+  TextField,
+  Button,
+  Error,
+  Loading,
+  Layout,
+} from '../../../components';
 import { withFirebase } from '../../../firebase';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -40,7 +47,7 @@ const PasswordChange = ({ history, firebase }) => {
     passwordTwo.value !== passwordOne.value;
 
   return (
-    <Fragment>
+    <Layout>
       {isLoading && <Loading />}
       <Forma
         icon={<LockOutlinedIcon />}
@@ -69,7 +76,7 @@ const PasswordChange = ({ history, firebase }) => {
           Confirmation
         </Button>
       </Forma>
-    </Fragment>
+    </Layout>
   );
 };
 

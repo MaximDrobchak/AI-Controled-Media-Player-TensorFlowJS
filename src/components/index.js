@@ -10,6 +10,7 @@ import Dewider from './Dewider';
 import MenuList from './MenuList';
 import Loading from './Loading';
 import TrigerIcon from './TrigerIcon';
+import Layout from './Layout';
 export {
   Avatar,
   Button,
@@ -24,4 +25,5 @@ export {
   MenuList,
   Loading,
   TrigerIcon,
+  Layout,
 };

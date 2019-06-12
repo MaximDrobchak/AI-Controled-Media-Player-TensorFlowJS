@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleTextBlock, MarginSpan } from './styles';
-import { RedButton } from '../../../components';
+import { RedButton } from '../../../../components';
 
 export default () => (
   <StyleTextBlock>

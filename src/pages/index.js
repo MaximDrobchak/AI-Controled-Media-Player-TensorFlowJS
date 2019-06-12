@@ -1,6 +1,6 @@
 import Account from './Account';
 import Home from './Home';
-import Landing from './Landing';
+import Landing from './Landing/Main';
 import PasswordForget, {
   PasswordForgetLink,
 } from './AuthorizationForm/PasswordForget';

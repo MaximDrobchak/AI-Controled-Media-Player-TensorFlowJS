@@ -1,12 +1,11 @@
 import React from 'react';
-
 import { withFirebase } from '../../firebase';
 import YouTubePlayer from '../../containers/MediaPlayer/YouTubePlayer';
-
+import { Layout } from '../../components';
 const HomePage = () => (
-  <div>
+  <Layout>
     <YouTubePlayer />
-  </div>
+  </Layout>
 );
 
 export default withFirebase(HomePage);

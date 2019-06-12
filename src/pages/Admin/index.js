@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { withFirebase } from '../../firebase';
+import { useLoadingOrError } from '../../userHooks';
+import { Layout, Loading } from '../../components';
+const AdminPage = ({ firebase }) => {
+  const [ users, setUsers ] = useState([]);
+  const { getLoading, isLoading } = useLoadingOrError();
 
-class AdminPage extends Component {
-  constructor (props) {
-    super(props);
-
-    this.state = {
-      loading: false,
-      users: [],
-    };
-  }
-
-  componentDidMount () {
-    this.setState({ loading: true });
-
-    this.props.firebase.users().on('value', snapshot => {
+  useEffect(() => {
+    getLoading(true);
+    firebase.users().on('value', snapshot => {
       const usersObject = snapshot.val();
 
       const usersList = Object.keys(usersObject).map(key => ({
@@ -23,31 +17,22 @@ class AdminPage extends Component {
         uid: key,
       }));
 
-      this.setState({
-        users: usersList,
-        loading: false,
-      });
+      setUsers(usersList);
+      getLoading(false);
     });
-  }
 
-  componentWillUnmount () {
-    this.props.firebase.users().off();
-  }
+    return () => {
+      firebase.users().off();
+    };
+  }, []);
 
-  render () {
-    const { users, loading } = this.state;
-
-    return (
-      <div>
-        <h1>Admin</h1>
-
-        {loading && <div>Loading ...</div>}
-
-        <UserList users={users} />
-      </div>
-    );
-  }
-}
+  return (
+    <Layout>
+      {isLoading && <Loading />}
+      <UserList users={users} />
+    </Layout>
+  );
+};
 
 const UserList = ({ users }) => (
   <ul>

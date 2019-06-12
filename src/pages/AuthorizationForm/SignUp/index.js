@@ -10,6 +10,7 @@ import {
   Link,
   Error,
   Loading,
+  Layout,
 } from '../../../components';
 import { withFirebase } from '../../../firebase';
 import { LockOutlinedIcon } from '../../../Icons';
@@ -62,7 +63,7 @@ const SignUp = ({ firebase, history }) => {
     username.value === '';
 
   return (
-    <Fragment>
+    <Layout>
       {isLoading && <Loading />}
       <Forma
         icon={<LockOutlinedIcon />}
@@ -98,7 +99,7 @@ const SignUp = ({ firebase, history }) => {
           Sign Up
         </Button>
       </Forma>
-    </Fragment>
+    </Layout>
   );
 };
 
