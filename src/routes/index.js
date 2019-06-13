@@ -17,10 +17,11 @@ import {
   PasswordForgetComponent,
   SignUpComponent,
   SignInComponent,
-  AdminComponent,
+  GaleryComponent,
   AccountComponent,
   HomeComponent,
   LandingComponent,
+  YouTubeComponent,
 } from './routesList';
 import { withFirebase } from '../firebase';
 
@@ -52,11 +53,14 @@ const App = ({ firebase }) => {
   const routeList =
     authUser ? [
       { text: 'Landing', to: routesType.LANDING, icon: <DashboardIcon /> },
+      { text: 'Galery', to: routesType.GALERY, icon: <AdminIcon /> },
       { text: 'Home', to: routesType.HOME, icon: <HomeIcon /> },
       { text: 'Account', to: routesType.ACCOUNT, icon: <AccountBoxIcon /> },
-      { text: 'Admin', to: routesType.ADMIN, icon: <AdminIcon /> },
     ] :
-    [ { text: 'Landing', to: routesType.LANDING, icon: <DashboardIcon /> } ];
+    [
+      { text: 'Landing', to: routesType.LANDING, icon: <DashboardIcon /> },
+      { text: 'Galery', to: routesType.GALERY, icon: <AdminIcon /> },
+    ];
 
   const accountMenuList =
     authUser ? [
@@ -80,7 +84,8 @@ const App = ({ firebase }) => {
         <Route path={routesType.SIGN_IN} component={SignInComponent} />
         <Route path={routesType.SIGN_UP} component={SignUpComponent} />
         <Route path={routesType.ACCOUNT} component={AccountComponent} />
-        <Route path={routesType.ADMIN} component={AdminComponent} />
+        <Route path={routesType.GALERY} component={GaleryComponent} />
+        <Route path={routesType.YOUTUBE} component={YouTubeComponent} />
         <Route
           path={routesType.PASSWORD_CHANGE}
           component={PasswordChangeComponent}

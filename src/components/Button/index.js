@@ -1,5 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import { Button, IconButton, Switch, Typography } from '@material-ui/core/';
+
 import RedButtonStyle, { useStyles } from './styles';
 export default ({
   type = 'button',
@@ -25,7 +26,11 @@ export default ({
     </Button>
   );
 };
-
+export const ButtonIcon = ({ onClick, children, className, ...others }) => (
+  <IconButton onClick={onClick} className={className} {...others}>
+    {children}
+  </IconButton>
+);
 export const RedButton = ({
   props,
   text = '',
@@ -37,3 +42,20 @@ export const RedButton = ({
     {text}
   </RedButtonStyle>
 );
+
+export function Switches ({ checkedA, handleChange, lable, style }){
+  return (
+    <div style={style}>
+      <Typography gutterBottom variant='h5' component='h2'>
+        {lable}
+      </Typography>
+      <Switch
+        checked={checkedA}
+        onChange={handleChange('checkedA')}
+        value='checkedA'
+        inputProps={{ 'aria-label': 'secondary checkbox' }}
+        onClick={handleChange}
+      />
+    </div>
+  );
+}

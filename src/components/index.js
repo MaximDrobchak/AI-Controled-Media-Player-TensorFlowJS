@@ -1,5 +1,5 @@
 import Avatar from './Avatar';
-import Button, { RedButton } from './Button';
+import Button, { RedButton, ButtonIcon, Switches } from './Button';
 import Forma from './Forma';
 import Header from './Header';
 import TextField from './TextField';
@@ -11,6 +11,8 @@ import MenuList from './MenuList';
 import Loading from './Loading';
 import TrigerIcon from './TrigerIcon';
 import Layout from './Layout';
+import { GaleryCard, HomeCard } from './Cards';
+import ButtonNavigation from './ButtonNavigation';
 export {
   Avatar,
   Button,
@@ -26,4 +28,9 @@ export {
   Loading,
   TrigerIcon,
   Layout,
+  GaleryCard,
+  HomeCard,
+  ButtonNavigation,
+  ButtonIcon,
+  Switches,
 };

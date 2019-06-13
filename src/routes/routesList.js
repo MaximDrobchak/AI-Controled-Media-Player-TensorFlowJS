@@ -1,6 +1,11 @@
 import { Loading } from '../components';
 import Loadable from 'react-loadable';
 
+export const YouTubeComponent = Loadable({
+  loader: () => import('../pages/AIPages/YouTubePage'),
+  loading: Loading,
+});
+
 export const LandingComponent = Loadable({
   loader: () => import('../pages/Landing'),
   loading: Loading,
@@ -15,8 +20,8 @@ export const AccountComponent = Loadable({
   loading: Loading,
 });
 
-export const AdminComponent = Loadable({
-  loader: () => import('../pages/Admin'),
+export const GaleryComponent = Loadable({
+  loader: () => import('../pages/Galery'),
   loading: Loading,
 });
 

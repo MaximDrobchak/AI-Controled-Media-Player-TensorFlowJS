@@ -6,9 +6,9 @@ import PasswordForget, {
 } from './AuthorizationForm/PasswordForget';
 import SignIn, { SignInLink } from './AuthorizationForm/SignIn';
 import SignUp, { SignUpLink } from './AuthorizationForm/SignUp';
-import Admin from './Admin';
+import Galery from './Galery';
 import PasswordChange from './AuthorizationForm/PasswordChange';
-
+import { YouTubePage } from './AIPages';
 export {
   Account,
   Home,
@@ -16,9 +16,10 @@ export {
   PasswordForget,
   SignIn,
   SignUp,
-  Admin,
+  Galery,
   PasswordChange,
   SignUpLink,
   SignInLink,
   PasswordForgetLink,
+  YouTubePage,
 };

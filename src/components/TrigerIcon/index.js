@@ -10,7 +10,7 @@ export default ({ triger }) => (
       right: 20,
       top: 70,
       fontSize: 35,
-      opacity: 0.4,
+      opacity: 0.6,
     }}
   />
 );

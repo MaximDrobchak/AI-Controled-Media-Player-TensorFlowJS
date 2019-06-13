@@ -93,12 +93,12 @@ export const onReady = (state, action) => ({
 });
 
 export const onFullScrin = (state, action) => {
-  if (!state.opts.width) {
+  if (state.opts.width <= 600) {
     const width = window.innerWidth;
     const height = window.innerHeight;
     return { ...state, opts: { height, width } };
   }
-  return { ...state, opts: {} };
+  else return { ...state, opts: { height: 400, width: 600 } };
 };
 
 export const onTriger = (state, action) => {

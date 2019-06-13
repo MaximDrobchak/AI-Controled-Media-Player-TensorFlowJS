@@ -12,10 +12,20 @@ import {
   CameraIcon,
   AccountCircleIcon,
   LockOutlinedIcon,
+  OpenInNewIcon,
+  NoteAddIcon,
+  PlayCircleFillIcon,
+  PauseCircleFilledFillIcon,
+  SkipNextIedcon,
+  SkipPreviousIcon,
+  FullscreenIcon,
+  FullscreenExitIcon,
+  ArrowDropDownCircleIcon,
 } from './MaterialIcons';
 
 export {
   DashboardIcon,
+  NoteAddIcon,
   HomeIcon,
   SinOutIcon,
   AccountBoxIcon,
@@ -28,4 +38,12 @@ export {
   AccountCircleIcon,
   CameraIcon,
   LockOutlinedIcon,
+  OpenInNewIcon,
+  PlayCircleFillIcon,
+  PauseCircleFilledFillIcon,
+  SkipNextIedcon,
+  SkipPreviousIcon,
+  FullscreenIcon,
+  FullscreenExitIcon,
+  ArrowDropDownCircleIcon,
 };
