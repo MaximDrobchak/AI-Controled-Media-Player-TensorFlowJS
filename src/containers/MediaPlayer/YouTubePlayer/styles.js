@@ -1,6 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles({
-  root: { marginTop: 50, position: 'relative', width: 600 },
+  root: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  player: { marginTop: 50, position: 'relative', width: 600 },
   buttons: {
     width: 300,
     backgroundColor: 'lightblue',

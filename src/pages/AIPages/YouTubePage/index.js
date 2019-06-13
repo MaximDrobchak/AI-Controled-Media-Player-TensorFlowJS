@@ -7,19 +7,17 @@ import { useStyles, iconStyle } from './styles';
 import buttons from './buttons';
 export default () => {
   const classes = useStyles();
-  const [ state, setState ] = React.useState({
-    checkedA: false,
-  });
+  const [ checkedA, setCheckedA ] = useState(false);
   const [ show, setMenu ] = useState(false);
   const handleChange = name => event => {
     setMenu(!show);
-    setState({ ...state, [name]: event.target.checked });
+    setCheckedA(event.target.checked);
   };
 
   return (
     <Layout className={classes.root}>
       <Switches
-        checkedA={state.checkedA}
+        checkedA={checkedA}
         handleChange={handleChange}
         lable='Show buttons'
         style={iconStyle}

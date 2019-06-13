@@ -13,6 +13,7 @@ import TrigerIcon from './TrigerIcon';
 import Layout from './Layout';
 import { GaleryCard, HomeCard } from './Cards';
 import ButtonNavigation from './ButtonNavigation';
+import List from './List';
 export {
   Avatar,
   Button,
@@ -33,4 +34,5 @@ export {
   ButtonNavigation,
   ButtonIcon,
   Switches,
+  List,
 };
