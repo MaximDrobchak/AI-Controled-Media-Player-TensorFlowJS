@@ -15,14 +15,7 @@ export default () => {
   };
 
   return (
-    <Layout className={classes.root}>
-      <Switches
-        checkedA={checkedA}
-        handleChange={handleChange}
-        lable='Show buttons'
-        style={iconStyle}
-      />
-
+    <Layout padding={0}>
       <YouTubePlayer buttons={buttons} show={show} />
     </Layout>
   );

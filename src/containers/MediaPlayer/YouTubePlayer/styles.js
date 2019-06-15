@@ -4,13 +4,20 @@ export const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
   },
-  player: { marginTop: 50, position: 'relative', width: 600 },
-  buttons: {
-    width: 300,
-    backgroundColor: 'lightblue',
-    borderRadius: '25px 25px 25px 25px',
-    position: 'absolute',
-    right: '40%',
-    top: 62,
+  player: {
+    marginTop: 50,
+    position: 'relative',
+    maxWidth: 600,
+    display: 'flex',
+  },
+  '@media (max-width: 576px)': {
+    player: {
+      maxWidth: 200,
+    },
+  },
+  '@media (max-width: 1188px)': {
+    player: {
+      maxWidth: 360,
+    },
   },
 });

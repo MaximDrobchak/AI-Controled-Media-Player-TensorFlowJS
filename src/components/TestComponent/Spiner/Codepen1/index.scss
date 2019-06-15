@@ -1,0 +1,61 @@
+$background: #444855;//#ffffef;
+$foreground: #f8eedd;
+$matte-color: darken($background, 5%);//#ffffff;//
+$height: 500px;
+$width: $height;
+$font-size: 2rem;
+$line-height: 3rem;
+$default-radius: 6px;
+$accent: #7ca;
+$accent-shade: shade($accent, 40%);
+$accent-tint: tint($accent, 40%);
+$content-width: 75vw;
+$content-height: 75vh;
+$matte-width: 7vw;
+$matte-height: 7vh;
+
+
+svg {
+  max-width: $content-height;
+  max-height: $content-width;
+  transform: rotate(0deg);
+  // animation: 12s spin linear infinite;
+
+  path {
+    fill: none;
+    stroke-width: 11;
+    // stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: 25s trace linear infinite;
+  }
+}
+
+.centeredContent {
+  height:100vh;
+  width:100vw;
+  background:  rgba(255, 255, 255, .25);
+  position: absolute;
+  z-index: 99999;
+}
+.my-spiner {
+  margin: auto;
+}
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes trace {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

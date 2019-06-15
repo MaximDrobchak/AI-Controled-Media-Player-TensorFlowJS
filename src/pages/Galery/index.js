@@ -9,7 +9,7 @@ const Galery = () => {
   const { isLoading, getError, getLoading, error } = useLoadingOrError();
 
   return (
-    <Layout className={classes.root}>
+    <Layout padding={50}>
       {isLoading && <Loading />}
       <Error error={error} />
       {(dataList || []).map(item => <GaleryCard key={item.id} {...item} />)}

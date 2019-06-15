@@ -68,6 +68,7 @@ export const initialState = {
   player: null,
   triger: null,
   opts: {},
+  fullscrin: false,
 };
 
 export const playerReducer = (state, action) => {
@@ -125,12 +126,41 @@ export const onReady = (state, action) => ({
 });
 
 export const onFullScrin = (state, action) => {
-  if (state.opts.width <= 600) {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    return { ...state, opts: { height, width } };
+  const i = document.querySelector('iframe');
+  if (state.fullscrin === false) {
+    if (i.requestFullscreen) {
+      i.requestFullscreen();
+      return { ...state, fullscrin: !state.fullscrin };
+    }
+    else if (i.webkitRequestFullscreen) {
+      i.webkitRequestFullscreen();
+      return { ...state, fullscrin: !state.fullscrin };
+    }
+    else if (i.mozRequestFullScreen) {
+      i.mozRequestFullScreen();
+      return { ...state, fullscrin: !state.fullscrin };
+    }
+    else if (i.msRequestFullscreen) {
+      i.msRequestFullscreen();
+      return { ...state, fullscrin: !state.fullscrin };
+    }
   }
-  else return { ...state, opts: { height: 400, width: 600 } };
+  else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen('hide');
+      return { ...state, fullscrin: !state.fullscrin };
+    }
+    else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+      return { ...state, fullscrin: !state.fullscrin };
+    }
+    else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen();
+      return { ...state, fullscrin: !state.fullscrin };
+    }
+  }
+
+  return { ...state };
 };
 
 export const onTriger = (state, action) => {

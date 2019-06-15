@@ -27,8 +27,13 @@ export const StyleMenuItem = styled.img`
       ''};
 `;
 export const BackgroundMenu = styled.div`
-  max-width: 99%;
-  max-height: 90%;
+  display: grid;
+  grid: repeat(12, 1fr) / repeat(12, 1fr);
+  grid-gap: 0px;
+  max-width: 94vw;
+  min-width: 988px;
+  owerflov-x: hidden;
+  max-height: 95vh;
   background: url('${BackGroundIcon}') no-repeat center;
   background-size: cover;
   position: relative;

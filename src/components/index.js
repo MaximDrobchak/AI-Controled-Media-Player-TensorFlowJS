@@ -1,24 +1,32 @@
-import Avatar from './Avatar';
-import Button, { RedButton, ButtonIcon, Switches } from './Button';
-import Forma from './Forma';
-import Header from './Header';
-import TextField from './TextField';
-import Link from './Link';
-import Error from './Error';
-import RouteItem from './RouteItem';
-import Dewider from './Dewider';
-import MenuList from './MenuList';
-import Loading from './Loading';
-import TrigerIcon from './TrigerIcon';
-import Layout from './Layout';
-import { GaleryCard, HomeCard } from './Cards';
-import ButtonNavigation from './ButtonNavigation';
-import List from './List';
+import NavigationLink from './NavigationLink';
+import Footer from './Footer';
+import DropDown from './DropDown';
+import Card from './Cards';
+import ModelPanel from './ModelPanel';
+import Avatar from './TestComponent/Avatar';
+import Button, {
+  RedButton,
+  ButtonIcon,
+  Switches,
+} from './TestComponent/Button';
+import Forma from './TestComponent/Forma';
+
+import TextField from './TestComponent/TextField';
+import Link from './TestComponent/Link';
+import Error from './TestComponent/Error';
+import RouteItem from './TestComponent/RouteItem';
+import Dewider from './TestComponent/Dewider';
+import MenuList from './TestComponent/MenuList';
+import { Loading } from './TestComponent/';
+import TrigerIcon from './TestComponent/TrigerIcon';
+import Layout from './TestComponent/Layout';
+import { GaleryCard, HomeCard } from './TestComponent/Cards';
+import ButtonNavigation from './TestComponent/ButtonNavigation';
+import List from './TestComponent/List';
 export {
   Avatar,
   Button,
   TextField,
-  Header,
   Forma,
   RedButton,
   Link,
@@ -36,3 +44,5 @@ export {
   Switches,
   List,
 };
+
+export { NavigationLink, Footer, DropDown, Card, ModelPanel };

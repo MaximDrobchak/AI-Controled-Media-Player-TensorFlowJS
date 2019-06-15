@@ -7,7 +7,7 @@ import { useStyles } from './styles';
 const HomePage = () => {
   const classes = useStyles();
   return (
-    <Layout className={classes.root}>
+    <Layout padding={50}>
       {(dataList || []).map(item => <HomeCard key={item.id} {...item} />)}
     </Layout>
   );

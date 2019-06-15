@@ -9,6 +9,8 @@ import SignUp, { SignUpLink } from './AuthorizationForm/SignUp';
 import Galery from './Galery';
 import PasswordChange from './AuthorizationForm/PasswordChange';
 import { YouTubePage } from './AIPages';
+import NotFoundPage from './SupportstPage/NotFoundPage';
+
 export {
   Account,
   Home,
@@ -22,4 +24,5 @@ export {
   SignInLink,
   PasswordForgetLink,
   YouTubePage,
+  NotFoundPage,
 };

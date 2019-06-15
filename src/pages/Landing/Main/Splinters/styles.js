@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 80px 0 0 23.2%;
-  width: 72.2%;
-  height: 393px;
+  grid-area: 4 / 6 / 13 / 13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);

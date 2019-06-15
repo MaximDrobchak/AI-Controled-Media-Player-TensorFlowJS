@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as speechCommands from '@tensorflow-models/speech-commands';
 
-export default ({ dispatch }) => {
+export default ({ dispatch, setFull }) => {
   const [ recognizer, setListen ] = useState(
     speechCommands.create('BROWSER_FFT'),
   );
@@ -74,7 +74,7 @@ export default ({ dispatch }) => {
         setTriger(false);
       }
       else if (triger && word === 'zero') {
-        dispatch({ type: 'FULLSCRIN' });
+        setFull('zero');
         setTriger(false);
       }
     },

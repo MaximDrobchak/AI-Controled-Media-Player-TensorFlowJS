@@ -1,11 +1,11 @@
 import React, { useReducer, useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { playerReducer, initialState } from './youTubeReducer';
-import { TrigerIcon, ButtonNavigation, List } from '../../../components';
+import { TrigerIcon } from '../../../components';
 
-import Fullscreen from 'react-full-screen';
 import Listener from './listener';
 import { useStyles } from './styles';
+import { ModelPanel, List } from '../../../components';
 export default ({ buttons, show }) => {
   const classes = useStyles();
   const [ state, dispatch ] = useReducer(playerReducer, initialState);
@@ -16,11 +16,6 @@ export default ({ buttons, show }) => {
     });
   };
 
-  const [ fullscrin, setFullscrin ] = useState(false);
-  const goFull = () => {
-    setFullscrin(!fullscrin);
-    return setTimeout(() => dispatch({ type: 'FULLSCRIN' }), 500);
-  };
   function verifyId (){
     let videoId = '';
     state.videoList.forEach(item => {
@@ -30,36 +25,39 @@ export default ({ buttons, show }) => {
     });
     return videoId;
   }
+  const [ full, setFull ] = useState(false);
+
+  useEffect(
+    () => {
+      if (full == 'zero') {
+        dispatch({ type: 'FULLSCRIN' });
+      }
+      setFull('');
+    },
+    [ full ],
+  );
   return (
-    <Fullscreen enabled={fullscrin} onChange={isFull => setFullscrin(isFull)}>
-      <div className={classes.root}>
-        <div className={classes.player}>
-          <TrigerIcon triger={state.triger} />
-          <YouTube
-            autoplay={1}
-            videoId={verifyId()}
-            onReady={onReady}
-            opts={state.opts}
-          />
-        </div>
+    <React.Fragment>
+      <div className={classes.player}>
+        <TrigerIcon triger={state.triger} />
+        <YouTube
+          autoplay={1}
+          videoId={verifyId()}
+          onReady={onReady}
+          opts={state.opts}
+          className='youtubecostumplayer-mui'
+        />
+      </div>
+
+      <ModelPanel buttonTitle={`Player control`} modelTitle={`play list`}>
         <List
           list={state.videoList}
           dispatch={dispatch}
           curent={state.curent}
         />
-      </div>
-      <Listener
-        dispatch={dispatch}
-        fullscrin={fullscrin}
-        setFullscrin={setFullscrin}
-      />
-      {show && (
-        <ButtonNavigation
-          buttons={buttons}
-          dispatch={dispatch}
-          className={classes.buttons}
-        />
-      )}
-    </Fullscreen>
+      </ModelPanel>
+
+      <Listener dispatch={dispatch} setFull={setFull} full={full} />
+    </React.Fragment>
   );
 };
