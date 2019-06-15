@@ -8,8 +8,7 @@ import Error from './Error';
 import RouteItem from './RouteItem';
 import Dewider from './Dewider';
 import MenuList from './MenuList';
-// import Loading from './Loading';
-import Loading from './Spiner/Codepen1';
+
 import TrigerIcon from './TrigerIcon';
 import Layout from './Layout';
 import { GaleryCard, HomeCard } from './Cards';
@@ -26,7 +25,6 @@ export {
   RouteItem,
   Dewider,
   MenuList,
-  Loading,
   TrigerIcon,
   Layout,
   GaleryCard,

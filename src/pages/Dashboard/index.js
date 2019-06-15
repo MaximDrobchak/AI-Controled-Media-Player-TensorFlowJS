@@ -1,14 +1,20 @@
-import React from 'react';
-
-import { Card } from '../../components';
+import React, { useState, useEffect } from 'react';
+import { useLoadingOrError } from '../../userHooks';
+import { Layout, Loading, Error, Card } from '../../components';
+import { useStyles } from './styles';
 import dataList from './dataList';
 
-const DashboardPage = () => {
+const Galery = () => {
+  const classes = useStyles();
+  const { isLoading, getError, getLoading, error } = useLoadingOrError();
+
   return (
-    <React.Fragment>
+    <Layout padding={50}>
+      {isLoading && <Loading />}
+      <Error error={error} />
       {(dataList || []).map(item => <Card key={item.id} {...item} />)}
-    </React.Fragment>
+    </Layout>
   );
 };
 
-export default DashboardPage;
+export default Galery;

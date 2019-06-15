@@ -39,7 +39,7 @@ const SignIn = ({ firebase, history }) => {
 
         return setTimeout(() => {
           getLoading(false);
-          history.push(routesType.HOME);
+          history.push(routesType.DASHBOARD);
         }, 500);
       })
       .catch(err => {

@@ -10,7 +10,7 @@ const dewiderMove = isOpen => {
 
   if (isOpen) {
     content.style.marginLeft = '300px';
-    navbar.style.paddingLeft = '275px';
+    navbar.style.display = '275px';
     footer.style.marginLeft = '270px';
     sidebar.style.marginLeft = '0px';
   }
@@ -36,8 +36,8 @@ export default () => {
   };
   return (
     <Fragment>
-      <TopNavigation handleDeweder={handleDeweder} />
-      <LeftNavigation />
+      <TopNavigation handleDeweder={handleDeweder} isOpen={isOpen} />
+      <LeftNavigation handleDeweder={handleDeweder} />
     </Fragment>
   );
 };

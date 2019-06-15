@@ -5,11 +5,17 @@ export default [
   {
     id: '0',
     title: 'YouTube',
-    description: 'You can manage you-tube media player with help you voice',
+    describtion: 'You can manage you-tube media player with help you voice',
     image: YouTubeImage,
-    link: {
+    preview: {
+      icon: 'external-link-alt',
+      text: 'preview',
       to: routeTypes.YOUTUBE,
-      lable: 'Live Preview'
-    }
+    },
+    add: {
+      icon: 'cart-plus',
+      text: 'add',
+      to: '/home',
+    },
   },
 ];

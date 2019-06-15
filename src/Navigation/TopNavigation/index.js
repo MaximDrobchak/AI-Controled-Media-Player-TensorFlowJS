@@ -11,7 +11,7 @@ import { DropDown } from '../../components';
 import { notAuth, auth } from './list';
 import { withAuthentication, AuthUserContext } from '../../firebase';
 
-const TopNavigation = ({ handleDeweder }) => {
+const TopNavigation = ({ handleDeweder, isOpen }) => {
   const authUser = useContext(AuthUserContext);
   const list =
     authUser ? auth :
@@ -19,14 +19,16 @@ const TopNavigation = ({ handleDeweder }) => {
 
   return (
     <MDBNavbar className='flexible-navbar' light expand='md' scrolling>
-      <MDBBtn
-        tag='span'
-        rounded
-        outline
-        onClick={handleDeweder}
-        id='diwider-button-control'>
-        <MDBIcon icon='bars' size='x3' />
-      </MDBBtn>
+      {!isOpen && (
+        <MDBBtn
+          tag='span'
+          rounded
+          outline
+          onClick={handleDeweder}
+          id='diwider-button-control'>
+          <MDBIcon icon='bars' size='x3' />
+        </MDBBtn>
+      )}
 
       <MDBNavbarNav left />
       <MDBNavbarNav right>

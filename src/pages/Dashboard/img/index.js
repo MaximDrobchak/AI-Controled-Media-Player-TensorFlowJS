@@ -1,3 +1,3 @@
-import YouTubeImage from './youtube.jpg';
+import YouTubeImage from './youtube.gif';
 
 export { YouTubeImage };

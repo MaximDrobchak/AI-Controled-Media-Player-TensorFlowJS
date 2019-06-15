@@ -3,6 +3,9 @@ import Footer from './Footer';
 import DropDown from './DropDown';
 import Card from './Cards';
 import ModelPanel from './ModelPanel';
+import Loading from './Loading';
+import Layout from './Layout';
+
 import Avatar from './TestComponent/Avatar';
 import Button, {
   RedButton,
@@ -17,9 +20,9 @@ import Error from './TestComponent/Error';
 import RouteItem from './TestComponent/RouteItem';
 import Dewider from './TestComponent/Dewider';
 import MenuList from './TestComponent/MenuList';
-import { Loading } from './TestComponent/';
+
 import TrigerIcon from './TestComponent/TrigerIcon';
-import Layout from './TestComponent/Layout';
+
 import { GaleryCard, HomeCard } from './TestComponent/Cards';
 import ButtonNavigation from './TestComponent/ButtonNavigation';
 import List from './TestComponent/List';
@@ -34,9 +37,7 @@ export {
   RouteItem,
   Dewider,
   MenuList,
-  Loading,
   TrigerIcon,
-  Layout,
   GaleryCard,
   HomeCard,
   ButtonNavigation,
@@ -45,4 +46,4 @@ export {
   List,
 };
 
-export { NavigationLink, Footer, DropDown, Card, ModelPanel };
+export { NavigationLink, Footer, DropDown, Card, ModelPanel, Loading, Layout };

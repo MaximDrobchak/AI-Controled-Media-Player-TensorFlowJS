@@ -46,6 +46,7 @@ export default ({ buttons, show }) => {
           onReady={onReady}
           opts={state.opts}
           className='youtubecostumplayer-mui'
+          allowfullscreen
         />
       </div>
 
