@@ -6,26 +6,22 @@ import ModelPanel from './ModelPanel';
 import Loading from './Loading';
 import Layout from './Layout';
 
-import Avatar from './TestComponent/Avatar';
-import Button, {
-  RedButton,
-  ButtonIcon,
-  Switches,
-} from './TestComponent/Button';
-import Forma from './TestComponent/Forma';
+import Avatar from './OldComponent/Avatar';
+import Button, { RedButton, ButtonIcon, Switches } from './OldComponent/Button';
+import Forma from './OldComponent/Forma';
 
-import TextField from './TestComponent/TextField';
-import Link from './TestComponent/Link';
-import Error from './TestComponent/Error';
-import RouteItem from './TestComponent/RouteItem';
-import Dewider from './TestComponent/Dewider';
-import MenuList from './TestComponent/MenuList';
+import TextField from './OldComponent/TextField';
+import Link from './OldComponent/Link';
+import Error from './OldComponent/Error';
+import RouteItem from './OldComponent/RouteItem';
+import Dewider from './OldComponent/Dewider';
+import MenuList from './OldComponent/MenuList';
 
-import TrigerIcon from './TestComponent/TrigerIcon';
+import TrigerIcon from './OldComponent/TrigerIcon';
 
-import { GaleryCard, HomeCard } from './TestComponent/Cards';
-import ButtonNavigation from './TestComponent/ButtonNavigation';
-import List from './TestComponent/List';
+import { GaleryCard, HomeCard } from './OldComponent/Cards';
+import ButtonNavigation from './OldComponent/ButtonNavigation';
+import List from './OldComponent/List';
 export {
   Avatar,
   Button,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CameraIcon } from '../../../Icons/';
+import { CameraIcon } from '../../../Icons';
 export default ({ triger }) => (
   <CameraIcon
     style={{
