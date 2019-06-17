@@ -44,5 +44,12 @@ export const useStyles = makeStyles({
       marginLeft: -70,
       gridArea: '5 / 7 / 9 / 11',
     },
+    mainWord: {
+      fontSize: '160%',
+      fontWeight: 900,
+      lineHeight: 1.21,
+      letterSpacing: '250%',
+      color: '#ffffff',
+    },
   },
 });

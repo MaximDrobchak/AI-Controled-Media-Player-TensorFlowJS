@@ -13,14 +13,11 @@ import Path293 from './splinters/Path 293.png';
 import Path289 from './splinters/Path 289.png';
 import Path295 from './splinters/Path 295.png';
 import Path299 from './splinters/Path 299.png';
-import agileNixIcon from './Agilenix_logo_darkblue-blue.svg';
-import Group113 from './Group 113.svg';
+
 import Group135 from './Group 135.svg';
 import Group137 from './Group 137.svg';
 import Group138 from './Group 138.svg';
 import Group143 from './Group 143.svg';
-import Group197 from './Group 197.svg';
-import Group191 from './Group 191.svg';
 
 export {
   Path278,
@@ -38,12 +35,8 @@ export {
   Path289,
   Path295,
   Path299,
-  agileNixIcon,
-  Group113,
   Group135,
   Group137,
   Group138,
   Group143,
-  Group197,
-  Group191,
 };

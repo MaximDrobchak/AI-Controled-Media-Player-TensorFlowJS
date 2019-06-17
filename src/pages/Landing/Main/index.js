@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Group135, Group137, Group138, Group143 } from './img';
-// import { Navigation, BackgroundMenu, StyleMenuItem } from './style.js';
+
 import { useStyles } from './styles';
 import MainText from './MainText';
 
@@ -9,7 +9,7 @@ import Typed from './Typed';
 
 const links = [
   { linkID: 0, title: Group143, path: '#main' },
-  { linkID: 1, title: Group137, path: '#services' },
+  { linkID: 1, title: Group137, path: '#about' },
   { linkID: 2, title: Group138, path: '#technologies' },
   { linkID: 3, title: Group135, path: '#hiring' },
 ];
