@@ -39,7 +39,7 @@ const SignIn = ({ firebase, history }) => {
 
         return setTimeout(() => {
           getLoading(false);
-          history.push(routesType.DASHBOARD);
+          history.push(routesType.LANDING);
         }, 500);
       })
       .catch(err => {
@@ -54,7 +54,7 @@ const SignIn = ({ firebase, history }) => {
     <Layout>
       {isLoading && <Loading />}
       <Forma
-        icon={<LockOutlinedIcon color='primary'/>}
+        icon={<LockOutlinedIcon color='primary' />}
         header='Sign In'
         onSubmit={onSubmit}
         link_2={<SignUpLink />}

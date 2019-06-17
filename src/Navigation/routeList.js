@@ -10,7 +10,6 @@ import {
   Landing,
   YouTube,
   NotFoundPage,
-  Dashboard,
 } from './routeComponents';
 
 export default [
@@ -63,10 +62,5 @@ export default [
     id: 9,
     path: routeTypes.NOT_FOUND_404,
     component: NotFoundPage,
-  },
-  {
-    id: 10,
-    path: routeTypes.DASHBOARD,
-    component: Dashboard,
   },
 ];

@@ -1,8 +1,12 @@
 import React from 'react';
 import { Layout } from '../../components';
 import Main from './Main';
-export default () => (
-  <Layout>
-    <Main />
-  </Layout>
-);
+import { useStyles } from './styles';
+export default () => {
+  const classes = useStyles();
+  return (
+    <Layout className={classes.root}>
+      <Main />
+    </Layout>
+  );
+};

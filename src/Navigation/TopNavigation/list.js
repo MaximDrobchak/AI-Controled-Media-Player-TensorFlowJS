@@ -5,5 +5,5 @@ export const notAuth = [
 
 export const auth = [
   { id: '1', icon: 'user-circle', lable: 'SignUp', to: routeTypes.SIGN_UP },
-  { id: '2', icon: 'user-circle', lable: 'SignOut', to: routeTypes.DASHBOARD },
+  { id: '2', icon: 'user-circle', lable: 'SignOut', to: routeTypes.LANDING },
 ];

@@ -6,11 +6,6 @@ export const NotFoundPage = Loadable({
   loading: Loading,
 });
 
-export const Dashboard = Loadable({
-  loader: () => import('../pages/Dashboard'),
-  loading: Loading,
-});
-
 export const YouTube = Loadable({
   loader: () => import('../pages/AIPages/YouTubePage'),
   loading: Loading,

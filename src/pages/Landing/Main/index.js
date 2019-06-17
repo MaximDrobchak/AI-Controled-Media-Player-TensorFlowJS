@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 import { Group135, Group137, Group138, Group143 } from './img';
-import { Navigation, BackgroundMenu, StyleMenuItem } from './style.js';
-
+// import { Navigation, BackgroundMenu, StyleMenuItem } from './style.js';
+import { useStyles } from './styles';
 import MainText from './MainText';
-import Splinters from './Splinters';
+
 import Typed from './Typed';
 
 const links = [
@@ -14,9 +14,10 @@ const links = [
   { linkID: 3, title: Group135, path: '#hiring' },
 ];
 
-const MenuLink = ({ path, title, target, getTarget, linkID }) => (
+const MenuLink = ({ path, title, target, getTarget, linkID, menuItem }) => (
   <a href={path} style={{ width: 50 }}>
-    <StyleMenuItem
+    <img
+      className={menuItem}
       src={title}
       alt=''
       target={target}
@@ -26,30 +27,36 @@ const MenuLink = ({ path, title, target, getTarget, linkID }) => (
   </a>
 );
 
-const NavBar = ({ target, getTarget }) => (
-  <Navigation>
+const NavBar = ({ target, getTarget, menuItem, navigation }) => (
+  <div className={navigation}>
     {links.map(link => (
       <MenuLink
+        menuItem={menuItem}
         key={link.linkID}
         {...link}
         target={target}
         getTarget={getTarget}
       />
     ))}
-  </Navigation>
+  </div>
 );
 
 export default () => {
+  const classes = useStyles();
   const [ target, setTarget ] = useState(null);
   const getTarget = id => {
     setTarget(id);
   };
   return (
-    <BackgroundMenu id='main'>
+    <div id='main' className={classes.root}>
+      <NavBar
+        target={target}
+        getTarget={getTarget}
+        menuItem={classes.menuItem}
+        navigation={classes.navigation}
+      />
       <Typed />
-      <NavBar target={target} getTarget={getTarget} />
       <MainText />
-      <Splinters />
-    </BackgroundMenu>
+    </div>
   );
 };

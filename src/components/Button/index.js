@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, IconButton, Switch, Typography } from '@material-ui/core/';
 
-import RedButtonStyle, { useStyles } from './styles';
+import { useStyles } from './styles';
 export default ({
   type = 'button',
   fullWidth = true,
@@ -31,17 +31,15 @@ export const ButtonIcon = ({ onClick, children, className, ...others }) => (
     {children}
   </IconButton>
 );
-export const RedButton = ({
-  props,
-  text = '',
-  type = 'button',
-  onClick,
-  ...others
-}) => (
-  <RedButtonStyle type={type} {...props} onClick={onClick} {...others}>
-    {text}
-  </RedButtonStyle>
-);
+export const RedButton = ({ text = '', type = 'button', onClick }) => {
+  const classes = useStyles();
+
+  return (
+    <button className={classes.redButton} type={type} onClick={onClick}>
+      {text}
+    </button>
+  );
+};
 
 export function Switches ({ checkedA, handleChange, lable, style }){
   return (

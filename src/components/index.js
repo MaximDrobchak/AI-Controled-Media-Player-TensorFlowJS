@@ -5,10 +5,10 @@ import Card from './Cards';
 import ModelPanel from './ModelPanel';
 import Loading from './Loading';
 import Layout from './Layout';
+import Button, { RedButton, ButtonIcon, Switches } from './Button';
 
 import Forma from './OldComponent/Forma';
 import Avatar from './OldComponent/Avatar';
-import Button, { RedButton, ButtonIcon, Switches } from './OldComponent/Button';
 
 import TextField from './OldComponent/TextField';
 import Link from './OldComponent/Link';
@@ -24,9 +24,7 @@ import ButtonNavigation from './OldComponent/ButtonNavigation';
 import List from './OldComponent/List';
 export {
   Avatar,
-  Button,
   TextField,
-  RedButton,
   Link,
   Error,
   RouteItem,
@@ -36,10 +34,20 @@ export {
   GaleryCard,
   HomeCard,
   ButtonNavigation,
-  ButtonIcon,
-  Switches,
   List,
   Forma,
 };
 
-export { NavigationLink, Footer, DropDown, Card, ModelPanel, Loading, Layout };
+export {
+  NavigationLink,
+  Footer,
+  DropDown,
+  Card,
+  ModelPanel,
+  Loading,
+  Layout,
+  RedButton,
+  ButtonIcon,
+  Button,
+  Switches,
+};

@@ -15,7 +15,7 @@ const dewiderMove = isOpen => {
     sidebar.style.marginLeft = '0px';
   }
   else {
-    content.style.marginLeft = '70px';
+    content.style.marginLeft = '0px';
     navbar.style.paddingLeft = '10px';
     footer.style.marginLeft = '0px';
     sidebar.style.marginLeft = '-270px';

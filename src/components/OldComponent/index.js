@@ -1,5 +1,5 @@
 import Avatar from './Avatar';
-import Button, { RedButton, ButtonIcon, Switches } from './Button';
+
 import Forma from './Forma';
 
 import TextField from './TextField';
@@ -16,10 +16,8 @@ import ButtonNavigation from './ButtonNavigation';
 import List from './List';
 export {
   Avatar,
-  Button,
   TextField,
   Forma,
-  RedButton,
   Link,
   Error,
   RouteItem,
@@ -30,7 +28,5 @@ export {
   GaleryCard,
   HomeCard,
   ButtonNavigation,
-  ButtonIcon,
-  Switches,
   List,
 };

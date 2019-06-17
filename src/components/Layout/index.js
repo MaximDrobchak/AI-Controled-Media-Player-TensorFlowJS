@@ -99,10 +99,10 @@ class Page extends Component {
   }
 
   render () {
-    const { children, id, ...rest } = this.props;
+    const { children, id, className, ...rest } = this.props;
 
     return (
-      <MDBContainer id={id}>
+      <React.Fragment>
         <Helmet
           htmlAttributes={{
             lang: 'en',
@@ -122,8 +122,10 @@ class Page extends Component {
           ]}
           meta={this.getMetaTags(rest, this.props.location.pathname)}
         />
-        {children}
-      </MDBContainer>
+        <MDBContainer id={id} className={className}>
+          {children}
+        </MDBContainer>
+      </React.Fragment>
     );
   }
 }
