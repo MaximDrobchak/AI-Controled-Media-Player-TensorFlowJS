@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { Group135, Group137, Group138, Group143 } from './img';
 
 import { useStyles } from './styles';
@@ -15,7 +15,7 @@ const links = [
 ];
 
 const MenuLink = ({ path, title, target, getTarget, linkID, menuItem }) => (
-  <a href={path} style={{ width: 50 }}>
+  <AnchorLink href={path} style={{ width: 50 }} offset={() => 100}>
     <img
       className={menuItem}
       src={title}
@@ -24,7 +24,7 @@ const MenuLink = ({ path, title, target, getTarget, linkID, menuItem }) => (
       linkID={linkID}
       onClick={() => getTarget(linkID)}
     />
-  </a>
+  </AnchorLink>
 );
 
 const NavBar = ({ target, getTarget, menuItem, navigation }) => (

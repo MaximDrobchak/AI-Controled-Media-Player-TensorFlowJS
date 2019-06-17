@@ -34,6 +34,7 @@ export const useStyles = makeStyles({
     marginLeft: '50%',
     marginBottom: 50,
     maxWidth: 600,
+    padding: 50,
   },
   articalCounsalting: {
     padding: '3em 0 0 4em',

@@ -14,6 +14,7 @@ export const useStyles = makeStyles({
     background: `url('${BackGroundIcon}') no-repeat center`,
     backgroundSize: 'cover',
     position: 'relative',
+    scrollBehavior: 'smooth',
   },
   menuItem: {
     height: 50,
