@@ -54,7 +54,7 @@ const SignIn = ({ firebase, history }) => {
     <Layout>
       {isLoading && <Loading />}
       <Forma
-        icon={<LockOutlinedIcon />}
+        icon={<LockOutlinedIcon color='primary'/>}
         header='Sign In'
         onSubmit={onSubmit}
         link_2={<SignUpLink />}

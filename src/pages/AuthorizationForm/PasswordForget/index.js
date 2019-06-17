@@ -53,7 +53,7 @@ const PasswordForget = ({ history, firebase }) => {
     <Layout>
       {isLoading && <Loading />}
       <Forma
-        icon={<LockOutlinedIcon />}
+        icon={<LockOutlinedIcon color='primary'/>}
         header='Password Reset'
         onSubmit={onSubmit}>
         <Error error={error} />

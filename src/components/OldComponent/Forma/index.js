@@ -22,14 +22,9 @@ function MadeWithLove (){
 }
 
 const useStyles = makeStyles(theme => ({
-  '@global': {
-    body: {
-      backgroundColor: theme.palette.common.white,
-    },
-  },
   root: {
     position: 'relative',
-    top: -50,
+    maxWidth: 450,
   },
   paper: {
     marginTop: theme.spacing(8),

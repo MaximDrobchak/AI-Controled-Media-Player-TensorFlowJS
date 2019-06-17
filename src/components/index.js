@@ -6,9 +6,9 @@ import ModelPanel from './ModelPanel';
 import Loading from './Loading';
 import Layout from './Layout';
 
+import Forma from './OldComponent/Forma';
 import Avatar from './OldComponent/Avatar';
 import Button, { RedButton, ButtonIcon, Switches } from './OldComponent/Button';
-import Forma from './OldComponent/Forma';
 
 import TextField from './OldComponent/TextField';
 import Link from './OldComponent/Link';
@@ -26,7 +26,6 @@ export {
   Avatar,
   Button,
   TextField,
-  Forma,
   RedButton,
   Link,
   Error,
@@ -40,6 +39,7 @@ export {
   ButtonIcon,
   Switches,
   List,
+  Forma,
 };
 
 export { NavigationLink, Footer, DropDown, Card, ModelPanel, Loading, Layout };
