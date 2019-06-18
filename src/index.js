@@ -9,7 +9,6 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import Firebase, { FirebaseContext } from './firebase';
-
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
     <Router>
@@ -21,3 +20,8 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 registerServiceWorker();
+
+// import App from './containers/TensorflowLearning/NumbersCNN';
+// import App from './containers/TensorflowLearning/Easy2DTensor';
+// ReactDOM.render(<App />, document.getElementById('root'));
+// registerServiceWorker();

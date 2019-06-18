@@ -1,8 +1,8 @@
 {
-  "name": "mdb-react-admin-template",
+  "name": "ai-laboratory",
   "version": "1.0.0",
-  "description": "MDB - React Admin Dashboard Free",
-  "author": "MDBootstrap <support@mdbootstrap.com>",
+  "description": "ai-laboratory",
+  "author": "Maxim Drobchak",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.0.1",
@@ -10,6 +10,7 @@
     "@tensorflow-models/speech-commands": "^0.3.8",
     "@tensorflow/tfjs": "^1.1.2",
     "@tensorflow/tfjs-converter": "^1.1.2",
+    "@tensorflow/tfjs-vis": "^1.1.0",
     "babel-polyfill": "^6.26.0",
     "concurrently": "^4.1.0",
     "express": "^4.17.1",

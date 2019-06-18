@@ -3,15 +3,7 @@ import { withRouter } from 'react-router';
 import Helmet from 'react-helmet';
 import { CameraIcon } from '../../Icons';
 
-import {
-  MDBJumbotron,
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCardTitle,
-  MDBIcon,
-} from 'mdbreact';
+import { MDBContainer } from 'mdbreact';
 const SITE_URL =
 
     process.env.NODE_ENV === 'development' ? 'http://localhost:3000' :
