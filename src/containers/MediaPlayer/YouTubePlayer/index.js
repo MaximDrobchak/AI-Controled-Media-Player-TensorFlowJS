@@ -1,12 +1,12 @@
 import React, { useReducer, useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { playerReducer, initialState } from './youTubeReducer';
-import { TrigerIcon } from '../../../components';
+import { TrigerIcon, ButtonNavigation } from '../../../components';
 
 import Listener from './listener';
 import { useStyles } from './styles';
 import { ModelPanel, List } from '../../../components';
-export default ({ buttons, show }) => {
+export default ({ buttons }) => {
   const classes = useStyles();
   const [ state, dispatch ] = useReducer(playerReducer, initialState);
   const onReady = e => {
@@ -51,6 +51,7 @@ export default ({ buttons, show }) => {
       </div>
 
       <ModelPanel buttonTitle={`Player control`} modelTitle={`play list`}>
+        <ButtonNavigation buttons={buttons} dispatch={dispatch} />
         <List
           list={state.videoList}
           dispatch={dispatch}
