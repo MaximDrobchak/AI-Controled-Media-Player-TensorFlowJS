@@ -6,11 +6,22 @@ import * as tf from '@tensorflow/tfjs';
 
 import { MnistData } from './data.js';
 import showExamples from './showExamples';
-
+import getModel from './getModel';
+import train from './trainModel';
+import { doPrediction, showAccuracy, showConfusion } from './doPrediction';
 async function run (){
   const data = new MnistData();
   await data.load();
   await showExamples(data);
+  const model = getModel();
+  tfvis.show.modelSummary({ name: 'Model Architecture' }, model);
+
+  await train(model, data);
+
+  await showAccuracy(model, data);
+  await showConfusion(model, data);
+
+  doPrediction(model, data);
 }
 
 export default () => {
