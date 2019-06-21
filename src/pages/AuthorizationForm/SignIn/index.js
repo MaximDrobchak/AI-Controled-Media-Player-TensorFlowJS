@@ -38,9 +38,8 @@ const SignIn = ({ firebase, history }) => {
         password.value = '';
 
         return setTimeout(() => {
-          getLoading(false);
           history.push(routesType.LANDING);
-        }, 500);
+        }, 1000);
       })
       .catch(err => {
         getLoading(false);

@@ -23,6 +23,7 @@ export default function LabelBottomNavigation ({
         className={className || classes.root}>
         {buttons.map(button => (
           <MDBBtn
+            className={classes.buttonStyle}
             key={button.id}
             tag='a'
             size='md'

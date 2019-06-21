@@ -30,9 +30,8 @@ const PasswordChange = ({ history, firebase }) => {
         passwordTwo.value = '';
 
         return setTimeout(() => {
-          getLoading(false);
           history.push(routesType.SIGN_IN);
-        }, 500);
+        }, 1000);
       })
       .catch(err => {
         getLoading(false);

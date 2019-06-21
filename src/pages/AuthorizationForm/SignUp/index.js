@@ -44,10 +44,8 @@ const SignUp = ({ firebase, history }) => {
         username.value = '';
 
         return setTimeout(() => {
-          getLoading(false);
-
           history.push(routesType.HOME);
-        }, 500);
+        }, 1000);
       })
       .catch(err => {
         getLoading(false);

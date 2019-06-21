@@ -35,9 +35,8 @@ const PasswordForget = ({ history, firebase }) => {
         email.value = '';
 
         return setTimeout(() => {
-          getLoading(false);
           history.push(routesType.PASSWORD_CHANGE);
-        }, 500);
+        }, 1000);
       })
       .catch(err => {
         getLoading(false);
@@ -53,7 +52,7 @@ const PasswordForget = ({ history, firebase }) => {
     <Layout>
       {isLoading && <Loading />}
       <Forma
-        icon={<LockOutlinedIcon color='primary'/>}
+        icon={<LockOutlinedIcon color='primary' />}
         header='Password Reset'
         onSubmit={onSubmit}>
         <Error error={error} />

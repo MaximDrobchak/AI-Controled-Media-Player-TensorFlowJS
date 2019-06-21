@@ -11,7 +11,7 @@ const links = [
   { linkID: 0, title: Group143, path: '#main' },
   { linkID: 1, title: Group137, path: '#about' },
   { linkID: 2, title: Group138, path: '#technologies' },
-  { linkID: 3, title: Group135, path: '#hiring' },
+  { linkID: 3, title: Group135, path: '#services' },
 ];
 
 const MenuLink = ({ path, title, target, getTarget, linkID, menuItem }) => (

@@ -16,6 +16,17 @@ export function useLoadingOrError (initialError = null, initialLoading = null){
 
   const [ isLoading, setLoading ] = useState(initialLoading);
 
+  useEffect(
+    () => {
+      if (isLoading) {
+        setTimeout(() => {
+          setLoading(null);
+        }, 1000);
+      }
+    },
+    [ isLoading ],
+  );
+
   const getError = error => setError(error);
   const getLoading = isLoading => setLoading(isLoading);
 

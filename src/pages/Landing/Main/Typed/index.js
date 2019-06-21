@@ -42,15 +42,27 @@ const About = () => (
   <TypedReactDemo
     strings={[
       `
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At atque culpa autem
-        maxime velit et dolore accusamus,
-        ducimus consequuntur debitis repellat facere adipisci quaerat id? Excepturi,
-        consequatur sint. Consequuntur, animi?
+      function (initialError = null, initialLoading = null){
+        const [ error, setError ] = useState(initialError);
+        useEffect(() => {
+          if (error) setTimeout(() => {setError(null)}, 1000);
+          [ error ],
+        );
 
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. At atque culpa autem
-      maxime velit et dolore accusamus,
-      ducimus consequuntur debitis repellat facere adipisci quaerat id? Excepturi,
-      consequatur sint. Consequuntur, animi?
+        const [ isLoading, setLoading ] = useState(initialLoading);
+        useEffect(() => {
+          if (isLoading) setTimeout(() => {setLoading(null)}, 1000);
+          [ isLoading ],
+        );
+        const getError = error => setError(error);
+        const getLoading = isLoading => setLoading(isLoading);
+        return {
+          error,
+          getError,
+          getLoading,
+          isLoading,
+        };
+      }
       `,
     ]}
   />

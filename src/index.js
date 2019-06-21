@@ -23,5 +23,6 @@ registerServiceWorker();
 
 // import App from './containers/TensorflowLearning/NumbersCNN';
 // import App from './containers/TensorflowLearning/Easy2DTensor';
+// import App from './containers/TensorflowLearning/MobileNet';
 // ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
