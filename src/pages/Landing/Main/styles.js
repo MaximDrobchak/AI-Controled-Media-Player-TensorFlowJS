@@ -31,7 +31,7 @@ export const useStyles = makeStyles({
     zIndex: 100,
     position: 'fixed',
     flexDirection: 'column',
-    marginLeft: '1.7%',
+    marginLeft: '-2.7%',
     marginTop: '3.7%',
     paddingTop: 18,
     '& > a': {

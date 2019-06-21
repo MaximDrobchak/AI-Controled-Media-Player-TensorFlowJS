@@ -6,19 +6,16 @@ import './styles.css';
 class TypedReactDemo extends Component {
   componentDidMount () {
     const { strings } = this.props;
-    // other options here, such as typing speed, back speed, etc.
     const options = {
       strings: strings,
       typeSpeed: 50,
       backSpeed: 50,
     };
-    // this.el refers to the <span> in the render() method
     this.typed = new Typed(this.el, options);
     this.typed.start();
   }
 
   componentWillUnmount () {
-    // Make sure to destroy Typed instance on unmounting
     this.typed.destroy();
   }
 
@@ -38,7 +35,7 @@ class TypedReactDemo extends Component {
   }
 }
 
-const About = () => (
+export default () => (
   <TypedReactDemo
     strings={[
       `
@@ -67,4 +64,3 @@ const About = () => (
     ]}
   />
 );
-export default About;
