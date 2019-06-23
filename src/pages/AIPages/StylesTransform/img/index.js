@@ -1,3 +1,3 @@
 import chicago from './chicago.jpg';
-
-export { chicago };
+import seaport from './seaport.jpg';
+export { chicago, seaport };

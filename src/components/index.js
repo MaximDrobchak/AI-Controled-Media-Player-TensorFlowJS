@@ -6,6 +6,8 @@ import ModelPanel from './ModelPanel';
 import Loading from './Loading';
 import Layout from './Layout';
 import InputFile from './InputFile';
+import FileChangeWithPreview from './FileChangeWithPreview';
+
 import Button, { RedButton, ButtonIcon, Switches, ButtonMDB } from './Button';
 
 import Forma from './OldComponent/Forma';
@@ -53,4 +55,5 @@ export {
   Switches,
   InputFile,
   ButtonMDB,
+  FileChangeWithPreview,
 };

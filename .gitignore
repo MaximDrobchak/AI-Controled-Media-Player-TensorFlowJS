@@ -16,7 +16,7 @@
 
 /server/.env
 /server/ubuntu-react-dewelopment-e621e6a69193.json
-
+/src/containers/MyModelAI/StyleTransfer/Exemple
 # misc
 .DS_Store
 .env.local

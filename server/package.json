@@ -15,7 +15,7 @@
   "scripts": {
     "deploy": "gcloud app deploy",
     "start": "node app.js micStreamRecognize",
-    "serve": "nodemon src/index.js",
+    "serve": "nodemon src/backendForMyModel/index.js",
     "system-test": "repo-tools test app",
     "test": "npm run system-test",
     "e2e-test": "repo-tools test deploy"

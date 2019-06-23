@@ -39,7 +39,9 @@
     "typed.js": "^2.0.10"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "client": "react-scripts start",
+    "server": "cd server && yarn serve",
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
