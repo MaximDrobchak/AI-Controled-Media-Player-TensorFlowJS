@@ -1,12 +1,15 @@
 import React from 'react';
-import { CameraIcon } from '../../../Icons';
+
+import { MDBIcon } from 'mdbreact';
 export default ({ triger }) => (
-  <CameraIcon
+  <MDBIcon
+    icon='microphone-alt'
     style={{
       color:
         triger ? 'green' :
         'red',
       position: 'absolute',
+      zIndex: 9999,
       right: 20,
       top: 70,
       fontSize: 35,

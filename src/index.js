@@ -8,6 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import App from './App';
+// import App from './pages/AIPages/StylesTransform';
 import Firebase, { FirebaseContext } from './firebase';
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
@@ -23,6 +24,6 @@ registerServiceWorker();
 
 // import App from './containers/TensorflowLearning/NumbersCNN';
 // import App from './containers/TensorflowLearning/Easy2DTensor';
-// import App from './containers/TensorflowLearning/MobileNet';
+
 // ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();

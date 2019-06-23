@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, IconButton, Switch, Typography } from '@material-ui/core/';
-
+import { MDBBtn } from 'mdbreact';
 import { useStyles } from './styles';
 export default ({
   type = 'button',
@@ -57,3 +57,8 @@ export function Switches ({ checkedA, handleChange, lable, style }){
     </div>
   );
 }
+
+// peach purple blue aqua
+export const ButtonMDB = ({ gradient = 'purple', children }) => (
+  <MDBBtn gradient={gradient}>{children}</MDBBtn>
+);

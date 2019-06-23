@@ -1,8 +1,8 @@
 import { Loading } from '../components';
 import Loadable from 'react-loadable';
 
-export const NotFoundPage = Loadable({
-  loader: () => import('../pages/SupportstPage/NotFoundPage'),
+export const StyleTransfer = Loadable({
+  loader: () => import('../pages/AIPages/StylesTransform'),
   loading: Loading,
 });
 
@@ -48,5 +48,10 @@ export const PasswordForget = Loadable({
 
 export const PasswordChange = Loadable({
   loader: () => import('../pages/AuthorizationForm/PasswordChange'),
+  loading: Loading,
+});
+
+export const NotFoundPage = Loadable({
+  loader: () => import('../pages/SupportstPage/NotFoundPage'),
   loading: Loading,
 });

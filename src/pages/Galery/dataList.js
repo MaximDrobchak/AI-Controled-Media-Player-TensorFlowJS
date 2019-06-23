@@ -18,4 +18,21 @@ export default [
       to: '/home',
     },
   },
+  {
+    id: '1',
+    title: 'Style Transfer',
+    describtion:
+      'You can interbreed you photo with masterpieces of famous artists',
+    image: YouTubeImage,
+    preview: {
+      icon: 'external-link-alt',
+      text: 'preview',
+      to: routeTypes.STYLE_TRANSFER,
+    },
+    add: {
+      icon: 'cart-plus',
+      text: 'add',
+      to: '/home',
+    },
+  },
 ];

@@ -7,6 +7,7 @@ export const GALERY = '/galery';
 export const PASSWORD_FORGET = '/pw-forget';
 export const PASSWORD_CHANGE = '/pw-change';
 export const YOUTUBE = '/youtube';
+export const STYLE_TRANSFER = '/styletrnasfer';
 
 export const NOT_FOUND_404 = '/404';
 export const ABOUT = '/about';

@@ -10,6 +10,7 @@ import {
   Landing,
   YouTube,
   NotFoundPage,
+  StyleTransfer,
 } from './routeComponents';
 
 export default [
@@ -60,6 +61,11 @@ export default [
   },
   {
     id: 9,
+    path: routeTypes.STYLE_TRANSFER,
+    component: StyleTransfer,
+  },
+  {
+    id: 10,
     path: routeTypes.NOT_FOUND_404,
     component: NotFoundPage,
   },

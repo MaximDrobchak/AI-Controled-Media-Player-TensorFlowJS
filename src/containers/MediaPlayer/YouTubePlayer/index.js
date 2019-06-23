@@ -1,11 +1,15 @@
 import React, { useReducer, useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { playerReducer, initialState } from './youTubeReducer';
-import { TrigerIcon, ButtonNavigation } from '../../../components';
 
 import Listener from './listener';
 import { useStyles } from './styles';
-import { ModelPanel, List } from '../../../components';
+import {
+  ModelPanel,
+  List,
+  TrigerIcon,
+  ButtonNavigation,
+} from '../../../components';
 export default ({ buttons }) => {
   const classes = useStyles();
   const [ state, dispatch ] = useReducer(playerReducer, initialState);
@@ -37,7 +41,7 @@ export default ({ buttons }) => {
     [ full ],
   );
   return (
-    <React.Fragment>
+    <div>
       <div className={classes.player}>
         <TrigerIcon triger={state.triger} />
         <YouTube
@@ -60,6 +64,6 @@ export default ({ buttons }) => {
       </ModelPanel>
 
       <Listener dispatch={dispatch} setFull={setFull} full={full} />
-    </React.Fragment>
+    </div>
   );
 };

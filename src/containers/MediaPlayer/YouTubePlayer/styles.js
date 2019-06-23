@@ -9,6 +9,7 @@ export const useStyles = makeStyles({
     position: 'relative',
     maxWidth: 600,
     display: 'flex',
+    zIndex: 1,
   },
   '@media (max-width: 576px)': {
     player: {

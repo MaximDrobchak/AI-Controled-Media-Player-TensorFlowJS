@@ -5,7 +5,8 @@ import Card from './Cards';
 import ModelPanel from './ModelPanel';
 import Loading from './Loading';
 import Layout from './Layout';
-import Button, { RedButton, ButtonIcon, Switches } from './Button';
+import InputFile from './InputFile';
+import Button, { RedButton, ButtonIcon, Switches, ButtonMDB } from './Button';
 
 import Forma from './OldComponent/Forma';
 import Avatar from './OldComponent/Avatar';
@@ -50,4 +51,6 @@ export {
   ButtonIcon,
   Button,
   Switches,
+  InputFile,
+  ButtonMDB,
 };
