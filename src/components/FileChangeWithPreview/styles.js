@@ -10,6 +10,6 @@ export const useStyles = makeStyles({
     minWidth: 300,
   },
   contentImg: {
-    height: 240,
+    height: 100,
   },
 });

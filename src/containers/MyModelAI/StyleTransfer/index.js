@@ -38,40 +38,19 @@ async function startStyling (
   let bottleneck = await tf.tidy(() => {
     return styleNet.predict(
       tf.browser
-        .fromPixels(styleImgs)
-        .toFloat()
-        .div(tf.scalar(255))
-        .expandDims(),
-    );
-  });
-
-  await tf.nextFrame();
-  const identityBottleneck = await tf.tidy(() => {
-    return styleNet.predict(
-      tf.browser
         .fromPixels(contentImgs)
         .toFloat()
         .div(tf.scalar(255))
         .expandDims(),
     );
   });
-  const styleBottleneck = bottleneck;
-  bottleneck = await tf.tidy(() => {
-    const styleBottleneckScaled = styleBottleneck.mul(tf.scalar(styleRatio));
-    const identityBottleneckScaled = identityBottleneck.mul(
-      tf.scalar(1.0 - styleRatio),
-    );
-    return styleBottleneckScaled.addStrict(identityBottleneckScaled);
-  });
-  styleBottleneck.dispose();
-  identityBottleneck.dispose();
 
   await tf.nextFrame();
   const stylized = await tf.tidy(() => {
     return transformNet
       .predict([
         tf.browser
-          .fromPixels(combContentImg)
+          .fromPixels(styleImgs)
           .toFloat()
           .div(tf.scalar(255))
           .expandDims(),
@@ -91,54 +70,10 @@ export default ({ styleImg, contentImg, styleRatio = 1.0 }) => {
   async function setNetworks (){
     styleNet = await loadMobileNetStyleModel();
     transformNet = await loadOriginalTransformerModel();
-
-    benchmark();
   }
   useEffect(() => {
     setNetworks();
   }, []);
-  async function benchmark (){
-    const x = tf.randomNormal([ 1, 256, 256, 3 ]);
-    const bottleneck = tf.randomNormal([ 1, 1, 1, 100 ]);
-
-    let styleNet = await loadInceptionStyleModel();
-    let time = await benchmarkStyle(x, styleNet);
-    styleNet.dispose();
-
-    styleNet = await loadMobileNetStyleModel();
-    time = await benchmarkStyle(x, styleNet);
-    styleNet.dispose();
-
-    // let transformNet = await loadOriginalTransformerModel();
-    // time = await this.benchmarkTransform(x, bottleneck, transformNet);
-    // transformNet.dispose();
-
-    // transformNet = await loadSeparableTransformerModel();
-    // time = await benchmarkTransform(x, bottleneck, transformNet);
-    // transformNet.dispose();
-
-    x.dispose();
-    bottleneck.dispose();
-  }
-
-  async function benchmarkStyle (x, styleNet){
-    const profile = await tf.profile(() => {
-      tf.tidy(() => {
-        const dummyOut = styleNet.predict(x);
-        dummyOut.print();
-      });
-    });
-    console.log(profile);
-    const time = await tf.time(() => {
-      tf.tidy(() => {
-        for (let i = 0; i < 10; i++) {
-          const y = styleNet.predict(x);
-          y.print();
-        }
-      });
-    });
-    console.log(time);
-  }
 
   return (
     <React.Fragment>
@@ -159,7 +94,13 @@ export default ({ styleImg, contentImg, styleRatio = 1.0 }) => {
         Button
       </button>
       <canvas ref={canvas} width='100' height='100' />
-      <img ref={combContent} width='100' height='100' />
+      <img
+        ref={combContent}
+        src='./Exemple/images/beach.jpg'
+        width='100'
+        height='100'
+        style={{ display: 'none' }}
+      />
     </React.Fragment>
   );
 };
