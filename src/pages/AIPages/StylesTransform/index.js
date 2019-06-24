@@ -7,11 +7,12 @@ import {
   Loading,
   Error,
   FileChangeWithPreview,
+  Slider,
 } from '../../../components';
 import StyleTransfer from '../../../containers/MyModelAI/StyleTransfer/';
 import { useStyles } from './styles';
 import { chicago, seaport } from './img';
-// styleImg, contentImg
+
 export default () => {
   const styleImg = useRef();
   const contentImg = useRef();
@@ -24,15 +25,18 @@ export default () => {
           img={styleImg}
           src={chicago}
           inputID='content-img'
+          heightImg={240}
         />
         <FileChangeWithPreview
           img={contentImg}
           src={seaport}
           inputID='style-img'
+          heightImg={100}
         />
       </div>
 
       <StyleTransfer styleImg={styleImg} contentImg={contentImg} />
+      <Slider />
     </Layout>
   );
 };

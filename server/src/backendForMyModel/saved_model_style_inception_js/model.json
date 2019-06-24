@@ -17997,15 +17997,15 @@
   "weightsManifest": [
     {
       "paths": [
-        "localhost:3001/group1-shard1of9",
-        "localhost:3001/group1-shard2of9",
-        "localhost:3001/group1-shard3of9",
-        "localhost:3001/group1-shard4of9",
-        "localhost:3001/group1-shard5of9",
-        "localhost:3001/group1-shard6of9",
-        "localhost:3001/group1-shard7of9",
-        "localhost:3001/group1-shard8of9",
-        "localhost:3001/group1-shard9of9"
+        "group1-shard1of9",
+        "group1-shard2of9",
+        "group1-shard3of9",
+        "group1-shard4of9",
+        "group1-shard5of9",
+        "group1-shard6of9",
+        "group1-shard7of9",
+        "group1-shard8of9",
+        "group1-shard9of9"
       ],
       "weights": [
         {

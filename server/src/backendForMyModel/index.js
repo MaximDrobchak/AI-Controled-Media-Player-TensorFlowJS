@@ -33,6 +33,12 @@ app.get('/saved_model_transformer_separable_js', function (request, response){
 });
 
 /********************************* */
+app.get('/group1-shard1of1', function (request, response){
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  response.sendFile(
+    __dirname + '/saved_model_transformer_separable_js/group1-shard1of1',
+  );
+});
 app.get('/group1-shard2of3', function (request, response){
   response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   response.sendFile(__dirname + '/saved_model_style_js/group1-shard2of3');
@@ -58,19 +64,65 @@ app.get('/group1-shard2of2', function (request, response){
   response.sendFile(__dirname + '/saved_model_transformer_js/group1-shard2of2');
 });
 
+app.get('/group1-shard1of9', function (request, response){
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  response.sendFile(
+    __dirname + '/saved_model_style_inception_js/group1-shard1of9',
+  );
+});
+
+app.get('/group1-shard2of9', function (request, response){
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  response.sendFile(
+    __dirname + '/saved_model_style_inception_js/group1-shard2of9',
+  );
+});
+
+app.get('/group1-shard3of9', function (request, response){
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  response.sendFile(
+    __dirname + '/saved_model_style_inception_js/group1-shard3of9',
+  );
+});
+app.get('/group1-shard4of9', function (request, response){
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  response.sendFile(
+    __dirname + '/saved_model_style_inception_js/group1-shard4of9',
+  );
+});
+
+app.get('/group1-shard5of9', function (request, response){
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  response.sendFile(
+    __dirname + '/saved_model_style_inception_js/group1-shard5of9',
+  );
+});
+
+app.get('/group1-shard6of9', function (request, response){
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  response.sendFile(
+    __dirname + '/saved_model_style_inception_js/group1-shard6of9',
+  );
+});
+app.get('/group1-shard7of9', function (request, response){
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  response.sendFile(
+    __dirname + '/saved_model_style_inception_js/group1-shard7of9',
+  );
+});
+
+app.get('/group1-shard8of9', function (request, response){
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  response.sendFile(
+    __dirname + '/saved_model_style_inception_js/group1-shard8of9',
+  );
+});
+
+app.get('/group1-shard9of9', function (request, response){
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  response.sendFile(
+    __dirname + '/saved_model_style_inception_js/group1-shard9of9',
+  );
+});
+
 app.listen(3001);
-// "localhost:3001/group1-shard1of2",
-// "localhost:3001/group1-shard2of2"
-// "localhost:3001/group1-shard1of1"
-// "localhost:3001/group1-shard1of3",
-// "localhost:3001/group1-shard2of3",
-// "localhost:3001/group1-shard3of3"
-// "localhost:3001/group1-shard1of9",
-// "localhost:3001/group1-shard2of9",
-// "localhost:3001/group1-shard3of9",
-// "localhost:3001/group1-shard4of9",
-// "localhost:3001/group1-shard5of9",
-// "localhost:3001/group1-shard6of9",
-// "localhost:3001/group1-shard7of9",
-// "localhost:3001/group1-shard8of9",
-// "localhost:3001/group1-shard9of9"

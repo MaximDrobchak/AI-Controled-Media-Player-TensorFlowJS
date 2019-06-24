@@ -1,5 +1,11 @@
 export default [
   {
+    id: 30,
+    link: 'KeTWBgBylrs',
+    lable: 'Benny Benassi - Whos Your Daddy?',
+    lableSecondary: 'Whos Your Daddy?',
+  },
+  {
     id: 0,
     link: 'ZzHUzctT4bo',
     lable: 'Крестная Семья',

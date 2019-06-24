@@ -7,6 +7,7 @@ import Loading from './Loading';
 import Layout from './Layout';
 import InputFile from './InputFile';
 import FileChangeWithPreview from './FileChangeWithPreview';
+import Slider from './Slider';
 
 import Button, { RedButton, ButtonIcon, Switches, ButtonMDB } from './Button';
 
@@ -56,4 +57,5 @@ export {
   InputFile,
   ButtonMDB,
   FileChangeWithPreview,
+  Slider,
 };

@@ -7,7 +7,6 @@ export default ({ onChange, inputID }) => (
       type='file'
       className='custom-file-input'
       id={inputID}
-      aria-describedby='inputGroupFileAddon01'
       onChange={e => onChange(e.target.files[0])}
     />
     <ButtonMDB htmlFor={inputID}>
