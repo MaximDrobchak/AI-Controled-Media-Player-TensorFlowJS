@@ -7,85 +7,18 @@
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-91864013-5"></script>
+
     <script src="https://unpkg.com/@tensorflow/tfjs"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-91864013-5');
+      tf.ENV.set('WEBGL_PACK', false);
     </script>
-    <title>React App</title>
+    <title>AI Laboratory</title>
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
-    <script>
-tf.ENV.set('WEBGL_PACK', false);
-    async function benchmark (){
-  const x = tf.randomNormal([ 1, 256, 256, 3 ]);
-  const bottleneck = tf.randomNormal([ 1, 1, 1, 100 ]);
 
-  let styleNet = await loadInceptionStyleModel();
-  let time = await benchmarkStyle(x, styleNet);
-  styleNet.dispose();
-
-  styleNet = await loadMobileNetStyleModel();
-  time = await benchmarkStyle(x, styleNet);
-  styleNet.dispose();
-
-  let transformNet = await loadOriginalTransformerModel();
-  time = await benchmarkTransform(x, bottleneck, transformNet);
-  transformNet.dispose();
-
-  transformNet = await loadSeparableTransformerModel();
-  time = await benchmarkTransform(x, bottleneck, transformNet);
-  transformNet.dispose();
-
-  x.dispose();
-  bottleneck.dispose();
-}
-
-async function benchmarkStyle (x, styleNet){
-  const profile = await tf.profile(() => {
-    tf.tidy(() => {
-      const dummyOut = styleNet.predict(x);
-      dummyOut.print();
-    });
-  });
-  console.log(profile);
-  const time = await tf.time(() => {
-    tf.tidy(() => {
-      for (let i = 0; i < 10; i++) {
-        const y = styleNet.predict(x);
-        y.print();
-      }
-    });
-  });
-  console.log(time);
-}
-
-async function benchmarkTransform (x, bottleneck, transformNet){
-  const profile = await tf.profile(() => {
-    tf.tidy(() => {
-      const dummyOut = transformNet.predict([ x, bottleneck ]);
-      dummyOut.print();
-    });
-  });
-  console.log(profile);
-  const time = await tf.time(() => {
-    tf.tidy(() => {
-      for (let i = 0; i < 10; i++) {
-        const y = transformNet.predict([ x, bottleneck ]);
-        y.print();
-      }
-    });
-  });
-  console.log(time);
-}
-    </script>
   </body>
 </html>

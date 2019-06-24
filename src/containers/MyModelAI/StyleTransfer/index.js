@@ -8,14 +8,14 @@ import {
   loadSeparableTransformerModel,
 } from './loadModels';
 
-export default ({ styleImg, contentImg, styleRatio = 0.5 }) => {
+export default ({ styleImg, contentImg, styleRatio = 1.0 }) => {
   const canvas = useRef();
   const combContent = useRef();
   let styleNet, transformNet;
   const classes = useStyles();
   async function setNetworks (){
     styleNet = await loadMobileNetStyleModel();
-    transformNet = await loadOriginalTransformerModel();
+    transformNet = await loadSeparableTransformerModel();
   }
   useEffect(() => {
     setNetworks();

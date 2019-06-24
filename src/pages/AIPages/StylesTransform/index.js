@@ -25,7 +25,7 @@ export default () => {
           img={styleImg}
           src={chicago}
           inputID='content-img'
-          heightImg={240}
+          heightImg={340}
         />
         <FileChangeWithPreview
           img={contentImg}
