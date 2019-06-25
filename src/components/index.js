@@ -8,8 +8,16 @@ import Layout from './Layout';
 import InputFile from './InputFile';
 import FileChangeWithPreview from './FileChangeWithPreview';
 import Slider from './Slider';
+import ModelPopup from './ModelPopup';
+import Collspan from './Collspan';
 
-import Button, { RedButton, ButtonIcon, Switches, ButtonMDB } from './Button';
+import Button, {
+  RedButton,
+  ButtonIcon,
+  Switches,
+  ButtonMDB,
+  TagButton,
+} from './Button';
 
 import Forma from './OldComponent/Forma';
 import Avatar from './OldComponent/Avatar';
@@ -58,4 +66,7 @@ export {
   ButtonMDB,
   FileChangeWithPreview,
   Slider,
+  ModelPopup,
+  Collspan,
+  TagButton,
 };

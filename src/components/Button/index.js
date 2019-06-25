@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, IconButton, Switch, Typography } from '@material-ui/core/';
-import { MDBBtn } from 'mdbreact';
+import { MDBBtn, MDBBadge } from 'mdbreact';
 import { useStyles } from './styles';
 export default ({
   type = 'button',
@@ -59,6 +59,34 @@ export function Switches ({ checkedA, handleChange, lable, style }){
 }
 
 // peach purple blue aqua
-export const ButtonMDB = ({ gradient = 'purple', children }) => (
-  <MDBBtn gradient={gradient}>{children}</MDBBtn>
+export const ButtonMDB = ({
+  gradient = 'purple',
+  onClick,
+  children,
+  ...others
+}) => (
+  <MDBBtn gradient={gradient} onClick={onClick} {...others}>
+    {children}
+  </MDBBtn>
+);
+
+export const TagButton = ({
+  title,
+  onClick,
+  className,
+  dispatch,
+  color = 'primary',
+  type,
+  ...others
+}) => (
+  <h5
+    className={className}
+    onClick={
+
+        dispatch ? () => dispatch({ type }) :
+        onClick
+    }
+    {...others}>
+    <MDBBadge color={color}>{title}</MDBBadge>
+  </h5>
 );

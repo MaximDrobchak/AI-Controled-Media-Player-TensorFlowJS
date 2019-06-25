@@ -14,8 +14,8 @@ export default ({ styleImg, contentImg, styleRatio = 1.0 }) => {
   let styleNet, transformNet;
   const classes = useStyles();
   async function setNetworks (){
-    styleNet = await loadMobileNetStyleModel();
-    transformNet = await loadSeparableTransformerModel();
+    styleNet = await loadInceptionStyleModel();
+    transformNet = await loadOriginalTransformerModel();
   }
   useEffect(() => {
     setNetworks();
