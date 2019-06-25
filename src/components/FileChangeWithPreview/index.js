@@ -14,16 +14,16 @@ export default ({ img, src, inputID, heightImg }) => {
   };
 
   return (
-    <div className={classes.inputFile}>
+    <div className={classes.root}>
       <InputFile onChange={handleSelect} inputID={inputID} />
       <img
         ref={img}
         style={{
-          height: heightImg,
-          // display:
+          maxHeight:
 
-          //     inputID == 'style-img' ? 'none' :
-          //     '',
+              inputID == 'style-img' ? 240 :
+              heightImg,
+          maxWidth: '100%',
         }}
         src={src}
       />

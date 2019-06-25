@@ -1,42 +1,40 @@
-import { InputFile } from '../../../components';
-
-import React, { useState, useRef, useEffect } from 'react';
-
-import {
-  Layout,
-  Loading,
-  Error,
-  FileChangeWithPreview,
-  Slider,
-} from '../../../components';
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useReducer,
+  useCallback,
+} from 'react';
+import { styleTransferReducer, initialState } from './reducer';
+import { Layout, Loading, Error } from '../../../components';
+import { MDBRow } from 'mdbreact';
 import StyleTransfer from '../../../containers/MyModelAI/StyleTransfer/';
 import { useStyles } from './styles';
-import { chicago, seaport } from './img';
+
+import ImageContainer from './ImageContainer';
 
 export default () => {
   const styleImg = useRef();
   const contentImg = useRef();
   const classes = useStyles();
+  const [ state, dispatch ] = useReducer(styleTransferReducer, initialState);
 
   return (
     <Layout>
-      <div className={classes.root}>
-        <FileChangeWithPreview
-          img={styleImg}
-          src={chicago}
-          inputID='content-img'
-          heightImg={340}
+      <MDBRow className='mb-2' style={{ justifyContent: 'space-between' }}>
+        <ImageContainer
+          refImg={styleImg}
+          {...state.content}
+          dispatch={dispatch}
         />
-        <FileChangeWithPreview
-          img={contentImg}
-          src={seaport}
-          inputID='style-img'
-          heightImg={100}
+        <ImageContainer
+          refImg={contentImg}
+          {...state.image}
+          dispatch={dispatch}
         />
-      </div>
+      </MDBRow>
 
       <StyleTransfer styleImg={styleImg} contentImg={contentImg} />
-      <Slider />
     </Layout>
   );
 };
