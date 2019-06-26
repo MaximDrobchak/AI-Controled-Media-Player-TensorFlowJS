@@ -10,14 +10,7 @@ import { MDBCol } from 'mdbreact';
 import webCammera from '../webCammera';
 import setSettings, { setSrc } from './setSettings';
 // ,
-export default ({
-  src,
-  refImg,
-  inputID,
-  heightImg = 240,
-  dispatch,
-  setSwitch,
-}) => {
+export default ({ src, refImg, inputID, heightImg, dispatch, setSwitch }) => {
   const classes = useStyles({ inputID });
   const [ triger, setTriger ] = useState(false);
   const [ stream, setStream ] = useState(null);

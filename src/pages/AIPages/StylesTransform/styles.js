@@ -8,6 +8,6 @@ export const useStyles = makeStyles({
     padding: 50,
   },
   canvas: {
-    minHeight: 240,
+    maxHeight: 400,
   },
 });

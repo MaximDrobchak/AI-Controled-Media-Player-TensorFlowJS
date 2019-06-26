@@ -3,7 +3,7 @@ import { InputFile } from '../';
 import { useStyles } from './styles';
 
 export default ({ img, src, inputID, heightImg }) => {
-  const classes = useStyles();
+  const classes = useStyles({ inputID, heightImg });
 
   const handleSelect = file => {
     const fileReader = new FileReader();
@@ -16,18 +16,13 @@ export default ({ img, src, inputID, heightImg }) => {
   return (
     <div className={classes.root}>
       <InputFile onChange={handleSelect} inputID={inputID} />
+      <img className={classes.image} src={src} inputID={inputID} />
       <img
         ref={img}
-        style={{
-          maxHeight:
-
-              inputID == 'style-img' ? 240 :
-              heightImg,
-          maxWidth: '100%',
-        }}
+        className={classes.styleImage}
+        heightImg={heightImg}
         src={src}
       />
-      {/* {inputID == 'style-img' && <img style={{ height: 240 }} src={src} />} */}
     </div>
   );
 };

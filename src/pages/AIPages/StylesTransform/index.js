@@ -42,6 +42,7 @@ const StyleTransfetPage = ({
   };
   return (
     <Layout>
+      <button onClick={handleStartStyling}>Button</button>
       <MDBRow className='mb-2' style={{ justifyContent: 'space-between' }}>
         <ImageContainer
           refImg={styleImg}
@@ -62,7 +63,6 @@ const StyleTransfetPage = ({
         src='./Exemple/images/beach.jpg'
         style={{ display: 'none' }}
       />
-      <button onClick={handleStartStyling}>Button</button>
     </Layout>
   );
 };

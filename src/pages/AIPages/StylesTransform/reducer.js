@@ -5,12 +5,12 @@ export const initialState = {
   image: {
     src: seaport,
     inputID: 'style-img',
-    heightImg: 240,
+    heightImg: 250,
   },
   content: {
     src: chicago,
     inputID: 'content-img',
-    heightImg: 240,
+    heightImg: 250,
   },
 };
 
