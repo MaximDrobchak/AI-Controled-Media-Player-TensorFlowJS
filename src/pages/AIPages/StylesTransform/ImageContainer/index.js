@@ -8,35 +8,33 @@ import {
 import { useStyles } from './styles';
 import { MDBCol } from 'mdbreact';
 import webCammera from '../webCammera';
-import setSettings from './setSettings';
-
+import setSettings, { setSrc } from './setSettings';
+// ,
 export default ({ src, refImg, inputID, heightImg = 240, dispatch }) => {
   const classes = useStyles({ inputID });
   const [ triger, setTriger ] = useState(false);
   const [ stream, setStream ] = useState(null);
 
-  const webcamVideoElements = useRef();
-  const elements = useRef();
-  const hiddenCanvass = useRef();
+  const webcamVideoElement = useRef();
+  const element = useRef();
+  const hiddenCanvas = useRef();
 
   const handleCammera = () => {
     webCammera(
-      hiddenCanvass,
-      webcamVideoElements,
-      elements,
+      hiddenCanvas,
+      webcamVideoElement,
+      element,
       setStream,
       setTriger,
       triger,
       stream,
+      dispatch,
     );
   };
 
   const settings = setSettings(inputID);
-  const imgSrc =
+  const imgSrc = setSrc(src, element);
 
-      elements.current && elements.current.src.length > 10000 ? elements.current
-        .src :
-      src;
   return (
     <MDBCol
       xl='6'
@@ -60,15 +58,17 @@ export default ({ src, refImg, inputID, heightImg = 240, dispatch }) => {
               dispatch={dispatch}
             />
           ))}
-          <ModelPopup
-            className={classes.tagButton}
-            lableButton='Camera'
-            title='Title'
-            handleCammera={handleCammera}>
-            <video ref={webcamVideoElements} width='500' height='375' />
-            <canvas ref={hiddenCanvass} style={{ display: 'none' }} />
-            <img ref={elements} />
-          </ModelPopup>
+          {inputID !== 'style-img' && (
+            <ModelPopup
+              className={classes.tagButton}
+              lableButton='Camera'
+              title='Title'
+              handleCammera={handleCammera}>
+              <video ref={webcamVideoElement} width='500' height='375' />
+              <canvas ref={hiddenCanvas} style={{ display: 'none' }} />
+              <img ref={element} />
+            </ModelPopup>
+          )}
         </div>
       </div>
       <Slider />

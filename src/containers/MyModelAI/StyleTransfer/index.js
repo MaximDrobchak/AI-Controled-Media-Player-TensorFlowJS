@@ -25,12 +25,51 @@ export default Component => props => {
     };
   }, []);
 
+  // const [ styleNetSwitch, setStyleNetSwitch ] = useState(false);
+  // useEffect(
+  //   () => {
+  //     async function setNetworks (){
+  //       let styleNetLoad =
+  //         styleNetSwitch ? await loadInceptionStyleModel() :
+  //         await loadMobileNetStyleModel();
+
+  //       setStyleNet(styleNetLoad);
+  //       setStyleNetSwitch(!styleNetSwitch);
+  //     }
+  //     setNetworks();
+  //     return () => {
+  //       setNetworks();
+  //     };
+  //   },
+  //   [ styleNetSwitch ],
+  // );
+
+  // const [ transformNetSwitch, setTransformNetSwitch ] = useState(false);
+  // useEffect(
+  //   () => {
+  //     async function setNetworks (){
+  //       let transformNetLoad =
+  //         transformNetSwitch ? await loadOriginalTransformerModel() :
+  //         await loadSeparableTransformerModel();
+
+  //       setTransformNet(transformNetLoad);
+  //       setTransformNetSwitch(!transformNetSwitch);
+  //     }
+  //     setNetworks();
+  //     return () => {
+  //       setNetworks();
+  //     };
+  //   },
+  //   [ transformNetSwitch ],
+  // );
   return (
     <Component
       {...props}
       styleNet={styleNet}
       transformNet={transformNet}
       startStyling={startStyling}
+      // setStyleNetSwitch={setStyleNetSwitch}
+      // setTransformNetSwitch={setTransformNetSwitch}
     />
   );
 };

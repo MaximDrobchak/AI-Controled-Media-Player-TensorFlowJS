@@ -20,6 +20,9 @@ export const styleTransferReducer = (state, action) => {
       return onAddRandomContent(state, action);
     case 'RANDOM_IMAGE':
       return onAddRandomImage(state, action);
+    case 'SRC_CONTENT':
+      return onAddSrcContent(state, action);
+
     default:
       return state;
   }
@@ -30,8 +33,8 @@ const onAddRandomContent = (state, action) => {
     ...state,
     content: {
       src: links[randomNumber],
-      inputID: 'content-img',
-      heightImg: 240,
+      inputID: state.content.inputID,
+      heightImg: state.content.heightImg,
     },
   };
 };
@@ -41,8 +44,16 @@ const onAddRandomImage = (state, action) => {
     ...state,
     image: {
       src: links[randomNumber],
-      inputID: 'style-img',
-      heightImg: 240,
+      inputID: state.image.inputID,
+      heightImg: state.image.heightImg,
     },
   };
 };
+const onAddSrcContent = (state, action) => ({
+  ...state,
+  content: {
+    src: action.src,
+    inputID: state.content.inputID,
+    heightImg: state.content.heightImg,
+  },
+});

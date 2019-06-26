@@ -13,7 +13,13 @@ import { useStyles } from './styles';
 
 import ImageContainer from './ImageContainer';
 
-const StyleTransfetPage = ({ startStyling, styleNet, transformNet }) => {
+const StyleTransfetPage = ({
+  startStyling,
+  styleNet,
+  transformNet,
+  // setStyleNetSwitch,
+  // setTransformNetSwitch,
+}) => {
   const styleImg = useRef();
   const contentImg = useRef();
   const canvas = useRef();
@@ -41,11 +47,13 @@ const StyleTransfetPage = ({ startStyling, styleNet, transformNet }) => {
           refImg={styleImg}
           {...state.content}
           dispatch={dispatch}
+          // setSwitch={setStyleNetSwitch}
         />
         <ImageContainer
           refImg={contentImg}
           {...state.image}
           dispatch={dispatch}
+          // setSwitch={setTransformNetSwitch}
         />
       </MDBRow>
       <canvas ref={canvas} className={classes.canvas} />

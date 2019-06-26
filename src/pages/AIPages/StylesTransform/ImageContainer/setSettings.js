@@ -20,3 +20,13 @@ export default inputID => {
 
   return settings;
 };
+
+export const setSrc = (src, element) => {
+  const imgSrc =
+
+      element.current && element.current.src.length > 100000 ? element.current
+        .src :
+      src;
+
+  return imgSrc;
+};

@@ -1,38 +1,39 @@
 export default (
-  hiddenCanvass,
-  webcamVideoElements,
-  elements,
+  hiddenCanvas,
+  webcamVideoElement,
+  element,
   setStream,
   setTriger,
   triger,
   stream,
+  dispatch,
 ) => {
   navigator.getUserMedia =
     navigator.getUserMedia ||
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia ||
     navigator.msGetUserMedia;
-
-  const hiddenCanvas = hiddenCanvass.current;
-  const webcamVideoElement = webcamVideoElements.current;
-  const element = elements.current;
-  const hiddenContext = hiddenCanvas.getContext('2d');
-  hiddenCanvas.width = webcamVideoElement.width;
-  hiddenCanvas.height = webcamVideoElement.height;
+  const hiddenContext = hiddenCanvas.current.getContext('2d');
+  hiddenCanvas.current.width = webcamVideoElement.current.width;
+  hiddenCanvas.current.height = webcamVideoElement.current.height;
   hiddenContext.drawImage(
-    webcamVideoElement,
+    webcamVideoElement.current,
     0,
     0,
-    hiddenCanvas.width,
-    hiddenCanvas.height,
+    hiddenCanvas.current.width,
+    hiddenCanvas.current.height,
   );
-  const imageDataURL = hiddenCanvas.toDataURL('image/jpg');
-  element.src = imageDataURL;
+  const imageDataURL = hiddenCanvas.current.toDataURL('image/jpg');
+  element.current.src = imageDataURL;
   if (triger) {
     setTimeout(() => {
       stream.getTracks()[0].stop();
-      webcamVideoElement.style.display = 'none';
-      element.style.display = 'block';
+      webcamVideoElement.current.style.display = 'none';
+      element.current.style.display = 'block';
+      dispatch({
+        type: 'SRC_CONTENT',
+        src: element.current.src,
+      });
       setTriger(false);
     }, 0);
   }
@@ -42,11 +43,11 @@ export default (
         video: true,
       },
       stream => {
-        webcamVideoElement.style.display = 'block';
-        element.style.display = 'none';
+        webcamVideoElement.current.style.display = 'block';
+        element.current.style.display = 'none';
         setStream(stream);
-        webcamVideoElement.srcObject = stream;
-        webcamVideoElement.play();
+        webcamVideoElement.current.srcObject = stream;
+        webcamVideoElement.current.play();
         setTriger(true);
       },
       err => {
