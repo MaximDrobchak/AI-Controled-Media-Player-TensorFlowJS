@@ -28,6 +28,7 @@ export const styleTransferReducer = (state, action) => {
 };
 const onAddRandomContent = (state, action) => {
   const randomNumber = Math.floor(Math.random() * links.length);
+
   return {
     ...state,
     content: {

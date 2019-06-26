@@ -8,10 +8,9 @@ export async function startStyling (
   styleRatio,
   combContent,
 ){
-  console.log(styleImg, contentImgs);
   const styleImgs = styleImg.current;
-  const canvass = canvas.current;
   const contentImgs = contentImg.current;
+  const canvass = canvas.current;
   const combContentImg = combContent.current;
 
   let bottleneck = await tf.tidy(() => {
