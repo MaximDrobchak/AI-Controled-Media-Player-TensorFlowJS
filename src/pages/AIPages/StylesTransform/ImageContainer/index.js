@@ -7,78 +7,34 @@ import {
 } from '../../../../components';
 import { useStyles } from './styles';
 import { MDBCol } from 'mdbreact';
+import webCammera from '../webCammera';
+import setSettings from './setSettings';
 
 export default ({ src, refImg, inputID, heightImg = 240, dispatch }) => {
   const classes = useStyles({ inputID });
   const [ triger, setTriger ] = useState(false);
   const [ stream, setStream ] = useState(null);
 
-  const webcamVideoElement = useRef();
-  const element = useRef();
+  const webcamVideoElements = useRef();
+  const elements = useRef();
   const hiddenCanvass = useRef();
-  const settings =
 
-      inputID !== 'style-img' ? [
-        {
-          id: '11',
-          title: 'Random',
-          type: 'RANDOM_CONTENT',
-          icon: 'random',
-        },
-      ] :
-      [
-        {
-          id: '1',
-          title: 'Random',
-          type: 'RANDOM_IMAGE',
-          icon: 'random',
-        },
-      ];
-  navigator.getUserMedia =
-    navigator.getUserMedia ||
-    navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia ||
-    navigator.msGetUserMedia;
   const handleCammera = () => {
-    const hiddenCanvas = hiddenCanvass.current;
-    const hiddenContext = hiddenCanvas.getContext('2d');
-    hiddenCanvas.width = webcamVideoElement.current.width;
-    hiddenCanvas.height = webcamVideoElement.current.height;
-    hiddenContext.drawImage(
-      webcamVideoElement.current,
-      0,
-      0,
-      hiddenCanvas.width,
-      hiddenCanvas.height,
+    webCammera(
+      hiddenCanvass,
+      webcamVideoElements,
+      elements,
+      setStream,
+      setTriger,
+      triger,
+      stream,
     );
-    const imageDataURL = hiddenCanvas.toDataURL('image/jpg');
-    element.current.src = imageDataURL;
-    if (triger) {
-      setTimeout(() => {
-        stream.getTracks()[0].stop();
-        setTriger(false);
-      }, 0);
-    }
-    else {
-      navigator.getUserMedia(
-        {
-          video: true,
-        },
-        stream => {
-          setStream(stream);
-          webcamVideoElement.current.srcObject = stream;
-          webcamVideoElement.current.play();
-          setTriger(true);
-        },
-        err => {
-          console.error(err);
-        },
-      );
-    }
   };
+
+  const settings = setSettings(inputID);
   const imgSrc =
 
-      element.current && element.current.src.length > 10000 ? element.current
+      elements.current && elements.current.src.length > 10000 ? elements.current
         .src :
       src;
   return (
@@ -109,9 +65,9 @@ export default ({ src, refImg, inputID, heightImg = 240, dispatch }) => {
             lableButton='Camera'
             title='Title'
             handleCammera={handleCammera}>
-            <video ref={webcamVideoElement} width='500' height='375' />
+            <video ref={webcamVideoElements} width='500' height='375' />
             <canvas ref={hiddenCanvass} style={{ display: 'none' }} />
-            <img ref={element} />
+            <img ref={elements} />
           </ModelPopup>
         </div>
       </div>
