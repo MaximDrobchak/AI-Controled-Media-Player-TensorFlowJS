@@ -17,8 +17,8 @@ const StyleTransfetPage = ({
   startStyling,
   styleNet,
   transformNet,
-  // setStyleNetSwitch,
-  // setTransformNetSwitch,
+  handleTransformSwitch,
+  handleStyleNetSwitch,
 }) => {
   const styleImg = useRef();
   const contentImg = useRef();
@@ -47,13 +47,13 @@ const StyleTransfetPage = ({
           refImg={styleImg}
           {...state.content}
           dispatch={dispatch}
-          // setSwitch={setStyleNetSwitch}
+          setSwitch={handleStyleNetSwitch}
         />
         <ImageContainer
           refImg={contentImg}
           {...state.image}
           dispatch={dispatch}
-          // setSwitch={setTransformNetSwitch}
+          setSwitch={handleTransformSwitch}
         />
       </MDBRow>
       <canvas ref={canvas} className={classes.canvas} />

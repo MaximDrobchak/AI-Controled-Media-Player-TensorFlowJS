@@ -10,7 +10,14 @@ import { MDBCol } from 'mdbreact';
 import webCammera from '../webCammera';
 import setSettings, { setSrc } from './setSettings';
 // ,
-export default ({ src, refImg, inputID, heightImg = 240, dispatch }) => {
+export default ({
+  src,
+  refImg,
+  inputID,
+  heightImg = 240,
+  dispatch,
+  setSwitch,
+}) => {
   const classes = useStyles({ inputID });
   const [ triger, setTriger ] = useState(false);
   const [ stream, setStream ] = useState(null);
@@ -34,7 +41,12 @@ export default ({ src, refImg, inputID, heightImg = 240, dispatch }) => {
 
   const settings = setSettings(inputID);
   const imgSrc = setSrc(src, element);
+  const [ imageSwitch, setImageSwitch ] = useState(true);
 
+  const handleSwitch = () => {
+    setImageSwitch(!imageSwitch);
+    setSwitch();
+  };
   return (
     <MDBCol
       xl='6'
@@ -69,6 +81,16 @@ export default ({ src, refImg, inputID, heightImg = 240, dispatch }) => {
               <img ref={element} />
             </ModelPopup>
           )}
+          <TagButton
+            onClick={handleSwitch}
+            title='setSwitch'
+            color={
+
+                imageSwitch ? 'primary' :
+                'purple'
+            }
+            className={classes.tagButton}
+          />
         </div>
       </div>
       <Slider />

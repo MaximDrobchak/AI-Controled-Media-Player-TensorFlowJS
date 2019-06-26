@@ -25,51 +25,33 @@ export default Component => props => {
     };
   }, []);
 
-  // const [ styleNetSwitch, setStyleNetSwitch ] = useState(false);
-  // useEffect(
-  //   () => {
-  //     async function setNetworks (){
-  //       let styleNetLoad =
-  //         styleNetSwitch ? await loadInceptionStyleModel() :
-  //         await loadMobileNetStyleModel();
+  const [ styleNetSwitch, setStyleNetSwitch ] = useState(false);
+  const handleStyleNetSwitch = async () => {
+    let styleNetLoad =
+      styleNetSwitch ? await loadInceptionStyleModel() :
+      await loadMobileNetStyleModel();
+    console.log('test');
+    setStyleNet(styleNetLoad);
+    setStyleNetSwitch(!styleNetSwitch);
+  };
 
-  //       setStyleNet(styleNetLoad);
-  //       setStyleNetSwitch(!styleNetSwitch);
-  //     }
-  //     setNetworks();
-  //     return () => {
-  //       setNetworks();
-  //     };
-  //   },
-  //   [ styleNetSwitch ],
-  // );
-
-  // const [ transformNetSwitch, setTransformNetSwitch ] = useState(false);
-  // useEffect(
-  //   () => {
-  //     async function setNetworks (){
-  //       let transformNetLoad =
-  //         transformNetSwitch ? await loadOriginalTransformerModel() :
-  //         await loadSeparableTransformerModel();
-
-  //       setTransformNet(transformNetLoad);
-  //       setTransformNetSwitch(!transformNetSwitch);
-  //     }
-  //     setNetworks();
-  //     return () => {
-  //       setNetworks();
-  //     };
-  //   },
-  //   [ transformNetSwitch ],
-  // );
+  const [ transformNetSwitch, setTransformNetSwitch ] = useState(false);
+  const handleTransformSwitch = async () => {
+    let transformNetLoad =
+      transformNetSwitch ? await loadOriginalTransformerModel() :
+      await loadSeparableTransformerModel();
+    console.log('test');
+    setTransformNet(transformNetLoad);
+    setTransformNetSwitch(!transformNetSwitch);
+  };
   return (
     <Component
       {...props}
       styleNet={styleNet}
       transformNet={transformNet}
       startStyling={startStyling}
-      // setStyleNetSwitch={setStyleNetSwitch}
-      // setTransformNetSwitch={setTransformNetSwitch}
+      handleStyleNetSwitch={handleStyleNetSwitch}
+      handleTransformSwitch={handleTransformSwitch}
     />
   );
 };
