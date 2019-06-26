@@ -7,7 +7,7 @@ import {
   MDBModalFooter,
 } from 'mdbreact';
 import { ButtonMDB, TagButton } from '../';
-export default ({ lableButton, title, className, children }) => {
+export default ({ lableButton, title, className, children, handleCammera }) => {
   const [ show, setShow ] = useState(false);
   const handleShow = () => setShow(!show);
 
@@ -18,14 +18,16 @@ export default ({ lableButton, title, className, children }) => {
         title={lableButton}
         className={className}
       />
-      <MDBModal isOpen={show} toggle={handleShow} centered>
+      <MDBModal isOpen={show} toggle={handleShow} top>
         <MDBModalHeader toggle={handleShow}>{title}</MDBModalHeader>
         <MDBModalBody>{children}</MDBModalBody>
         <MDBModalFooter>
           <MDBBtn color='secondary' onClick={handleShow}>
             Close
           </MDBBtn>
-          <MDBBtn color='primary'>Save changes</MDBBtn>
+          <MDBBtn onClick={handleCammera} color='primary'>
+            Save changes
+          </MDBBtn>
         </MDBModalFooter>
       </MDBModal>
     </div>

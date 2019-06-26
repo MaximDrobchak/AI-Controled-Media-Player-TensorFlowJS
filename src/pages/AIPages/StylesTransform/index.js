@@ -18,6 +18,7 @@ const StyleTransfetPage = ({ startStyling, styleNet, transformNet }) => {
   const contentImg = useRef();
   const canvas = useRef();
   const combContent = useRef();
+
   const classes = useStyles();
   const [ state, dispatch ] = useReducer(styleTransferReducer, initialState);
   const handleStartStyling = () => {
@@ -54,13 +55,6 @@ const StyleTransfetPage = ({ startStyling, styleNet, transformNet }) => {
         style={{ display: 'none' }}
       />
       <button onClick={handleStartStyling}>Button</button>
-      {/*
-      <StyleTransfer
-        styleImg={styleImg}
-        styleNet={state.styleNet}
-        transformNet={state.transformNet}
-        contentImg={contentImg}
-      /> */}
     </Layout>
   );
 };
