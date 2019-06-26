@@ -18,7 +18,7 @@ export default ({ lableButton, title, className, children, handleCammera }) => {
         title={lableButton}
         className={className}
       />
-      <MDBModal isOpen={show} toggle={handleShow} top>
+      <MDBModal isOpen={show} toggle={handleShow} fullHeight position='top'>
         <MDBModalHeader toggle={handleShow}>{title}</MDBModalHeader>
         <MDBModalBody>{children}</MDBModalBody>
         <MDBModalFooter>
