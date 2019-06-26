@@ -1,9 +1,7 @@
-import { chicago, seaport } from './img';
-import links from './links';
+import links, { chicago, seaport } from './img';
 
 export const initialState = {
-  styleNetImage: null,
-  styleTransferImage: null,
+  styleRatio: 1.0,
   image: {
     src: seaport,
     inputID: 'style-img',
@@ -28,7 +26,6 @@ export const styleTransferReducer = (state, action) => {
 };
 const onAddRandomContent = (state, action) => {
   const randomNumber = Math.floor(Math.random() * links.length);
-
   return {
     ...state,
     content: {

@@ -7,4 +7,7 @@ export const useStyles = makeStyles({
     justifyContent: 'space-between',
     padding: 50,
   },
+  canvas: {
+    minHeight: 240,
+  },
 });

@@ -8,43 +8,29 @@ import {
   loadSeparableTransformerModel,
 } from './loadModels';
 
-export default ({ styleImg, contentImg, styleRatio = 1.0 }) => {
-  const canvas = useRef();
-  const combContent = useRef();
-  let styleNet, transformNet;
-  const classes = useStyles();
-  async function setNetworks (){
-    styleNet = await loadInceptionStyleModel();
-    transformNet = await loadOriginalTransformerModel();
-  }
+export default Component => props => {
+  const [ styleNet, setStyleNet ] = useState(null);
+  const [ transformNet, setTransformNet ] = useState(null);
+
   useEffect(() => {
+    async function setNetworks (){
+      const styleNetLoad = await loadInceptionStyleModel();
+      const transformNetLoad = await loadOriginalTransformerModel();
+      setStyleNet(styleNetLoad);
+      setTransformNet(transformNetLoad);
+    }
     setNetworks();
+    return () => {
+      setNetworks();
+    };
   }, []);
 
   return (
-    <React.Fragment>
-      <button
-        onClick={() => {
-          return setTimeout(() => {
-            startStyling(
-              styleNet,
-              transformNet,
-              canvas,
-              styleImg,
-              contentImg,
-              styleRatio,
-              combContent,
-            );
-          }, 1000);
-        }}>
-        Button
-      </button>
-      <canvas ref={canvas} className={classes.canvas} />
-      <img
-        ref={combContent}
-        src='./Exemple/images/beach.jpg'
-        style={{ display: 'none' }}
-      />
-    </React.Fragment>
+    <Component
+      {...props}
+      styleNet={styleNet}
+      transformNet={transformNet}
+      startStyling={startStyling}
+    />
   );
 };

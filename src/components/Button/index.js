@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, IconButton, Switch, Typography } from '@material-ui/core/';
-import { MDBBtn, MDBBadge } from 'mdbreact';
+import { MDBBtn, MDBBadge, MDBIcon } from 'mdbreact';
 import { useStyles } from './styles';
 export default ({
   type = 'button',
@@ -69,7 +69,7 @@ export const ButtonMDB = ({
     {children}
   </MDBBtn>
 );
-
+// indigo-text, cyan-text, green-text, amber-text
 export const TagButton = ({
   title,
   onClick,
@@ -77,6 +77,8 @@ export const TagButton = ({
   dispatch,
   color = 'primary',
   type,
+  colorIcon = 'red-text',
+  icon,
   ...others
 }) => (
   <h5
@@ -87,6 +89,16 @@ export const TagButton = ({
         onClick
     }
     {...others}>
-    <MDBBadge color={color}>{title}</MDBBadge>
+    <MDBBadge color={color}>
+      {title}
+      {icon && (
+        <MDBIcon
+          icon={icon}
+          className={colorIcon}
+          size='x1'
+          style={{ marginLeft: 10 }}
+        />
+      )}
+    </MDBBadge>
   </h5>
 );

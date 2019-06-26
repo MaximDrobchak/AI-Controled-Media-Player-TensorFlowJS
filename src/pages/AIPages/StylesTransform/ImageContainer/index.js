@@ -14,9 +14,21 @@ export default ({ src, refImg, inputID, heightImg = 240, dispatch }) => {
   const settings =
 
       inputID !== 'style-img' ? [
-        { id: '11', title: 'Camera', type: 'RANDOM_CONTENT' },
+        {
+          id: '11',
+          title: 'Random',
+          type: 'RANDOM_CONTENT',
+          icon: 'random',
+        },
       ] :
-      [ { id: '1', title: 'Camera', type: 'RANDOM_IMAGE' } ];
+      [
+        {
+          id: '1',
+          title: 'Random',
+          type: 'RANDOM_IMAGE',
+          icon: 'random',
+        },
+      ];
   return (
     <MDBCol
       xl='6'
