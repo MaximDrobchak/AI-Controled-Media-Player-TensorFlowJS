@@ -64,6 +64,7 @@ const StyleTransfetPage = ({
       </MDBRow>
       <canvas ref={canvas} className={classes.canvas} />
       <img
+        crossorigin='anonymous'
         ref={combContent}
         src='./Exemple/images/beach.jpg'
         style={{ display: 'none' }}

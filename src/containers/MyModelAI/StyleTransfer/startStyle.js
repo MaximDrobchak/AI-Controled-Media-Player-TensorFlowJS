@@ -12,7 +12,7 @@ export async function startStyling (
   const contentImgs = contentImg.current;
   const canvass = canvas.current;
   const combContentImg = combContent.current;
-
+  await tf.nextFrame();
   let bottleneck = await tf.tidy(() => {
     return styleNet.predict(
       tf.browser
@@ -22,8 +22,8 @@ export async function startStyling (
         .expandDims(),
     );
   });
-  console.log(styleRatio);
   if (styleRatio !== 1.0) {
+    await tf.nextFrame();
     const identityBottleneck = await tf.tidy(() => {
       return styleNet.predict(
         tf.browser
@@ -44,7 +44,7 @@ export async function startStyling (
     styleBottleneck.dispose();
     identityBottleneck.dispose();
   }
-
+  await tf.nextFrame();
   const stylized = await tf.tidy(() => {
     return transformNet
       .predict([

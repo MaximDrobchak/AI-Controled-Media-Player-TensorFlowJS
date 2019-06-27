@@ -8,6 +8,7 @@ export default async function startCombining (
   combContentImg,
   combStylized,
 ){
+  await tf.nextFrame();
   const bottleneck1 = await tf.tidy(() => {
     return styleNet.predict(
       tf.browser
@@ -17,7 +18,7 @@ export default async function startCombining (
         .expandDims(),
     );
   });
-
+  await tf.nextFrame();
   const bottleneck2 = await tf.tidy(() => {
     return styleNet.predict(
       tf.browser
@@ -27,13 +28,13 @@ export default async function startCombining (
         .expandDims(),
     );
   });
-
+  await tf.nextFrame();
   const combinedBottleneck = await tf.tidy(() => {
     const scaledBottleneck1 = bottleneck1.mul(tf.scalar(1 - combStyleRatio));
     const scaledBottleneck2 = bottleneck2.mul(tf.scalar(combStyleRatio));
     return scaledBottleneck1.addStrict(scaledBottleneck2);
   });
-
+  await tf.nextFrame();
   const stylized = await tf.tidy(() => {
     return transformNet
       .predict([
@@ -46,6 +47,7 @@ export default async function startCombining (
       ])
       .squeeze();
   });
+
   await tf.browser.toPixels(stylized, combStylized);
   bottleneck1.dispose();
   bottleneck2.dispose();

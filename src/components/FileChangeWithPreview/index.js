@@ -16,7 +16,12 @@ export default ({ img, src, inputID, heightImg }) => {
   return (
     <div className={classes.root}>
       <InputFile onChange={handleSelect} inputID={inputID} />
-      <img ref={img} className={classes.image} src={src} />
+      <img
+        crossorigin='anonymous'
+        ref={img}
+        className={classes.image}
+        src={src}
+      />
     </div>
   );
 };

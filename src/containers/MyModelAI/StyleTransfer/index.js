@@ -7,6 +7,7 @@ import {
   loadOriginalTransformerModel,
   loadInceptionStyleModel,
   loadSeparableTransformerModel,
+  benchmark,
 } from './loadModels';
 
 export default Component => props => {

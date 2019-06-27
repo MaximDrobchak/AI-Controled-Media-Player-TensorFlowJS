@@ -71,7 +71,7 @@ export default ({ src, refImg, inputID, heightImg, dispatch, setSwitch }) => {
               handleCammera={handleCammera}>
               <video ref={webcamVideoElement} width='500' height='375' />
               <canvas ref={hiddenCanvas} style={{ display: 'none' }} />
-              <img ref={element} />
+              <img ref={element} crossorigin='anonymous' />
             </ModelPopup>
           )}
           <TagButton
