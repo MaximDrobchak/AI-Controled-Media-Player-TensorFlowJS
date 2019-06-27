@@ -9,7 +9,7 @@ import { useStyles } from './styles';
 import { MDBCol } from 'mdbreact';
 import webCammera from '../webCammera';
 import setSettings, { setSrc } from './setSettings';
-// ,
+
 export default ({ src, refImg, inputID, heightImg, dispatch, setSwitch }) => {
   const classes = useStyles({ inputID });
   const [ triger, setTriger ] = useState(false);
@@ -86,7 +86,7 @@ export default ({ src, refImg, inputID, heightImg, dispatch, setSwitch }) => {
           />
         </div>
       </div>
-      <Slider />
+      <Slider dispatch={dispatch} refImg={refImg.current} inputID={inputID} />
     </MDBCol>
   );
 };

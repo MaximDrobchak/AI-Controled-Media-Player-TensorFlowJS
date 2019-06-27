@@ -1,7 +1,7 @@
 import links, { chicago, seaport } from './img';
 
 export const initialState = {
-  styleRatio: 1.0,
+  styleRatio: 0.2,
   image: {
     src: seaport,
     inputID: 'style-img',
@@ -14,6 +14,10 @@ export const initialState = {
   },
 };
 
+function getRndInteger (min, max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export const styleTransferReducer = (state, action) => {
   switch (action.type) {
     case 'RANDOM_CONTENT':
@@ -22,7 +26,14 @@ export const styleTransferReducer = (state, action) => {
       return onAddRandomImage(state, action);
     case 'SRC_CONTENT':
       return onAddSrcContent(state, action);
-
+    case 'STYLE_HEIGTH':
+      return onAddStyleHeight(state, action);
+    case 'CONTENT_HEIGTH':
+      return onAddContentHeight(state, action);
+    case 'STYLE_RATIO':
+      return onAddStyleRatio(state, action);
+    case 'RANDOM_PARAMETERS':
+      return onAddRandomParameters(state, action);
     default:
       return state;
   }
@@ -57,3 +68,43 @@ const onAddSrcContent = (state, action) => ({
     heightImg: state.content.heightImg,
   },
 });
+const onAddStyleHeight = (state, action) => ({
+  ...state,
+  image: {
+    src: state.image.src,
+    inputID: state.image.inputID,
+    heightImg: action.heightImg,
+  },
+});
+const onAddContentHeight = (state, action) => ({
+  ...state,
+  content: {
+    src: state.content.src,
+    inputID: state.content.inputID,
+    heightImg: action.heightImg,
+  },
+});
+const onAddStyleRatio = (state, action) => ({
+  ...state,
+  styleRatio: action.styleRatio,
+});
+const onAddRandomParameters = (state, action) => {
+  const heightImgContent = getRndInteger(256, 400);
+  const heightImgStyle = getRndInteger(100, 400);
+  const styleRatio = getRndInteger(0, 100);
+  const randomNumber = Math.floor(Math.random() * links.length);
+  return {
+    ...state,
+    styleRatio,
+    content: {
+      src: state.content.src,
+      inputID: state.content.inputID,
+      heightImg: heightImgContent,
+    },
+    image: {
+      src: links[randomNumber],
+      inputID: state.image.inputID,
+      heightImg: heightImgStyle,
+    },
+  };
+};

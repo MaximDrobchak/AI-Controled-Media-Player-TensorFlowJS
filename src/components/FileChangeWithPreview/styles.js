@@ -6,33 +6,16 @@ export const useStyles = makeStyles({
     maxWidth: 400,
     position: 'relative',
   },
-  image: ({ inputID }) =>
+  image: ({ inputID, heightImg }) =>
 
       inputID == 'style-img' ? {
-        // position: 'relative',
-        zIndex: 100,
-        height: 250,
+        maxHeight: 400,
+        minHeight: 100,
+        height: heightImg,
       } :
       {
-        // position: 'relative',
-        zIndex: 100,
-        height: 250,
-      },
-  styleImage: ({ inputID }) =>
-
-      inputID == 'style-img' ? {
-        position: 'absolute',
-        maxWidth: 600,
-        // display: 'none',
-        zIndex: -100,
-        height: ({ heightImg }) => heightImg,
-      } :
-      {
-        position: 'absolute',
-        // visibility: 'hidden',
-        // display: 'none',
-        maxWidth: 400,
-        zIndex: -100,
-        height: ({ heightImg }) => heightImg,
+        maxHeight: 400,
+        minHeight: 256,
+        height: heightImg,
       },
 });

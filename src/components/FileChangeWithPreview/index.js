@@ -16,13 +16,7 @@ export default ({ img, src, inputID, heightImg }) => {
   return (
     <div className={classes.root}>
       <InputFile onChange={handleSelect} inputID={inputID} />
-      <img className={classes.image} src={src} inputID={inputID} />
-      <img
-        ref={img}
-        className={classes.styleImage}
-        heightImg={heightImg}
-        src={src}
-      />
+      <img ref={img} className={classes.image} src={src} />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { startStyling } from './startStyle';
+import combiningStyle from './combiningStyle';
 import { useStyles } from './styles';
 import {
   loadMobileNetStyleModel,
@@ -26,23 +27,45 @@ export default Component => props => {
   }, []);
 
   const [ styleNetSwitch, setStyleNetSwitch ] = useState(false);
-  const handleStyleNetSwitch = async () => {
-    let styleNetLoad =
-      styleNetSwitch ? await loadInceptionStyleModel() :
-      await loadMobileNetStyleModel();
-    console.log('test');
-    setStyleNet(styleNetLoad);
-    setStyleNetSwitch(!styleNetSwitch);
+  const handleStyleNetSwitch = async triger => {
+    if (triger) {
+      let styleNetLoad =
+
+          triger === 'true' ? await loadInceptionStyleModel() :
+          await loadMobileNetStyleModel();
+
+      setStyleNet(styleNetLoad);
+      setStyleNetSwitch(!styleNetSwitch);
+    }
+    else {
+      let styleNetLoad =
+        styleNetSwitch ? await loadInceptionStyleModel() :
+        await loadMobileNetStyleModel();
+
+      setStyleNet(styleNetLoad);
+      setStyleNetSwitch(!styleNetSwitch);
+    }
   };
 
   const [ transformNetSwitch, setTransformNetSwitch ] = useState(false);
-  const handleTransformSwitch = async () => {
-    let transformNetLoad =
-      transformNetSwitch ? await loadOriginalTransformerModel() :
-      await loadSeparableTransformerModel();
-    console.log('test');
-    setTransformNet(transformNetLoad);
-    setTransformNetSwitch(!transformNetSwitch);
+  const handleTransformSwitch = async triger => {
+    if (triger) {
+      let transformNetLoad =
+
+          triger === 'false' ? await loadOriginalTransformerModel() :
+          await loadSeparableTransformerModel();
+
+      setTransformNet(transformNetLoad);
+      setTransformNetSwitch(!transformNetSwitch);
+    }
+    else {
+      let transformNetLoad =
+        transformNetSwitch ? await loadOriginalTransformerModel() :
+        await loadSeparableTransformerModel();
+
+      setTransformNet(transformNetLoad);
+      setTransformNetSwitch(!transformNetSwitch);
+    }
   };
   return (
     <Component
@@ -50,6 +73,7 @@ export default Component => props => {
       styleNet={styleNet}
       transformNet={transformNet}
       startStyling={startStyling}
+      combiningStyle={combiningStyle}
       handleStyleNetSwitch={handleStyleNetSwitch}
       handleTransformSwitch={handleTransformSwitch}
     />

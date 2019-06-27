@@ -10,7 +10,7 @@ import { Layout, Loading, Error } from '../../../components';
 import { MDBRow } from 'mdbreact';
 import withStyleTransfer from '../../../containers/MyModelAI/StyleTransfer/';
 import { useStyles } from './styles';
-
+import RootPanelParameters from './RootPanelParameters';
 import ImageContainer from './ImageContainer';
 
 const StyleTransfetPage = ({
@@ -42,7 +42,12 @@ const StyleTransfetPage = ({
   };
   return (
     <Layout>
-      <button onClick={handleStartStyling}>Button</button>
+      <RootPanelParameters
+        handleStartStyling={handleStartStyling}
+        dispatch={dispatch}
+        handleStyleNetSwitch={handleStyleNetSwitch}
+        handleTransformSwitch={handleTransformSwitch}
+      />
       <MDBRow className='mb-2' style={{ justifyContent: 'space-between' }}>
         <ImageContainer
           refImg={styleImg}

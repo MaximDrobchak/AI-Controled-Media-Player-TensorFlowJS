@@ -22,7 +22,7 @@ export async function startStyling (
         .expandDims(),
     );
   });
-
+  console.log(styleRatio);
   if (styleRatio !== 1.0) {
     const identityBottleneck = await tf.tidy(() => {
       return styleNet.predict(
