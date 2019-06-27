@@ -22,6 +22,7 @@ export const useStyles = makeStyles({
 
       inputID == 'style-img' ? {
         position: 'absolute',
+        maxWidth: 600,
         // display: 'none',
         zIndex: -100,
         height: ({ heightImg }) => heightImg,
@@ -30,6 +31,7 @@ export const useStyles = makeStyles({
         position: 'absolute',
         // visibility: 'hidden',
         // display: 'none',
+        maxWidth: 400,
         zIndex: -100,
         height: ({ heightImg }) => heightImg,
       },
