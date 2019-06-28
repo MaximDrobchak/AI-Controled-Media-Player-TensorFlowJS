@@ -7,9 +7,10 @@ export default ({
   handleStartStyling,
   dispatch,
   handleStyleNetSwitch,
-  handleTransformSwitch
+  handleTransformSwitch,
+  isTransform
 }) => {
-  const classes = useStyles();
+  const classes = useStyles({ isTransform });
   const [styleRatio, setStyleRatio] = useState(50);
   const handleChange = e => {
     setStyleRatio(e.target.value);
@@ -37,6 +38,7 @@ export default ({
     <div className={classes.root}>
       <div style={{ zIndex: 100 }}>
         <ButtonMDB
+          className={classes.transformation}
           onClick={handleStartStyling}
           gradient="peach"
           style={{ width: "50%" }}
@@ -44,6 +46,7 @@ export default ({
           Transformation
         </ButtonMDB>
         <ButtonMDB
+          className={classes.randomParam}
           onClick={handleRandomParam}
           gradient="aqua"
           style={{ width: "43%" }}
@@ -51,20 +54,20 @@ export default ({
           Random Param
         </ButtonMDB>
       </div>
-      <div className={classes.slider}>
-        <div className="my-5">
-          <label htmlFor="customRange1" className={classes.lable}>
+      {/* <div className={classes.slider}>
+        <div className='my-5'>
+          <label htmlFor='customRange1' className={classes.lable}>
             Transformation strenght
           </label>
           <input
-            type="range"
-            className="custom-range"
-            id="customRange1"
+            type='range'
+            className='custom-range'
+            id='customRange1'
             value={styleRatio}
             onChange={handleChange}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

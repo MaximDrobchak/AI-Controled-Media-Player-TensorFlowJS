@@ -5,7 +5,7 @@ import { useStyles } from "./styles";
 
 export default ({ img, src, inputID, heightImg, dispatch }) => {
   const classes = useStyles({ inputID, heightImg });
-
+  console.log(heightImg);
   return (
     <div className={classes.root}>
       <FlipCard

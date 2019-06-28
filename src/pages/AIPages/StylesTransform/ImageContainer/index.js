@@ -92,8 +92,8 @@ export default ({
           heightImg={heightImg}
           dispatch={dispatch}
         />
+        <Slider dispatch={dispatch} refImg={refImg.current} inputID={inputID} />
       </div>
-      <Slider dispatch={dispatch} refImg={refImg.current} inputID={inputID} />
     </MDBCol>
   );
 };

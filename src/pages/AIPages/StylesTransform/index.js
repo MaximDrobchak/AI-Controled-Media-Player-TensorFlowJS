@@ -46,6 +46,7 @@ const StyleTransfetPage = ({
         dispatch={dispatch}
         handleStyleNetSwitch={handleStyleNetSwitch}
         handleTransformSwitch={handleTransformSwitch}
+        isTransform={isTransform}
       />
 
       <MDBRow className="mb-2" style={{ justifyContent: "space-between" }}>
@@ -64,7 +65,17 @@ const StyleTransfetPage = ({
           isTransform={isTransform}
         />
       </MDBRow>
-      <canvas ref={canvas} className={classes.canvas} />
+      <div className={classes.resultBlock}>
+        <div className={classes.resultButtons}>
+          <TagButton
+            title="Return"
+            onClick={() => setIsTransform(false)}
+            className={classes.tagButtonStyle}
+          />
+        </div>
+
+        <canvas ref={canvas} className={classes.canvas} />
+      </div>
       <img
         crossOrigin="anonymous"
         ref={combContent}

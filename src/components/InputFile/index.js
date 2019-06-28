@@ -20,15 +20,16 @@ export default ({ inputID, refImg, dispatch }) => {
   };
   return (
     <div className="custom-file" style={{ position: "relative" }}>
+      <label style={{ position: "absolute", left: "100%" }} htmlFor={inputID}>
+        <TagButton title="Choice file" />
+      </label>
       <input
         type="file"
+        style={{ maxWidth: 50, position: "absolute", left: "100%" }}
         className="custom-file-input"
         id={inputID}
         onChange={e => handleSelect(e.target.files[0])}
       />
-      <label style={{ position: "absolute" }} htmlFor={inputID}>
-        <TagButton title="Choice file" />
-      </label>
     </div>
   );
 };

@@ -11,6 +11,8 @@ export const useStyles = makeStyles({
   flipC: {
     position: "absolute",
     height: ({ heightImg }) => heightImg,
+    maxHeight: 400,
+    maxWidth: 600,
     cursor: "pointer",
     background: "#373737",
     willChange: "transform, opacity",

@@ -7,9 +7,10 @@ export const useStyles = makeStyles({
     justifyContent: "space-between"
   },
   mainRow: {
-    display: "inline-flex"
+    display: "inline-flex",
+    width: "80%"
   },
-  tagButton: { marginBottom: 10, cursor: "pointer" },
+  tagButton: { margin: 10, cursor: "pointer" },
   transformation: ({ isTransform, inputID }) =>
     isTransform
       ? {
