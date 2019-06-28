@@ -1,9 +1,9 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { useSpring, animated as a } from "react-spring";
-
+import React, { useState } from "react";
+import { animated as a } from "react-spring";
 import { useStyles } from "./styles";
+import useConfiguration from "./useConfiguration";
 
-export default function Card({ src, heigthImg = 256, dispatch, inputID }) {
+export default ({ src, heightImg, dispatch, inputID }) => {
   const [flipped, set] = useState(false);
   const handleRevert = () => {
     inputID == "style-img"
@@ -12,16 +12,8 @@ export default function Card({ src, heigthImg = 256, dispatch, inputID }) {
 
     set(state => !state);
   };
-  const { transform, opacity } = useSpring({
-    config: { mass: 6, tension: 500, friction: 80 },
-    opacity: flipped ? 1 : 0,
-    transform: `perspective(1400px) rotateX(${flipped ? 180 : 0}deg)`,
-    from: {
-      opacity: flipped ? 1 : 0,
-      transform: `perspective(1400px) rotateX(0deg)`
-    }
-  });
-  const classes = useStyles({ heigthImg });
+  const { transform, opacity } = useConfiguration(flipped);
+  const classes = useStyles({ heightImg });
 
   return (
     <div className={classes.root} onClick={handleRevert}>
@@ -42,9 +34,4 @@ export default function Card({ src, heigthImg = 256, dispatch, inputID }) {
       />
     </div>
   );
-}
-
-function useForceUpdate() {
-  const [, f] = useState(false);
-  return useCallback(() => f(v => !v), []);
-}
+};

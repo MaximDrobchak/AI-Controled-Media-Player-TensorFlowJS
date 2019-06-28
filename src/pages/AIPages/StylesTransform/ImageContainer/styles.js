@@ -7,11 +7,7 @@ export const useStyles = makeStyles(props => ({
     justifyContent: "space-between"
   },
   mainRow: {
-    display: "flex",
-    flexDirection: ({ inputID }) =>
-      inputID == "style-img" ? "row-reverse" : "row",
-
-    justifyContent: "space-between"
+    display: "inline-flex"
   },
   tagButton: { marginBottom: 10, cursor: "pointer" },
   transformation: ({ isTransform, inputID }) =>
@@ -21,8 +17,8 @@ export const useStyles = makeStyles(props => ({
           transitionDuration: "2s",
           transitionTimingFunction: "ease-out",
           zIndex: inputID == "style-img" ? 10 : 20,
-          marginLeft: inputID == "style-img" ? "-100%" : "0%",
-          marginRight: inputID != "style-img" ? "-100%" : "0%",
+          marginLeft: inputID == "style-img" ? "-100%" : "",
+          marginRight: inputID != "style-img" ? "-100%" : "",
           opacity: 0
         }
       : {

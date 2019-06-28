@@ -4,16 +4,18 @@ export const useStyles = makeStyles({
   root: {
     justifyContent: "center",
     position: "relative",
-    alignItems: "center",
+
     display: "flex",
-    height: ({ heigthImg }) => heigthImg
+    height: ({ heightImg }) => heightImg
   },
   flipC: {
     position: "absolute",
-    height: "80%",
+    height: ({ heightImg }) => heightImg,
     cursor: "pointer",
     background: "#373737",
     willChange: "transform, opacity",
+    transitionDuration: "1s",
+    transitionTimingFunction: "ease-out",
     borderRadius: 5,
     overflow: "hidden",
     backgroundSize: "cover",
