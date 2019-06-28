@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
 import {
   FileChangeWithPreview,
-  Slider,
   TagButton,
   ModelPopup,
-  InputFile
+  InputFile,
+  SliderMaterial
 } from "../../../../components";
 import { useStyles } from "./styles";
 import { MDBCol } from "mdbreact";
@@ -80,6 +80,11 @@ export default ({
             className={classes.tagButton}
           />
         </div>
+        <SliderMaterial
+          dispatch={dispatch}
+          refImg={refImg.current}
+          inputID={inputID}
+        />
         <FileChangeWithPreview
           img={refImg}
           src={imgSrc}
@@ -87,7 +92,6 @@ export default ({
           heightImg={heightImg}
           dispatch={dispatch}
         />
-        <Slider dispatch={dispatch} refImg={refImg.current} inputID={inputID} />
       </div>
     </MDBCol>
   );

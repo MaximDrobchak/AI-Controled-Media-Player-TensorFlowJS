@@ -11,13 +11,17 @@ export const useStyles = makeStyles({
     position: "relative"
   },
   slider: {
-    position: "absolute",
+    transitionProperty: "opacity, margin-right, margin-left, position",
+    transitionDuration: "2s",
+    transitionTimingFunction: "ease-out",
+
+    position: "relative",
     margin: "auto",
-    width: "100%"
+    width: "60%"
   },
   lable: {
     margin: 0,
-    marginTop: 20,
+    marginTop: 0,
     padding: 0,
     marginLeft: "28%"
   },

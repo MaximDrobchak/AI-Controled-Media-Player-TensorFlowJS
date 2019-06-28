@@ -39,6 +39,11 @@ export default ({
         onClick={handleRandomParam}
         className={classes.tagButtonStyle}
       />
+      <TagButton
+        title="Start transform"
+        onClick={handleStartStyling}
+        className={classes.tagButtonStyle}
+      />
     </div>
   );
 };

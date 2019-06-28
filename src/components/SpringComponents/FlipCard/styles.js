@@ -22,5 +22,23 @@ export const useStyles = makeStyles({
     overflow: "hidden",
     backgroundSize: "cover",
     backgroundPosition: "center center"
+  },
+  "@media (max-width: 1199.98px)": {
+    flipC: {
+      maxHeight: 360,
+      maxWidth: 540
+    }
+  },
+  "@media (max-width:801.98px)": {
+    flipC: {
+      maxHeight: 320,
+      maxWidth: 500
+    }
+  },
+  "@media (max-width: 420.98px)": {
+    flipC: {
+      maxHeight: 320,
+      maxWidth: 360
+    }
   }
 });

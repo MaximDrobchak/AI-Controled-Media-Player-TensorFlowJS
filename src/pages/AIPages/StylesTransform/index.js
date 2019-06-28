@@ -1,6 +1,12 @@
 import React, { useState, useRef, useReducer } from "react";
 import { styleTransferReducer, initialState } from "./reducer";
-import { Layout, Loading, Error, TagButton } from "../../../components";
+import {
+  Layout,
+  Loading,
+  Error,
+  TagButton,
+  SliderMaterial
+} from "../../../components";
 
 import { MDBRow } from "mdbreact";
 import withStyleTransfer from "../../../containers/MyModelAI/StyleTransfer/";
@@ -74,7 +80,11 @@ const StyleTransfetPage = ({
           handleTransformSwitch={handleTransformSwitch}
           handleStartStyling={handleStartStyling}
         />
-
+        <SliderMaterial
+          dispatch={dispatch}
+          refImg={styleImg.current}
+          {...state.image}
+        />
         <canvas ref={canvas} className={classes.canvas} />
       </div>
       <img

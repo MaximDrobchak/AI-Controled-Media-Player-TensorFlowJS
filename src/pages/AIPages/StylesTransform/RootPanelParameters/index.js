@@ -32,7 +32,6 @@ export default ({
     }
 
     dispatch({ type: "RANDOM_PARAMETERS" });
-    handleStartStyling();
   };
   return (
     <div className={classes.root}>
@@ -49,25 +48,23 @@ export default ({
           className={classes.randomParam}
           onClick={handleRandomParam}
           gradient="aqua"
-          style={{ width: "43%" }}
+          style={{ width: "50%" }}
         >
           Random Param
         </ButtonMDB>
       </div>
-      {/* <div className={classes.slider}>
-        <div className='my-5'>
-          <label htmlFor='customRange1' className={classes.lable}>
-            Transformation strenght
-          </label>
-          <input
-            type='range'
-            className='custom-range'
-            id='customRange1'
-            value={styleRatio}
-            onChange={handleChange}
-          />
-        </div>
-      </div> */}
+      <div className={classes.slider}>
+        <label htmlFor="customRange1" className={classes.lable}>
+          Transformation strenght
+        </label>
+        <input
+          type="range"
+          className="custom-range"
+          id="customRange1"
+          value={styleRatio}
+          onChange={handleChange}
+        />
+      </div>
     </div>
   );
 };
