@@ -28,5 +28,12 @@ export const useStyles = makeStyles({
   },
   tagButtonStyle: {
     margin: 10
+  },
+  secondaryImage: {
+    position: "absolute",
+    right: 0,
+    zIndex: 999,
+    maxHeight: 400,
+    top: "30%"
   }
 });

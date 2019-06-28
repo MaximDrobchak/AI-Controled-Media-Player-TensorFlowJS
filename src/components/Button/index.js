@@ -1,12 +1,12 @@
-import React from 'react';
-import { Button, IconButton, Switch, Typography } from '@material-ui/core/';
-import { MDBBtn, MDBBadge, MDBIcon } from 'mdbreact';
-import { useStyles } from './styles';
+import React from "react";
+import { Button, IconButton, Switch, Typography } from "@material-ui/core/";
+import { MDBBtn, MDBBadge, MDBIcon } from "mdbreact";
+import { useStyles } from "./styles";
 export default ({
-  type = 'button',
+  type = "button",
   fullWidth = true,
-  variant = 'contained',
-  color = 'primary',
+  variant = "contained",
+  color = "primary",
   className,
   disabled,
   children,
@@ -21,7 +21,8 @@ export default ({
       color={color}
       className={className || classes.submit}
       disabled={disabled}
-      {...others}>
+      {...others}
+    >
       {children}
     </Button>
   );
@@ -31,7 +32,7 @@ export const ButtonIcon = ({ onClick, children, className, ...others }) => (
     {children}
   </IconButton>
 );
-export const RedButton = ({ text = '', type = 'button', onClick }) => {
+export const RedButton = ({ text = "", type = "button", onClick }) => {
   const classes = useStyles();
 
   return (
@@ -41,17 +42,17 @@ export const RedButton = ({ text = '', type = 'button', onClick }) => {
   );
 };
 
-export function Switches ({ checkedA, handleChange, lable, style }){
+export function Switches({ checkedA, handleChange, lable, style }) {
   return (
     <div style={style}>
-      <Typography gutterBottom variant='h5' component='h2'>
+      <Typography gutterBottom variant="h5" component="h2">
         {lable}
       </Typography>
       <Switch
         checked={checkedA}
-        onChange={handleChange('checkedA')}
-        value='checkedA'
-        inputProps={{ 'aria-label': 'secondary checkbox' }}
+        onChange={handleChange("checkedA")}
+        value="checkedA"
+        inputProps={{ "aria-label": "secondary checkbox" }}
         onClick={handleChange}
       />
     </div>
@@ -60,7 +61,7 @@ export function Switches ({ checkedA, handleChange, lable, style }){
 
 // peach purple blue aqua
 export const ButtonMDB = ({
-  gradient = 'purple',
+  gradient = "purple",
   onClick,
   children,
   ...others
@@ -75,27 +76,25 @@ export const TagButton = ({
   onClick,
   className,
   dispatch,
-  color = 'primary',
+  color = "primary",
   type,
-  colorIcon = 'red-text',
+  colorIcon = "red-text",
   icon,
   ...others
 }) => (
   <h5
     className={className}
-    onClick={
-
-        dispatch ? () => dispatch({ type }) :
-        onClick
-    }
-    {...others}>
+    style={{ cursor: "pointer" }}
+    onClick={dispatch ? () => dispatch({ type }) : onClick}
+    {...others}
+  >
     <MDBBadge color={color}>
       {title}
       {icon && (
         <MDBIcon
           icon={icon}
           className={colorIcon}
-          size='x1'
+          size="x1"
           style={{ marginLeft: 10 }}
         />
       )}

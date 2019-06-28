@@ -80,6 +80,7 @@ export default ({
             className={classes.tagButton}
           />
         </div>
+
         <SliderMaterial
           dispatch={dispatch}
           refImg={refImg.current}

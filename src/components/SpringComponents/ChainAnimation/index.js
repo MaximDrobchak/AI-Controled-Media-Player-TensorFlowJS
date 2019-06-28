@@ -8,15 +8,15 @@ import {
 } from "react-spring";
 import styled from "styled-components";
 import data from "./data";
-import { TagButton } from "../../";
-export default function App({ children }) {
+
+export default function App({ children, className }) {
   const [open, set] = useState(false);
 
   const springRef = useRef();
 
   const { size, opacity, ...rest } = useSpring({
     from: { size: "20%", background: "hotpink" },
-    size: open ? "80%" : "20%",
+    size: open ? "100%" : "20%",
     background: open ? "white" : "hotpink",
     config: { ...config.stiff, precision: 0.01 },
     ref: springRef
@@ -38,7 +38,7 @@ export default function App({ children }) {
   useChain(open ? chain : chain.reverse(), [0, open ? 0.1 : 0.5]);
 
   return (
-    <Main>
+    <div className={className}>
       <Sidebar
         style={{ ...rest, width: size, height: size }}
         onClick={() => set(open => !open)}
@@ -51,26 +51,22 @@ export default function App({ children }) {
           </div>
         ))}
       </Sidebar>
-    </Main>
+    </div>
   );
 }
 
 const Main = styled("div")`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  right: 0px;
+  top: 0px;
   padding: 20px;
   box-sizing: border-box;
 `;
 
 const Sidebar = styled(animated.div)`
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  width: 40px;
+  min-height: 250px;
   padding: 20px;
   background: white;
   border-radius: 5px;

@@ -14,6 +14,8 @@ import { useStyles } from "./styles";
 import RootPanelParameters from "./RootPanelParameters";
 import ImageContainer from "./ImageContainer";
 import ButtonsPanel from "./ButtonsPanel";
+import { ChainAnimation } from "../../../components/SpringComponents";
+
 const StyleTransfetPage = ({
   startStyling,
   styleNet,
@@ -46,7 +48,7 @@ const StyleTransfetPage = ({
   };
 
   return (
-    <Layout>
+    <Layout className={classes.layout}>
       <RootPanelParameters
         handleStartStyling={handleStartStyling}
         dispatch={dispatch}
@@ -70,6 +72,15 @@ const StyleTransfetPage = ({
           setSwitch={handleTransformSwitch}
           isTransform={isTransform}
         />
+        {/* <ChainAnimation className={classes.secondaryImage}>
+          <ImageContainer
+            refImg={contentImg}
+            {...state.image}
+            dispatch={dispatch}
+            setSwitch={handleTransformSwitch}
+            isTransform={isTransform}
+          />
+        </ChainAnimation> */}
       </MDBRow>
       <div className={classes.resultBlock}>
         <ButtonsPanel
