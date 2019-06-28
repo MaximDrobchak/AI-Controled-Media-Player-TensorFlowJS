@@ -7,7 +7,7 @@ import withStyleTransfer from "../../../containers/MyModelAI/StyleTransfer/";
 import { useStyles } from "./styles";
 import RootPanelParameters from "./RootPanelParameters";
 import ImageContainer from "./ImageContainer";
-
+import ButtonsPanel from "./ButtonsPanel";
 const StyleTransfetPage = ({
   startStyling,
   styleNet,
@@ -66,13 +66,14 @@ const StyleTransfetPage = ({
         />
       </MDBRow>
       <div className={classes.resultBlock}>
-        <div className={classes.resultButtons}>
-          <TagButton
-            title="Return"
-            onClick={() => setIsTransform(false)}
-            className={classes.tagButtonStyle}
-          />
-        </div>
+        <ButtonsPanel
+          setIsTransform={setIsTransform}
+          dispatch={dispatch}
+          isTransform={isTransform}
+          handleStyleNetSwitch={handleStyleNetSwitch}
+          handleTransformSwitch={handleTransformSwitch}
+          handleStartStyling={handleStartStyling}
+        />
 
         <canvas ref={canvas} className={classes.canvas} />
       </div>

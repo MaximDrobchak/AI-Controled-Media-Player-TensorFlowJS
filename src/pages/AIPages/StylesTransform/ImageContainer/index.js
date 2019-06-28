@@ -51,12 +51,7 @@ export default ({
   const classes = useStyles({ inputID, isTransform });
 
   return (
-    <MDBCol
-      xl="6"
-      md="10"
-      className="mb-r"
-      style={{ border: "1px solid black" }}
-    >
+    <MDBCol xl="6" md="10" className="mb-r">
       <div className={classes.transformation}>
         <div className={classes.mainRow}>
           {inputID !== "style-img" && (

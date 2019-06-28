@@ -16,7 +16,7 @@ export const useStyles = makeStyles({
     cursor: "pointer",
     background: "#373737",
     willChange: "transform, opacity",
-    transitionDuration: "1s",
+    transitionDuration: "0.3s",
     transitionTimingFunction: "ease-out",
     borderRadius: 5,
     overflow: "hidden",

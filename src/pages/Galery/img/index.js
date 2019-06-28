@@ -1,3 +1,3 @@
-import YouTubeImage from './youtube.gif';
-
-export { YouTubeImage };
+import YouTubeImage from "./youtube.gif";
+import StyleTransfer from "./giphy.webp";
+export { YouTubeImage, StyleTransfer };

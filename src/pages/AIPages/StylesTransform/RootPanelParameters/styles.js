@@ -8,8 +8,6 @@ export const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    border: "1px solid blue",
-
     position: "relative"
   },
   slider: {
