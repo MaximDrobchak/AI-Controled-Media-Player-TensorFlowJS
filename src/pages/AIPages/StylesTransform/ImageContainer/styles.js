@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export const useStyles = makeStyles(props => ({
+export const useStyles = makeStyles({
   root: {
     display: "flex",
     flexDirection: "row",
@@ -17,8 +17,8 @@ export const useStyles = makeStyles(props => ({
           transitionDuration: "2s",
           transitionTimingFunction: "ease-out",
           zIndex: inputID == "style-img" ? 10 : 20,
-          marginLeft: inputID == "style-img" ? "-100%" : "",
-          marginRight: inputID != "style-img" ? "-100%" : "",
+          marginRight: inputID == "style-img" ? "100%" : "",
+          marginLeft: inputID != "style-img" ? "100%" : "",
           opacity: 0
         }
       : {
@@ -27,5 +27,5 @@ export const useStyles = makeStyles(props => ({
           transitionDuration: "2s",
           transitionTimingFunction: "ease-out"
         }
-}));
+});
 // isTransform

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ButtonMDB } from "../../../../components";
-import { ChainAnimation } from "../../../../components/SpringComponents";
+
 import { useStyles } from "./styles";
 
 export default ({
@@ -35,38 +35,36 @@ export default ({
   };
   return (
     <div className={classes.root}>
-      <ChainAnimation>
-        <div style={{ zIndex: 100 }}>
-          <ButtonMDB
-            onClick={handleStartStyling}
-            gradient="peach"
-            style={{ width: "50%" }}
-          >
-            Transformation
-          </ButtonMDB>
-          <ButtonMDB
-            onClick={handleRandomParam}
-            gradient="aqua"
-            style={{ width: "43%" }}
-          >
-            Random Param
-          </ButtonMDB>
+      <div style={{ zIndex: 100 }}>
+        <ButtonMDB
+          onClick={handleStartStyling}
+          gradient="peach"
+          style={{ width: "50%" }}
+        >
+          Transformation
+        </ButtonMDB>
+        <ButtonMDB
+          onClick={handleRandomParam}
+          gradient="aqua"
+          style={{ width: "43%" }}
+        >
+          Random Param
+        </ButtonMDB>
+      </div>
+      <div className={classes.slider}>
+        <div className="my-5">
+          <label htmlFor="customRange1" className={classes.lable}>
+            Transformation strenght
+          </label>
+          <input
+            type="range"
+            className="custom-range"
+            id="customRange1"
+            value={styleRatio}
+            onChange={handleChange}
+          />
         </div>
-        <div className={classes.slider}>
-          <div className="my-5">
-            <label htmlFor="customRange1" className={classes.lable}>
-              Transformation strenght
-            </label>
-            <input
-              type="range"
-              className="custom-range"
-              id="customRange1"
-              value={styleRatio}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-      </ChainAnimation>
+      </div>
     </div>
   );
 };

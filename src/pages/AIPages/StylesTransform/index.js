@@ -1,7 +1,7 @@
 import React, { useState, useRef, useReducer } from "react";
 import { styleTransferReducer, initialState } from "./reducer";
-import { Layout, Loading, Error } from "../../../components";
-import { FlipCard } from "../../../components/SpringComponents";
+import { Layout, Loading, Error, TagButton } from "../../../components";
+
 import { MDBRow } from "mdbreact";
 import withStyleTransfer from "../../../containers/MyModelAI/StyleTransfer/";
 import { useStyles } from "./styles";
@@ -21,8 +21,9 @@ const StyleTransfetPage = ({
   const combContent = useRef();
   const [isTransform, setIsTransform] = useState(false);
 
-  const classes = useStyles();
+  const classes = useStyles({ isTransform });
   const [state, dispatch] = useReducer(styleTransferReducer, initialState);
+
   const handleStartStyling = () => {
     setIsTransform(true);
     return setTimeout(() => {
@@ -46,6 +47,7 @@ const StyleTransfetPage = ({
         handleStyleNetSwitch={handleStyleNetSwitch}
         handleTransformSwitch={handleTransformSwitch}
       />
+
       <MDBRow className="mb-2" style={{ justifyContent: "space-between" }}>
         <ImageContainer
           refImg={styleImg}

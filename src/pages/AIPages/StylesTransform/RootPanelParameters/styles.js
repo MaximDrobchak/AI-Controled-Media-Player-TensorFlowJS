@@ -2,8 +2,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export const useStyles = makeStyles({
   root: {
-    width: 400,
-    height: 140,
     margin: "auto",
     marginTop: 0,
     marginBottom: 0,

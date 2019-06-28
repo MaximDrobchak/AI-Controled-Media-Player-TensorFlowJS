@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   useTransition,
   useSpring,
@@ -8,12 +8,12 @@ import {
 } from "react-spring";
 import styled from "styled-components";
 import data from "./data";
-
+import { TagButton } from "../../";
 export default function App({ children }) {
   const [open, set] = useState(false);
 
-  // 1. create spring-refs, which will refer to the springs Controller
   const springRef = useRef();
+
   const { size, opacity, ...rest } = useSpring({
     from: { size: "20%", background: "hotpink" },
     size: open ? "80%" : "20%",
@@ -22,7 +22,6 @@ export default function App({ children }) {
     ref: springRef
   });
 
-  // 2. create transition-refs
   const transRef = useRef();
   const transitions = useTransition(open ? data : [], item => item.name, {
     from: { opacity: 0, transform: "scale(0)" },
@@ -31,11 +30,9 @@ export default function App({ children }) {
     trail: 400 / data.length,
     config: { ...config.stiff, precision: 0.01, cancelDelay: true },
     unique: true,
-    //reset: true,
+    reset: true,
     ref: transRef
   });
-
-  //console.log(open ? "container > I T E M S" : "I T E M S > container")
 
   const chain = [springRef, transRef];
   useChain(open ? chain : chain.reverse(), [0, open ? 0.1 : 0.5]);
@@ -47,9 +44,11 @@ export default function App({ children }) {
         onClick={() => set(open => !open)}
       >
         {transitions.map(({ item, key, props }) => (
-          <Item key={key} style={{ ...props, background: item.css }}>
-            {children}
-          </Item>
+          <div style={{ padding: 50 }} onClick={() => set(open => !open)}>
+            <Item key={key} style={{ ...props, background: item.css }}>
+              {children}
+            </Item>
+          </div>
         ))}
       </Sidebar>
     </Main>
