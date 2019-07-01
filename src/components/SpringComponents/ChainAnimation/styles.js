@@ -8,7 +8,7 @@ export const useStyles = makeStyles({
   slideBar: {
     position: "relative",
     display: "flex",
-    minWidth: 500,
+    minWidth: "60vw",
     padding: 20,
     boxSizing: "border-box",
     boxShadow: "0px 10px 10px -5px rgba(0, 0, 0, 0.05)",
@@ -17,5 +17,10 @@ export const useStyles = makeStyles({
     transitionDuration: "1s",
     transitionTimingFunction: "ease-out",
     borderRadius: 5
+  },
+  closeButton: {
+    position: "absolute",
+    display: "block",
+    zIndex: 999
   }
 });

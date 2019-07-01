@@ -8,15 +8,17 @@ import {
 } from "react-spring";
 import styled from "styled-components";
 import data from "./data";
-
+import { TagButton } from "../../";
+import { useStyles } from "./styles";
 export default function App({ children, className }) {
+  const classes = useStyles();
   const [open, set] = useState(false);
 
   const springRef = useRef();
 
   const { size, opacity, ...rest } = useSpring({
-    from: { size: "20%", background: "hotpink" },
-    size: open ? "100%" : "20%",
+    from: { size: "100%", background: "hotpink" },
+    size: open ? "100%" : "100%",
     background: open ? "white" : "hotpink",
     config: { ...config.stiff, precision: 0.01 },
     ref: springRef
@@ -44,7 +46,7 @@ export default function App({ children, className }) {
         onClick={() => set(open => !open)}
       >
         {transitions.map(({ item, key, props }) => (
-          <div style={{ padding: 50 }} onClick={() => set(open => !open)}>
+          <div onClick={() => set(open => !open)}>
             <Item key={key} style={{ ...props, background: item.css }}>
               {children}
             </Item>
@@ -79,9 +81,9 @@ const Sidebar = styled(animated.div)`
 const Item = styled(animated.div)`
   width: 100%;
   height: 100%;
-  min-width: 500px;
-  min-height: 800px;
-  background: white;
+  min-width: 600px;
+  min-height: 500px;
+  background: #ededee;
   border-radius: 5px;
   will-change: transform, opacity;
 `;

@@ -18,7 +18,7 @@ export async function startStyling(
         .expandDims()
     );
   });
-
+  await tf.nextFrame();
   if (styleRatio !== 1.0) {
     const identityBottleneck = await tf.tidy(() => {
       return styleNet.predict(

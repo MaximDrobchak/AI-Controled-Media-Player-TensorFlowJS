@@ -8,7 +8,8 @@ export default ({
   dispatch,
   handleStyleNetSwitch,
   handleTransformSwitch,
-  isTransform
+  isTransform,
+  handleCombiningStyle
 }) => {
   const classes = useStyles({ isTransform });
   const [styleRatio, setStyleRatio] = useState(50);
@@ -57,6 +58,7 @@ export default ({
         <label htmlFor="customRange1" className={classes.lable}>
           Transformation strenght
         </label>
+        <button onClick={handleCombiningStyle}>Combine</button>
         <input
           type="range"
           className="custom-range"

@@ -6,6 +6,10 @@ import useConfiguration from "./useConfiguration";
 export default ({ src, heightImg, dispatch, inputID }) => {
   const [flipped, set] = useState(false);
   const handleRevert = () => {
+    if (inputID == "style-img-2") {
+      dispatch({ type: "RANDOM_IMAGE_2" });
+      return set(state => !state);
+    }
     inputID == "style-img"
       ? dispatch({ type: "RANDOM_IMAGE" })
       : dispatch({ type: "RANDOM_CONTENT" });

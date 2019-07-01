@@ -25,7 +25,6 @@ export default ({
     }
 
     dispatch({ type: "RANDOM_PARAMETERS" });
-    handleStartStyling();
   };
   return (
     <div className={classes.resultButtons}>

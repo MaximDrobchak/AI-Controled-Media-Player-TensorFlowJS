@@ -52,21 +52,19 @@ export default ({
   const classes = useStyles({ inputID, isTransform });
 
   return (
-    <MDBCol xl={secondaryImage ? "12" : "6"} md="10" className="mb-r">
+    <MDBCol xl="6" md="12" className="mb-r">
       <div className={classes.transformation}>
         <div className={classes.mainRow}>
-          {inputID !== "style-img" && (
-            <ModelPopup
-              className={classes.tagButton}
-              lableButton="Camera"
-              title="Title"
-              handleCammera={handleCammera}
-            >
-              <video ref={webcamVideoElement} width="500" height="375" />
-              <canvas ref={hiddenCanvas} style={{ display: "none" }} />
-              <img ref={element} crossOrigin="anonymous" />
-            </ModelPopup>
-          )}
+          <ModelPopup
+            className={classes.tagButton}
+            lableButton="Camera"
+            title="Title"
+            handleCammera={handleCammera}
+          >
+            <video ref={webcamVideoElement} width="500" height="375" />
+            <canvas ref={hiddenCanvas} style={{ display: "none" }} />
+            <img ref={element} crossOrigin="anonymous" />
+          </ModelPopup>
           <TagButton
             onClick={handleSwitch}
             title="setSwitch"

@@ -21,10 +21,12 @@ const StyleTransfetPage = ({
   styleNet,
   transformNet,
   handleTransformSwitch,
-  handleStyleNetSwitch
+  handleStyleNetSwitch,
+  combiningStyle
 }) => {
   const styleImg = useRef();
   const contentImg = useRef();
+  const styleImg2 = useRef();
   const canvas = useRef();
   const combContent = useRef();
   const [isTransform, setIsTransform] = useState(false);
@@ -46,7 +48,21 @@ const StyleTransfetPage = ({
       );
     }, 2600);
   };
-
+  const handleCombiningStyle = () => {
+    setIsTransform(true);
+    return setTimeout(() => {
+      combiningStyle(
+        styleNet,
+        transformNet,
+        canvas,
+        styleImg,
+        styleImg2,
+        contentImg,
+        state.styleRatio,
+        combContent
+      );
+    }, 2600);
+  };
   return (
     <Layout className={classes.layout}>
       <RootPanelParameters
@@ -55,6 +71,7 @@ const StyleTransfetPage = ({
         handleStyleNetSwitch={handleStyleNetSwitch}
         handleTransformSwitch={handleTransformSwitch}
         isTransform={isTransform}
+        handleCombiningStyle={handleCombiningStyle}
       />
 
       <MDBRow className="mb-2" style={{ justifyContent: "space-between" }}>
@@ -72,15 +89,16 @@ const StyleTransfetPage = ({
           setSwitch={handleTransformSwitch}
           isTransform={isTransform}
         />
-        {/* <ChainAnimation className={classes.secondaryImage}>
+        <ChainAnimation className={classes.secondaryImage}>
           <ImageContainer
-            refImg={contentImg}
-            {...state.image}
+            refImg={styleImg2}
+            {...state.image2}
             dispatch={dispatch}
             setSwitch={handleTransformSwitch}
             isTransform={isTransform}
+            secondaryImage
           />
-        </ChainAnimation> */}
+        </ChainAnimation>
       </MDBRow>
       <div className={classes.resultBlock}>
         <ButtonsPanel

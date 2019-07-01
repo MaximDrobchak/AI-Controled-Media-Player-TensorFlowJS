@@ -1,10 +1,16 @@
 import { chicago, seaport } from "./img";
 import links from "./links";
+import { getRndInteger } from "./utils";
 export const initialState = {
   styleRatio: 0.2,
   image: {
     src: seaport,
     inputID: "style-img",
+    heightImg: 256
+  },
+  image2: {
+    src: seaport,
+    inputID: "style-img-2",
     heightImg: 256
   },
   content: {
@@ -14,16 +20,14 @@ export const initialState = {
   }
 };
 
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 export const styleTransferReducer = (state, action) => {
   switch (action.type) {
     case "RANDOM_CONTENT":
       return onAddRandomContent(state, action);
     case "RANDOM_IMAGE":
       return onAddRandomImage(state, action);
+    case "RANDOM_IMAGE_2":
+      return onAddRandomImage2(state, action);
     case "SRC_CONTENT":
       return onAddSrcContent(state, action);
     case "SRC_IMAGE":
@@ -59,6 +63,17 @@ const onAddRandomImage = (state, action) => {
       src: links[randomNumber],
       inputID: state.image.inputID,
       heightImg: state.image.heightImg
+    }
+  };
+};
+const onAddRandomImage2 = (state, action) => {
+  const randomNumber = Math.floor(Math.random() * links.length);
+  return {
+    ...state,
+    image2: {
+      src: links[randomNumber],
+      inputID: state.image2.inputID,
+      heightImg: state.image2.heightImg
     }
   };
 };
