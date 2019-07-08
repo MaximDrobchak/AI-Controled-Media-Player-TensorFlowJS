@@ -8,7 +8,7 @@ export const useStyles = makeStyles({
     padding: 50
   },
   canvas: {
-    maxHeight: 256
+    maxHeight: 400
   },
   resultBlock: {
     maxHeight: 256,

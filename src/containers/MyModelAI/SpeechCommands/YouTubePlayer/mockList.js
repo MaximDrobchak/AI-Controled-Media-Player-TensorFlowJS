@@ -12,10 +12,22 @@ export default [
     lableSecondary: "Gorillaz - Feel Good Inc."
   },
   {
-    id: 0,
+    id: 32,
     link: "ZzHUzctT4bo",
     lable: "Крестная Семья",
     lableSecondary: "Хей Герла"
+  },
+  {
+    id: 0,
+    link: "Uuq6HgKgEFQ",
+    lable: "D-12 - Purple Hills",
+    lableSecondary: "D-12 - Purple Hills"
+  },
+  {
+    id: 44,
+    link: "lVaBvyzuypw",
+    lable: "Gorillaz - Saturnz Barz",
+    lableSecondary: " (Spirit House) 36"
   },
   {
     id: 1,
