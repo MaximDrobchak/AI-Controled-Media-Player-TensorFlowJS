@@ -1,6 +1,6 @@
-import { chicago, seaport } from "./img";
-import links from "./links";
-import { getRndInteger } from "./utils";
+import { seaport } from "../img";
+import links from "../links";
+import { getRndInteger } from "../utils";
 
 export const initialStateStyleImage = {
   src: seaport,

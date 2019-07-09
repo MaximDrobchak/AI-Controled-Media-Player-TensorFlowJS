@@ -2,15 +2,34 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export const useStyles = makeStyles({
   root: {
+    position: "relative",
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between"
+    flexDirection: "row"
   },
   mainRow: {
     display: "inline-flex",
-    width: "80%"
+    width: "100%",
+    border: "1px solid red",
+    height: 30
   },
-  tagButton: { margin: 10, cursor: "pointer" },
+  slider: {
+    width: 55,
+    height: 400,
+    margin: 0,
+    padding: 0,
+    border: "1px solid green",
+    position: "relative"
+  },
+  caruselImage: {
+    width: "100%",
+    height: 55,
+    margin: 0,
+    padding: 0,
+    border: "1px solid green",
+    position: "relative"
+  },
+
+  tagButton: { margin: "0 10px 0 10px", cursor: "pointer" },
   transformation: ({ isTransform, inputID }) =>
     isTransform
       ? {
@@ -20,10 +39,17 @@ export const useStyles = makeStyles({
           zIndex: inputID == "style-img" ? 10 : 20,
           marginRight: inputID == "style-img" ? "100%" : "",
           marginLeft: inputID != "style-img" ? "100%" : "",
-          opacity: 0
+          opacity: 0,
+          minHeight: 500
         }
       : {
+          border: "1px solid blue",
+          minHeight: 500,
+          // left: 0,
           position: "relative",
+          display: "flex",
+          flexDirection: "column",
+
           transitionProperty: "opacity, margin-left, margin-right display",
           transitionDuration: "2s",
           transitionTimingFunction: "ease-out"

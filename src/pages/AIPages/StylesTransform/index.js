@@ -8,11 +8,11 @@ import {
   SliderMaterial
 } from "../../../components";
 
-import { MDBRow } from "mdbreact";
+import { MDBRow, MDBCol } from "mdbreact";
 import withStyleTransfer from "../../../containers/MyModelAI/StyleTransfer/";
 import { useStyles } from "./styles";
 import RootPanelParameters from "./RootPanelParameters";
-import ImageContainer from "./ImageContainer";
+import ImageContainer from "./ImgContainer";
 import ButtonsPanel from "./ButtonsPanel";
 import { ChainAnimation } from "../../../components/SpringComponents";
 
@@ -75,14 +75,16 @@ const StyleTransfetPage = ({
       />
 
       <MDBRow className="mb-2" style={{ justifyContent: "space-between" }}>
-        <ImageContainer
-          refImg={styleImg}
-          {...state.content}
-          dispatch={dispatch}
-          setSwitch={handleStyleNetSwitch}
-          isTransform={isTransform}
-        />
-        <ImageContainer
+        <MDBCol xl="6" md="12" className="mb-r">
+          <ImageContainer
+            refImg={styleImg}
+            {...state.content}
+            dispatch={dispatch}
+            setSwitch={handleStyleNetSwitch}
+            isTransform={isTransform}
+          />
+        </MDBCol>
+        {/* <ImageContainer
           refImg={contentImg}
           {...state.image}
           dispatch={dispatch}
@@ -98,7 +100,7 @@ const StyleTransfetPage = ({
             isTransform={isTransform}
             secondaryImage
           />
-        </ChainAnimation>
+        </ChainAnimation> */}
       </MDBRow>
       <div className={classes.resultBlock}>
         <ButtonsPanel

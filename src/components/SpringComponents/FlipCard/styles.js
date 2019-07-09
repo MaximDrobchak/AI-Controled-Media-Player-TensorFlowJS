@@ -2,16 +2,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export const useStyles = makeStyles({
   root: {
-    justifyContent: "center",
     position: "relative",
-
     display: "flex",
     height: ({ heightImg }) => heightImg
   },
   flipC: {
     position: "absolute",
     height: ({ heightImg }) => heightImg,
-    maxHeight: 400,
+    maxHeight: 360,
     maxWidth: 600,
     cursor: "pointer",
     background: "#373737",
@@ -37,8 +35,8 @@ export const useStyles = makeStyles({
   },
   "@media (max-width: 420.98px)": {
     flipC: {
-      maxHeight: 320,
-      maxWidth: 360
+      maxHeight: 256,
+      maxWidth: 320
     }
   }
 });

@@ -6,8 +6,7 @@ export const useStyles = makeStyles({
   root: {
     height: 300,
     width: 50,
-    position: "absolute",
-    zIndex: 999,
+
     left: ({ inputID }) => inputID !== "style-img" && -25,
     right: ({ inputID }) => inputID === "style-img" && -25
   },
