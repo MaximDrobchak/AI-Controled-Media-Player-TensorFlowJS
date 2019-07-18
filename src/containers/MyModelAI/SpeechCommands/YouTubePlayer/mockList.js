@@ -18,10 +18,16 @@ export default [
     lableSecondary: "Хей Герла"
   },
   {
-    id: 0,
+    id: 33,
     link: "Uuq6HgKgEFQ",
     lable: "D-12 - Purple Hills",
     lableSecondary: "D-12 - Purple Hills"
+  },
+  {
+    id: 0,
+    link: "22aH8_X0JKI",
+    lable: "Триада (нигатив) - подвиг брателло",
+    lableSecondary: "Триада (нигатив) - подвиг брателло"
   },
   {
     id: 44,

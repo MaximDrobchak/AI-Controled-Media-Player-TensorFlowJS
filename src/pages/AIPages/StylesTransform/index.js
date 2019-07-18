@@ -12,7 +12,7 @@ import { MDBRow, MDBCol } from "mdbreact";
 import withStyleTransfer from "../../../containers/MyModelAI/StyleTransfer/";
 import { useStyles } from "./styles";
 import RootPanelParameters from "./RootPanelParameters";
-import ImageContainer from "./ImgContainer";
+import ImageContainer from "./ImageContainer";
 import ButtonsPanel from "./ButtonsPanel";
 import { ChainAnimation } from "../../../components/SpringComponents";
 
@@ -75,16 +75,15 @@ const StyleTransfetPage = ({
       />
 
       <MDBRow className="mb-2" style={{ justifyContent: "space-between" }}>
-        <MDBCol xl="6" md="12" className="mb-r">
-          <ImageContainer
-            refImg={styleImg}
-            {...state.content}
-            dispatch={dispatch}
-            setSwitch={handleStyleNetSwitch}
-            isTransform={isTransform}
-          />
-        </MDBCol>
-        {/* <ImageContainer
+        <ImageContainer
+          refImg={styleImg}
+          {...state.content}
+          dispatch={dispatch}
+          setSwitch={handleStyleNetSwitch}
+          isTransform={isTransform}
+        />
+
+        <ImageContainer
           refImg={contentImg}
           {...state.image}
           dispatch={dispatch}
@@ -100,7 +99,7 @@ const StyleTransfetPage = ({
             isTransform={isTransform}
             secondaryImage
           />
-        </ChainAnimation> */}
+        </ChainAnimation>
       </MDBRow>
       <div className={classes.resultBlock}>
         <ButtonsPanel

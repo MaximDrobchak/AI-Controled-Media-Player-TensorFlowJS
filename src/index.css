@@ -55,10 +55,10 @@ main {
   transition: margin-left 0.5s;
   margin-left: 70px;
 }
-.container {
+/* .container {
   margin-left: 0;
   margin-right: 0;
-}
+} */
 
 .sidebar-fixed .logo-wrapper img {
   width: 100%;
