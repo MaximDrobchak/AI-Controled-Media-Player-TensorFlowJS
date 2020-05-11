@@ -1,4 +1,4 @@
-import "babel-polyfill";
+import "@babel/polyfill";
 import React from "react";
 import ReactDOM from "react-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -22,7 +22,7 @@ ReactDOM.render(
   </FirebaseContext.Provider>,
   document.getElementById("root")
 );
-registerServiceWorker();
+// registerServiceWorker();
 
 // import App from './containers/TensorflowLearning/NumbersCNN';
 // import App from './containers/TensorflowLearning/2DTensorPractical';
