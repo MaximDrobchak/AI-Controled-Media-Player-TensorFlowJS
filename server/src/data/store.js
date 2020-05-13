@@ -8,13 +8,18 @@ const db = new Sequelize("dear", null, null, {
 const UserModel = db.define("user", {
   username: { type: Sequelize.STRING },
   password: { type: Sequelize.STRING },
-  email: { type: Sequelize.STRING }
+  email: { type: Sequelize.STRING },
+  createdAt: { type: Sequelize.STRING },
+  updatedAt: { type: Sequelize.STRING }
 });
 
 const AccountModel = db.define("account", {
   model: { type: Sequelize.STRING },
   playlist: { type: Sequelize.STRING },
-  weights: { type: Sequelize.BLOB }
+  model: { type: Sequelize.STRING },
+  field5: { type: Sequelize.NUMBER },
+  field6: { type: Sequelize.NUMBER }
+  // weights: { type: Sequelize.BLOB }
 });
 
 UserModel.hasMany(AccountModel);

@@ -2,32 +2,65 @@ const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Query {
-    users: [User]
+    users(limit: Int, order: String, where: SequelizeJSON, offset: Int): [User]
+    user(id: Int, where: SequelizeJSON): User
+    account(id: Int, where: SequelizeJSON): Account
     accounts: [Account]
-    account(id: ID!): Account!
   }
+
   type Mutation {
-    createUser(email: String!, first_name: String!, last_name: String): User!
-    createAccount(model: String, playlist: String, weights: String): Account!
-    updateAccount(
-      id: ID!
-      model: String
+    createUser(
+      password: String
+      username: String
+      createdAt: String!
+      updatedAt: String!
+      email: String
+    ): User
+    updateUser(
+      id: Int
+      password: String
+      username: String
+      createdAt: String
+      updatedAt: String
+      email: String
+    ): User
+    deleteUser(id: Int!): GenericResponse
+    createAccount(
       playlist: String
-      weights: String
-    ): Account!
-    deleteAccount(id: ID!): Account!
-  }
-  type User {
-    id: ID!
-    username: String!
-    password: String!
-    email: String!
+      model: String
+      field5: Int
+      field6: Int
+    ): Account
+    updateAccount(
+      id: Int
+      playlist: String
+      model: String
+      field5: Int
+      field6: Int
+    ): Account
+    deleteAccount(id: Int!): GenericResponse
   }
   type Account {
-    id: ID!
-    model: String
+    id: Int!
     playlist: String
-    weights: String
+    model: String
+    field5: Int
+    field6: Int
+  }
+
+  type GenericResponse {
+    success: Boolean
+  }
+
+  scalar SequelizeJSON
+
+  type User {
+    id: Int!
+    password: String
+    username: String
+    createdAt: String!
+    updatedAt: String!
+    email: String
   }
 `;
 

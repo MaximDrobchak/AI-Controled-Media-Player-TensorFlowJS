@@ -31,6 +31,5 @@ server.applyMiddleware({ app });
 
 app.listen(4000, error => {
   if (error) throw error;
-  console.log(User);
   console.info(`🚀  Server ready at http://localhost:4000 .`);
 });
