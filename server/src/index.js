@@ -1,34 +1,39 @@
-const { ApolloServer } = require('apollo-server');
-const { MemcachedCache } = require('apollo-server-cache-memcached');
-const { Query } = require('./Query');
-const { Mutation } = require('./Mutation');
-const { typeDefs } = require('./schema');
+const { typeDefs } = require("./schema");
+const { Query } = require("./Query");
+const { Mutation } = require("./Mutation");
+const { MemcachedCache } = require("apollo-server-cache-memcached");
+const apolloServerKoa = require("apollo-server-koa");
+const Koa = require("koa");
 
-const resolvers = { Query, Mutation };
+const app = new Koa();
+const resolvers = {
+  Query,
+  Mutation
+};
 
-const server = new ApolloServer({
+const server = new apolloServerKoa.ApolloServer({
   typeDefs,
   resolvers,
   context: async ({ req, connection }) => {
     if (connection) {
-      // check connection for metadata
       return connection.context;
-    }
-    else {
-      // check from req
-      const token = req.headers.authorization || '';
+    } else {
+      const token = req.headers.authorization || "";
 
       return { token };
     }
   },
   persistedQueries: {
     cache: new MemcachedCache(
-      [ 'memcached-server-1', 'memcached-server-2', 'memcached-server-3' ],
-      { retries: 10, retry: 10000 },
-    ),
-  },
+      ["memcached-server-1", "memcached-server-2", "memcached-server-3"],
+      { retries: 10, retry: 10000 }
+    )
+  }
 });
 
-server.listen(4000).then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+server.applyMiddleware({ app });
+
+app.listen(4000, error => {
+  if (error) throw error;
+  console.info(`🚀  Server ready at http://localhost:4000 .`);
 });

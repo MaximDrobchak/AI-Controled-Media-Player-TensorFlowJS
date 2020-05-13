@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Query {
@@ -6,7 +6,6 @@ const typeDefs = gql`
     accounts: [Account]
     account(id: ID!): Account!
   }
-
   type Mutation {
     createUser(email: String!, first_name: String!, last_name: String): User!
     createAccount(model: String, playlist: String, weights: String): Account!
@@ -18,13 +17,11 @@ const typeDefs = gql`
     ): Account!
     deleteAccount(id: ID!): Account!
   }
-
   type User {
     id: ID!
     username: String!
     password: String!
   }
-
   type Account {
     id: ID!
     model: String
@@ -34,5 +31,5 @@ const typeDefs = gql`
 `;
 
 module.exports = {
-  typeDefs,
+  typeDefs
 };
