@@ -1,11 +1,11 @@
-const { User, Account } = require('./data/store');
+const { User, Account } = require("./data/store");
 // const uuidv4 = require('uuid/v4');
 const Mutation = {
-  createUser: async (_, { email, first_name, last_name }) => {
+  createUser: async (_, { email, username, password }) => {
     return User.create({
       email,
-      first_name,
-      last_name,
+      username,
+      password
     }).then(user => {
       return user;
     });
@@ -16,12 +16,12 @@ const Mutation = {
       const result = await Account.create({
         model,
         playlist,
-        weights,
+        weights
       });
 
       return { ...result };
     } catch (error) {
-      console.log('error', error);
+      console.log("error", error);
     }
   },
 
@@ -31,11 +31,11 @@ const Mutation = {
         id,
         model,
         playlist,
-        weights,
+        weights
       });
       return { ...result };
     } catch (error) {
-      console.log('error');
+      console.log("error");
     }
   },
   deleteAccount: async (_, { id }) => {
@@ -43,9 +43,9 @@ const Mutation = {
       const result = await Account.delete({ id });
       return { ...result };
     } catch (error) {
-      console.log('error');
+      console.log("error");
     }
-  },
+  }
 };
 
 module.exports = { Mutation };

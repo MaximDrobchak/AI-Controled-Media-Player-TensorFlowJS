@@ -10,7 +10,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 import ApolloClient from "apollo-boost";
-import { InMemoryCache } from "apollo-cache-inmemory";
+import { InMemoryCache, defaultDataIdFromObject } from "apollo-cache-inmemory";
 import { ApolloProvider } from "react-apollo";
 import { HttpLink } from "apollo-link-http";
 import App from "./App";
@@ -20,21 +20,34 @@ import { resolvers, typeDefs } from "./resolvers";
 
 // Set up our apollo-client to point at the server we created
 // this can be local or a remote endpoint
-// const cache = new InMemoryCache();
+const cache = new InMemoryCache({
+  dataIdFromObject: object => {
+    switch (object.__typename) {
+      case "foo":
+        console.log(object);
+        return object.key; // use the `key` field as the identifier
+      case "bar":
+        console.log(object);
+        return `bar:${object.blah}`; // append `bar` to the `blah` field as the identifier
+      default:
+        return defaultDataIdFromObject(object); // fall back to default handling
+    }
+  }
+});
 const client = new ApolloClient({
+  cache,
   link: new HttpLink({
     uri: "http://localhost:4000/graphql"
-  })
-  // resolvers,
-  // typeDefs,
+  }),
+  resolvers,
+  typeDefs
 });
 
-// cache.writeData({
-//   data: {
-//     isLoggedIn: !!localStorage.getItem('token'),
-//     cartItems: [],
-//   },
-// });
+cache.writeData({
+  data: {
+    isLoggedIn: !!localStorage.getItem("token")
+  }
+});
 // const IS_LOGGED_IN = gql`
 //   query IsUserLoggedIn {
 //     isLoggedIn @client

@@ -21,6 +21,7 @@ const typeDefs = gql`
     id: ID!
     username: String!
     password: String!
+    email: String!
   }
   type Account {
     id: ID!
