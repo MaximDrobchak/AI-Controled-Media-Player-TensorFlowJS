@@ -37,7 +37,7 @@
     "node-record-lpcm16": "^0.3.1",
     "protobufjs": "^6.8.6",
     "pumpify": "^1.5.1",
-    "sequelize": "^5.8.7",
+    "sequelize": "^5.15.1",
     "sqlite3": "^4.0.8",
     "stream-events": "^1.0.4",
     "through2": "^3.0.0"
